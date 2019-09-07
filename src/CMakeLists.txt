@@ -8,20 +8,20 @@ file(GLOB IMGUI_SOURCES
     ${DEP_DIR}/imgui/imgui_draw.cpp
     ${DEP_DIR}/imgui/imgui_demo.cpp
     ${DEP_DIR}/imgui/imgui_widgets.cpp
+    extras.cpp
 )
 
 set(IMGUI_STATIC "no" CACHE STRING "Build as a static library")
 add_library(cimgui SHARED ${IMGUI_SOURCES})
 
 target_compile_definitions(cimgui PUBLIC IMGUI_DISABLE_OBSOLETE_FUNCTIONS=1)
-if (WIN32)
-    target_compile_definitions(cimgui PUBLIC IMGUI_IMPL_API="extern \"C\" __declspec\(dllexport\)")
-else (WIN32)
-    target_compile_definitions(cimgui PUBLIC IMGUI_IMPL_API="extern \"C\" ")
-endif (WIN32)
 
-target_include_directories(cimgui PUBLIC ${DEP_DIR}/cimgui)
-target_include_directories(cimgui PUBLIC ${DEP_DIR})
+target_include_directories(cimgui PUBLIC 
+    ${DEP_DIR}/cimgui
+    ${DEP_DIR}
+    ${DEP_DIR}/imgui/examples
+    ${DEP_DIR}/imgui
+)
 set_target_properties(cimgui PROPERTIES PREFIX "")
 
 #install

@@ -2,10 +2,22 @@
     "omnisharp.defaultLaunchSolution": "SharpImGui.sln",
     "cSpell.words": [
         "Bgra",
+        "Cdecl",
+        "DWORD",
+        "HBITMAP",
+        "HBRUSH",
+        "HCURSOR",
+        "HGDIOBJ",
+        "HICON",
+        "HMENU",
         "LPARAM",
+        "LPVOID",
         "LRESULT",
+        "Pels",
+        "Structs",
         "WNDPROC",
         "WPARAM",
-        "cimgui"
+        "cimgui",
+        "imgui"
     ]
 }
