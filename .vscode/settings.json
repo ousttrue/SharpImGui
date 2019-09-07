@@ -1,6 +1,7 @@
 {
     "omnisharp.defaultLaunchSolution": "SharpImGui.sln",
     "cSpell.words": [
+        "Bgra",
         "LPARAM",
         "LRESULT",
         "WNDPROC",
