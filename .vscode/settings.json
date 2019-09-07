@@ -1,0 +1,9 @@
+{
+    "omnisharp.defaultLaunchSolution": "SharpImGui.sln",
+    "cSpell.words": [
+        "LPARAM",
+        "LRESULT",
+        "WNDPROC",
+        "WPARAM"
+    ]
+}
