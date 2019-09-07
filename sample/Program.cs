@@ -173,11 +173,16 @@ namespace sample
 
             User32.ShowWindow(hwnd, SW.SHOW);
 
-            MSG msg = default;
-            while (User32.GetMessageW(ref msg, default, 0, 0))
+            using (var gui = new SharpImGui.Wrapper())
             {
-                User32.TranslateMessage(ref msg);
-                User32.DispatchMessage(ref msg);
+
+                MSG msg = default;
+                while (User32.GetMessageW(ref msg, default, 0, 0))
+                {
+                    User32.TranslateMessage(ref msg);
+                    User32.DispatchMessage(ref msg);
+                }
+
             }
         }
     }

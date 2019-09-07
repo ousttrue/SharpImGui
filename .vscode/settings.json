@@ -5,6 +5,7 @@
         "LPARAM",
         "LRESULT",
         "WNDPROC",
-        "WPARAM"
+        "WPARAM",
+        "cimgui"
     ]
 }
