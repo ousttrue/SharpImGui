@@ -87,6 +87,22 @@ namespace sample
                 out m_device, out m_swapChain);
 
             m_imgui = SharpImGui.CImGuiImpl.igCreateContext(IntPtr.Zero);
+            var io = (SharpImGui.ImGuiIO)SharpImGui.CImGuiImpl.igGetIO();
+            io.ConfigFlags |= SharpImGui.ImGuiConfigFlags.NavEnableKeyboard;
+            // Enable Keyboard Controls
+            // io.ConfigFlags |= SharpImGui.ImGuiConfigFlags.NavEnableGamepad;      // Enable Gamepad Controls
+            io.ConfigFlags |= SharpImGui.ImGuiConfigFlags.DockingEnable;           // Enable Docking
+            // io.ConfigFlags |= SharpImGui.ImGuiConfigFlags.ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
+            //io.ConfigViewportsNoAutoMerge = true;
+            //io.ConfigViewportsNoTaskBarIcon = true;
+            //io.ConfigViewportsNoDefaultParent = true;
+            //io.ConfigDockingAlwaysTabBar = true;
+            //io.ConfigDockingTransparentPayload = true;
+            // #if 1
+            //     io.ConfigFlags |= ImGuiConfigFlags_DpiEnableScaleFonts;     // FIXME-DPI: THIS CURRENTLY DOESN'T WORK AS EXPECTED. DON'T USE IN USER APP!
+            //     io.ConfigFlags |= ImGuiConfigFlags_DpiEnableScaleViewports; // FIXME-DPI
+            // #endif
+
             SharpImGui.CImGuiImpl.ImGui_ImplWin32_Init(hwnd.Value);
             SharpImGui.CImGuiImpl.ImGui_ImplDX11_Init(
                 Device.NativePointer,
