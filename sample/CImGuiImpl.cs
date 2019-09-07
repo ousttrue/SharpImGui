@@ -28,25 +28,6 @@ namespace SharpImGui
         IsTouchScreen = 1 << 21   // Application is using a touch screen instead of a mouse.
     }
 
-    public struct PtrField<T>
-    {
-        readonly IntPtr m_ptr;
-        public PtrField(IntPtr p, int offset)
-        {
-            m_ptr = IntPtr.Add(p, offset);
-        }
-        public T Value
-        {
-            get
-            {
-                return (T)(object)Marshal.ReadInt32(m_ptr);
-            }
-            set
-            {
-                Marshal.WriteInt32(m_ptr, (int)(object)value);
-            }
-        }
-    }
 
     public class ImGuiIO
     {
@@ -55,16 +36,17 @@ namespace SharpImGui
             return new ImGuiIO(p);
         }
 
+        readonly IntPtr m_p;
+
         public ImGuiIO(IntPtr ptr)
         {
-            m_ConfigFlags = new PtrField<ImGuiConfigFlags>(ptr, 0);
+            m_p = ptr;
         }
 
-        PtrField<ImGuiConfigFlags> m_ConfigFlags;
         public ImGuiConfigFlags ConfigFlags
         {
-            get => m_ConfigFlags.Value;
-            set => m_ConfigFlags.Value = value;
+            get => (ImGuiConfigFlags)Marshal.ReadInt32(IntPtr.Add(m_p, 0));
+            set => Marshal.WriteInt32(IntPtr.Add(m_p, 0), (int)value);
         }
     }
 
