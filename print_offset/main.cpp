@@ -1,11 +1,10 @@
 #include <imgui.h>
 #include <iostream>
 
+#define PRINT_OFFSET(field) std::cout << offsetof(ImGuiIO, field) << std::endl
+
 int main()
 {
-    std::cout << offsetof(ImGuiIO, ConfigFlags) << std::endl;
-    std::cout << offsetof(ImGuiIO, UserData) << std::endl;
-    std::cout << offsetof(ImGuiIO, Fonts) << std::endl;
-    std::cout << offsetof(ImGuiIO, MouseWheel) << std::endl;
+    PRINT_OFFSET(MouseDrawCursor);
     return 0;
 }

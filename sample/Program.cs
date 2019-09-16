@@ -25,11 +25,11 @@ namespace sample
 
         public void Dispose()
         {
-            SharpImGui.CImGuiImpl.ImGui_ImplDX11_Shutdown();
-            SharpImGui.CImGuiImpl.ImGui_ImplWin32_Shutdown();
+            SharpImGui.CImGui.ImGui_ImplDX11_Shutdown();
+            SharpImGui.CImGui.ImGui_ImplWin32_Shutdown();
             if (m_imgui != IntPtr.Zero)
             {
-                SharpImGui.CImGuiImpl.igDestroyContext(m_imgui);
+                SharpImGui.CImGui.igDestroyContext(m_imgui);
                 m_imgui = IntPtr.Zero;
             }
 
@@ -86,8 +86,8 @@ namespace sample
                 desc,
                 out m_device, out m_swapChain);
 
-            m_imgui = SharpImGui.CImGuiImpl.igCreateContext(IntPtr.Zero);
-            var io = (SharpImGui.ImGuiIO)SharpImGui.CImGuiImpl.igGetIO();
+            m_imgui = SharpImGui.CImGui.igCreateContext(IntPtr.Zero);
+            var io = (SharpImGui.ImGuiIO)SharpImGui.CImGui.igGetIO();
             io.ConfigFlags |= SharpImGui.ImGuiConfigFlags.NavEnableKeyboard;
             // Enable Keyboard Controls
             // io.ConfigFlags |= SharpImGui.ImGuiConfigFlags.NavEnableGamepad;      // Enable Gamepad Controls
@@ -103,8 +103,8 @@ namespace sample
             //     io.ConfigFlags |= ImGuiConfigFlags_DpiEnableScaleViewports; // FIXME-DPI
             // #endif
 
-            SharpImGui.CImGuiImpl.ImGui_ImplWin32_Init(hwnd.Value);
-            SharpImGui.CImGuiImpl.ImGui_ImplDX11_Init(
+            SharpImGui.CImGui.ImGui_ImplWin32_Init(hwnd.Value);
+            SharpImGui.CImGui.ImGui_ImplDX11_Init(
                 Device.NativePointer,
                 Device.ImmediateContext.NativePointer);
         }
@@ -124,24 +124,24 @@ namespace sample
             }
 
             // Start the Dear ImGui frame
-            SharpImGui.CImGuiImpl.ImGui_ImplDX11_NewFrame();
-            SharpImGui.CImGuiImpl.ImGui_ImplWin32_NewFrame();
-            SharpImGui.CImGuiImpl.igNewFrame();
+            SharpImGui.CImGui.ImGui_ImplDX11_NewFrame();
+            SharpImGui.CImGui.ImGui_ImplWin32_NewFrame();
+            SharpImGui.CImGui.igNewFrame();
 
             // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
             if (m_show_demo_window)
             {
-                SharpImGui.CImGuiImpl.igShowDemoWindow(ref m_show_demo_window);
+                SharpImGui.CImGui.igShowDemoWindow(ref m_show_demo_window);
             }
 
-            SharpImGui.CImGuiImpl.igRender();
+            SharpImGui.CImGui.igRender();
 
             Device.ImmediateContext.ClearRenderTargetView(m_rtv,
             new SharpDX.Mathematics.Interop.RawColor4(0.2f, 0.2f, 0.4f, 1.0f));
 
             Device.ImmediateContext.OutputMerger.SetRenderTargets(m_rtv);
 
-            SharpImGui.CImGuiImpl.ImGui_ImplDX11_RenderDrawData(SharpImGui.CImGuiImpl.igGetDrawData());
+            SharpImGui.CImGui.ImGui_ImplDX11_RenderDrawData(SharpImGui.CImGui.igGetDrawData());
 
             m_swapChain.Present(0, PresentFlags.None);
         }
@@ -169,7 +169,7 @@ namespace sample
 
             var windowProc = new WNDPROC((HWND _hwnd, WM uMsg, WPARAM wParam, LPARAM lParam) =>
             {
-                if (SharpImGui.CImGuiImpl.ImGui_ImplWin32_WndProcHandler(_hwnd.Value, (int)uMsg, wParam.Value, lParam.Value) != 0)
+                if (SharpImGui.CImGui.ImGui_ImplWin32_WndProcHandler(_hwnd.Value, (uint)uMsg, wParam.Value, lParam.Value) != IntPtr.Zero)
                 {
                     return 1;
                 }

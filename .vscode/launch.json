@@ -5,7 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (console)",
+            "name": "Offset",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/print_offset/print_offset.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "environment": [],
+            "externalConsole": false
+        },
+        {
+            "name": "Sample",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
@@ -16,16 +27,26 @@
             "console": "internalConsole"
         },
         {
-            "name": "dll",
-            "type": "cppvsdbg",
+            "name": "Generate",
+            "type": "python",
             "request": "launch",
-            "program": "C:/Users/ousttrue/work/_vc/vrmlib/vrmgui/bin/Debug/netcoreapp3.0/vrmgui.exe",
+            "program": "${workspaceFolder}/dependencies/cpptypeinfo/generator.py",
             "args": [
+                "${workspaceFolder}/sample/SharpImGui",
+                "${workspaceFolder}/dependencies/imgui/imgui.h",
+                "${workspaceFolder}/dependencies/cimgui/cimgui.h",
+                "${workspaceFolder}/src/extras.h",
             ],
-            "stopAtEntry": false,
-            "cwd": "C:/Users/ousttrue/work/_vc/vrmlib/vrmgui/bin/Debug/netcoreapp3.0",
-            "environment": [],
-            "externalConsole": false
-        }
+            "cwd": "${workspaceFolder}/dependencies/cpptypeinfo",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "PythonFile",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            // "cwd": "${workspaceFolder}/dependencies/cpptypeinfo",
+            "console": "integratedTerminal"
+        },
     ]
 }

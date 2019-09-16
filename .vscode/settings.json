@@ -3,6 +3,7 @@
     "cSpell.words": [
         "Bgra",
         "Cdecl",
+        "DLLNAME",
         "DWORD",
         "HBITMAP",
         "HBRUSH",
@@ -14,10 +15,22 @@
         "LPVOID",
         "LRESULT",
         "Pels",
+        "Struct",
         "Structs",
         "WNDPROC",
         "WPARAM",
         "cimgui",
-        "imgui"
+        "cindex",
+        "cpptypeinfo",
+        "finditer",
+        "imgui",
+        "imguiio",
+        "offsetof",
+        "rfind",
+        "rmtree",
+        "sbyte",
+        "uint",
+        "ulong",
+        "ushort"
     ]
 }
