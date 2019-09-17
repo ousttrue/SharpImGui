@@ -1,6 +1,8 @@
 // // generated cpptypeinfo-0.1.0
 using System;
 using System.Runtime.InteropServices;
+using System.Numerics;
+
 
 namespace SharpImGui
 {
@@ -13,9 +15,9 @@ namespace SharpImGui
         // offsetof: 4
         public ImGuiViewportFlags Flags;
         // offsetof: 8
-        public ImVec2 Pos;
+        public Vector2 Pos;
         // offsetof: 16
-        public ImVec2 Size;
+        public Vector2 Size;
         // offsetof: 24
         public float DpiScale;
         // offsetof: 32

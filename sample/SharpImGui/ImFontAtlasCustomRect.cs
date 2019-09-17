@@ -1,6 +1,8 @@
 // // generated cpptypeinfo-0.1.0
 using System;
 using System.Runtime.InteropServices;
+using System.Numerics;
+
 
 namespace SharpImGui
 {
@@ -21,7 +23,7 @@ namespace SharpImGui
         // offsetof: 12
         public float GlyphAdvanceX;
         // offsetof: 16
-        public ImVec2 GlyphOffset;
+        public Vector2 GlyphOffset;
         // offsetof: 24
         public IntPtr Font;
     }

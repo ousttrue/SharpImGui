@@ -1,6 +1,8 @@
 // // generated cpptypeinfo-0.1.0
 using System;
 using System.Runtime.InteropServices;
+using System.Numerics;
+
 
 namespace SharpImGui
 {
@@ -21,7 +23,7 @@ namespace SharpImGui
         // offsetof: 56
         public IntPtr FallbackGlyph;
         // offsetof: 64
-        public ImVec2 DisplayOffset;
+        public Vector2 DisplayOffset;
         // offsetof: 72
         public IntPtr ContainerAtlas;
         // offsetof: 80

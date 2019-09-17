@@ -1,6 +1,8 @@
 // // generated cpptypeinfo-0.1.0
 using System;
 using System.Runtime.InteropServices;
+using System.Numerics;
+
 
 namespace SharpImGui
 {
@@ -9,9 +11,9 @@ namespace SharpImGui
     public struct ImDrawVert
     {
         // offsetof: 0
-        public ImVec2 pos;
+        public Vector2 pos;
         // offsetof: 8
-        public ImVec2 uv;
+        public Vector2 uv;
         // offsetof: 16
         public uint col;
     }

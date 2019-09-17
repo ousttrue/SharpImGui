@@ -1,6 +1,8 @@
 // // generated cpptypeinfo-0.1.0
 using System;
 using System.Runtime.InteropServices;
+using System.Numerics;
+
 
 namespace SharpImGui
 {
@@ -11,7 +13,7 @@ namespace SharpImGui
         // offsetof: 0
         public uint ElemCount;
         // offsetof: 4
-        public ImVec4 ClipRect;
+        public Vector4 ClipRect;
         // offsetof: 24
         public IntPtr TextureId;
         // offsetof: 32

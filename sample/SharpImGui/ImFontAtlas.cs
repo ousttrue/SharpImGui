@@ -1,6 +1,8 @@
 // // generated cpptypeinfo-0.1.0
 using System;
 using System.Runtime.InteropServices;
+using System.Numerics;
+
 
 namespace SharpImGui
 {
@@ -27,9 +29,9 @@ namespace SharpImGui
         // offsetof: 44
         public int TexHeight;
         // offsetof: 48
-        public ImVec2 TexUvScale;
+        public Vector2 TexUvScale;
         // offsetof: 56
-        public ImVec2 TexUvWhitePixel;
+        public Vector2 TexUvWhitePixel;
         // offsetof: 64
         public ImVector Fonts;
         // offsetof: 80

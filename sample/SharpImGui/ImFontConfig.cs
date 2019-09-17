@@ -1,6 +1,8 @@
 // // generated cpptypeinfo-0.1.0
 using System;
 using System.Runtime.InteropServices;
+using System.Numerics;
+
 
 namespace SharpImGui
 {
@@ -25,9 +27,9 @@ namespace SharpImGui
         // offsetof: 32
         [MarshalAs(UnmanagedType.U1)]public bool PixelSnapH;
         // offsetof: 36
-        public ImVec2 GlyphExtraSpacing;
+        public Vector2 GlyphExtraSpacing;
         // offsetof: 44
-        public ImVec2 GlyphOffset;
+        public Vector2 GlyphOffset;
         // offsetof: 56
         public IntPtr GlyphRanges;
         // offsetof: 64

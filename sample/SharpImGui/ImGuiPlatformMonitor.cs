@@ -1,6 +1,8 @@
 // // generated cpptypeinfo-0.1.0
 using System;
 using System.Runtime.InteropServices;
+using System.Numerics;
+
 
 namespace SharpImGui
 {
@@ -9,13 +11,13 @@ namespace SharpImGui
     public struct ImGuiPlatformMonitor
     {
         // offsetof: 0
-        public ImVec2 MainPos;
+        public Vector2 MainPos;
         // offsetof: 8
-        public ImVec2 MainSize;
+        public Vector2 MainSize;
         // offsetof: 16
-        public ImVec2 WorkPos;
+        public Vector2 WorkPos;
         // offsetof: 24
-        public ImVec2 WorkSize;
+        public Vector2 WorkSize;
         // offsetof: 32
         public float DpiScale;
     }

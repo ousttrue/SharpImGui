@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using SharpDX.Direct3D11;
 using SharpDX.DXGI;
 using SharpImGui;
+using System.Numerics;
 using Win32API;
 
 namespace sample
@@ -111,6 +112,13 @@ namespace sample
         }
 
         bool m_show_demo_window = true;
+        bool m_show_another_window = true;
+
+        float m_f = 0.0f;
+        int m_counter = 0;
+
+        Vector3 m_clear_color;
+
 
         public void Draw()
         {
@@ -129,16 +137,40 @@ namespace sample
             ImGui.ImGui_ImplWin32_NewFrame();
             ImGui.NewFrame();
 
-            // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
+            // 1. Show the big demo window (Most of the sample code is in ImGui.ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
             if (m_show_demo_window)
             {
                 ImGui.ShowDemoWindow(ref m_show_demo_window);
             }
 
+            // 2. Show a simple window that we create ourselves. We use a Begin/End pair to created a named window.
+            {
+                ImGui.Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
+
+                ImGui.Text("This is some useful text.");               // Display some text (you can use a format strings too)
+                ImGui.Checkbox("Demo Window", ref m_show_demo_window);      // Edit bools storing our window open/close state
+                ImGui.Checkbox("Another Window", ref m_show_another_window);
+
+                ImGui.SliderFloat("float", ref m_f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+                ImGui.ColorEdit3("clear color", ref m_clear_color); // Edit 3 floats representing a color
+
+                var size = Vector2.Zero;
+                if (ImGui.Button("Button", ref size))
+                {                            // Buttons return true when clicked (most widgets return true when edited/activated)
+                    m_counter++;
+                }
+                ImGui.SameLine();
+                ImGui.Text($"counter = {m_counter}");
+
+                var frameRate = ((ImGuiIO)ImGui.GetIO()).Framerate;
+                ImGui.Text($"Application average {1000.0f / frameRate:.000} ms/frame ({frameRate:.0} FPS)");
+                ImGui.End();
+            }
+
             ImGui.Render();
 
             Device.ImmediateContext.ClearRenderTargetView(m_rtv,
-            new SharpDX.Mathematics.Interop.RawColor4(0.2f, 0.2f, 0.4f, 1.0f));
+            new SharpDX.Mathematics.Interop.RawColor4(m_clear_color.X, m_clear_color.Y, m_clear_color.Z, 1.0f));
 
             Device.ImmediateContext.OutputMerger.SetRenderTargets(m_rtv);
 

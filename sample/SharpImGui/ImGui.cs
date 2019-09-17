@@ -1,6 +1,8 @@
 // generated cpptypeinfo-0.1.0
 using System;
 using System.Runtime.InteropServices;
+using System.Numerics;
+
 
 namespace SharpImGui
 {
@@ -11,7 +13,7 @@ namespace SharpImGui
         // imgui_impl_win32.h:13
         [DllImport(DLLNAME, EntryPoint="?ImGui_ImplWin32_Init@@YA_NPEAX@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ImGui_ImplWin32_Init(IntPtr hwnd = default);
+        public static extern bool ImGui_ImplWin32_Init(IntPtr hwnd);
 
         // imgui_impl_win32.h:14
         [DllImport(DLLNAME, EntryPoint="?ImGui_ImplWin32_Shutdown@@YAXXZ")]
@@ -27,16 +29,16 @@ namespace SharpImGui
 
         // imgui_impl_win32.h:19
         [DllImport(DLLNAME, EntryPoint="?ImGui_ImplWin32_GetDpiScaleForHwnd@@YAMPEAX@Z")]
-        public static extern float ImGui_ImplWin32_GetDpiScaleForHwnd(IntPtr hwnd = default);
+        public static extern float ImGui_ImplWin32_GetDpiScaleForHwnd(IntPtr hwnd);
 
         // imgui_impl_win32.h:20
         [DllImport(DLLNAME, EntryPoint="?ImGui_ImplWin32_GetDpiScaleForMonitor@@YAMPEAX@Z")]
-        public static extern float ImGui_ImplWin32_GetDpiScaleForMonitor(IntPtr monitor = default);
+        public static extern float ImGui_ImplWin32_GetDpiScaleForMonitor(IntPtr monitor);
 
         // imgui_impl_dx11.h:18
         [DllImport(DLLNAME, EntryPoint="?ImGui_ImplDX11_Init@@YA_NPEAUID3D11Device@@PEAUID3D11DeviceContext@@@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ImGui_ImplDX11_Init(IntPtr device = default, IntPtr device_context = default);
+        public static extern bool ImGui_ImplDX11_Init(IntPtr device, IntPtr device_context);
 
         // imgui_impl_dx11.h:19
         [DllImport(DLLNAME, EntryPoint="?ImGui_ImplDX11_Shutdown@@YAXXZ")]
@@ -48,7 +50,7 @@ namespace SharpImGui
 
         // imgui_impl_dx11.h:21
         [DllImport(DLLNAME, EntryPoint="?ImGui_ImplDX11_RenderDrawData@@YAXPEAUImDrawData@@@Z")]
-        public static extern void ImGui_ImplDX11_RenderDrawData(IntPtr draw_data = default);
+        public static extern void ImGui_ImplDX11_RenderDrawData(IntPtr draw_data);
 
         // imgui_impl_dx11.h:24
         [DllImport(DLLNAME, EntryPoint="?ImGui_ImplDX11_InvalidateDeviceObjects@@YAXXZ")]
@@ -61,23 +63,23 @@ namespace SharpImGui
 
         // extras.h:9
         [DllImport(DLLNAME, EntryPoint="?ImGui_ImplWin32_WndProcHandler@@YA_JPEAUHWND__@@I_K_J@Z")]
-        public static extern IntPtr ImGui_ImplWin32_WndProcHandler(IntPtr hwnd = default, uint msg = default, IntPtr wParam = default, IntPtr lParam = default);
+        public static extern IntPtr ImGui_ImplWin32_WndProcHandler(IntPtr hwnd, uint msg, IntPtr wParam, IntPtr lParam);
 
         // extras.h:11
         [DllImport(DLLNAME, EntryPoint="?exDockSpace@@YAXIUImVec2@@HPEBUImGuiWindowClass@@@Z")]
-        public static extern void exDockSpace(ImGuiID id = default, ImVec2 size = default, ImGuiDockNodeFlags flags = default, IntPtr window_class = default);
+        public static extern void exDockSpace(ImGuiID id, Vector2 size, ImGuiDockNodeFlags flags, IntPtr window_class);
 
         // extras.h:12
         [DllImport(DLLNAME, EntryPoint="?exDockSpaceOverViewport@@YAIPEAUImGuiViewport@@HPEBUImGuiWindowClass@@@Z")]
-        public static extern ImGuiID exDockSpaceOverViewport(IntPtr viewport = default, ImGuiDockNodeFlags flags = default, IntPtr window_class = default);
+        public static extern ImGuiID exDockSpaceOverViewport(IntPtr viewport, ImGuiDockNodeFlags flags, IntPtr window_class);
 
         // extras.h:13
         [DllImport(DLLNAME, EntryPoint="?exSetNextWindowDockID@@YAXIH@Z")]
-        public static extern void exSetNextWindowDockID(ImGuiID dock_id = default, ImGuiCond cond = default);
+        public static extern void exSetNextWindowDockID(ImGuiID dock_id, ImGuiCond cond);
 
         // extras.h:14
         [DllImport(DLLNAME, EntryPoint="?exSetNextWindowClass@@YAXPEBUImGuiWindowClass@@@Z")]
-        public static extern void exSetNextWindowClass(IntPtr window_class = default);
+        public static extern void exSetNextWindowClass(IntPtr window_class);
 
         // extras.h:15
         [DllImport(DLLNAME, EntryPoint="?exGetWindowDockID@@YAIXZ")]
@@ -102,12 +104,12 @@ namespace SharpImGui
 
         // imgui.h:224
         [DllImport(DLLNAME, EntryPoint="?SetCurrentContext@ImGui@@YAXPEAUImGuiContext@@@Z")]
-        public static extern void SetCurrentContext(IntPtr ctx = default);
+        public static extern void SetCurrentContext(IntPtr ctx);
 
         // imgui.h:225
         [DllImport(DLLNAME, EntryPoint="?DebugCheckVersionAndDataLayout@ImGui@@YA_NPEBD_K11111@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DebugCheckVersionAndDataLayout([MarshalAs(UnmanagedType.LPUTF8Str)]string version_str = default, ulong sz_io = default, ulong sz_style = default, ulong sz_vec2 = default, ulong sz_vec4 = default, ulong sz_drawvert = default, ulong sz_drawidx = default);
+        public static extern bool DebugCheckVersionAndDataLayout([MarshalAs(UnmanagedType.LPUTF8Str)]string version_str, ulong sz_io, ulong sz_style, ulong sz_vec2, ulong sz_vec4, ulong sz_drawvert, ulong sz_drawidx);
 
         // imgui.h:228
         [DllImport(DLLNAME, EntryPoint="?GetIO@ImGui@@YAAEAUImGuiIO@@XZ")]
@@ -139,7 +141,7 @@ namespace SharpImGui
 
         // imgui.h:236
         [DllImport(DLLNAME, EntryPoint="?ShowDemoWindow@ImGui@@YAXPEA_N@Z")]
-        public static extern void ShowDemoWindow([MarshalAs(UnmanagedType.U1)]IntPtr p_open = default);
+        public static extern void ShowDemoWindow(IntPtr p_open = default);
 
         // imgui.h:237
         [DllImport(DLLNAME, EntryPoint="?ShowAboutWindow@ImGui@@YAXPEA_N@Z")]
@@ -147,7 +149,7 @@ namespace SharpImGui
 
         // imgui.h:237
         [DllImport(DLLNAME, EntryPoint="?ShowAboutWindow@ImGui@@YAXPEA_N@Z")]
-        public static extern void ShowAboutWindow([MarshalAs(UnmanagedType.U1)]IntPtr p_open = default);
+        public static extern void ShowAboutWindow(IntPtr p_open = default);
 
         // imgui.h:238
         [DllImport(DLLNAME, EntryPoint="?ShowMetricsWindow@ImGui@@YAXPEA_N@Z")]
@@ -155,7 +157,7 @@ namespace SharpImGui
 
         // imgui.h:238
         [DllImport(DLLNAME, EntryPoint="?ShowMetricsWindow@ImGui@@YAXPEA_N@Z")]
-        public static extern void ShowMetricsWindow([MarshalAs(UnmanagedType.U1)]IntPtr p_open = default);
+        public static extern void ShowMetricsWindow(IntPtr p_open = default);
 
         // imgui.h:239
         [DllImport(DLLNAME, EntryPoint="?ShowStyleEditor@ImGui@@YAXPEAUImGuiStyle@@@Z")]
@@ -164,11 +166,11 @@ namespace SharpImGui
         // imgui.h:240
         [DllImport(DLLNAME, EntryPoint="?ShowStyleSelector@ImGui@@YA_NPEBD@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ShowStyleSelector([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default);
+        public static extern bool ShowStyleSelector([MarshalAs(UnmanagedType.LPUTF8Str)]string label);
 
         // imgui.h:241
         [DllImport(DLLNAME, EntryPoint="?ShowFontSelector@ImGui@@YAXPEBD@Z")]
-        public static extern void ShowFontSelector([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default);
+        public static extern void ShowFontSelector([MarshalAs(UnmanagedType.LPUTF8Str)]string label);
 
         // imgui.h:242
         [DllImport(DLLNAME, EntryPoint="?ShowUserGuide@ImGui@@YAXXZ")]
@@ -193,12 +195,12 @@ namespace SharpImGui
         // imgui.h:260
         [DllImport(DLLNAME, EntryPoint="?Begin@ImGui@@YA_NPEBDPEA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool Begin([MarshalAs(UnmanagedType.LPUTF8Str)]string name, [MarshalAs(UnmanagedType.U1)]ref bool p_open, ImGuiWindowFlags flags = default);
+        public static extern bool Begin([MarshalAs(UnmanagedType.LPUTF8Str)]string name, [MarshalAs(UnmanagedType.U1)]ref bool p_open, ImGuiWindowFlags flags = 0);
 
         // imgui.h:260
         [DllImport(DLLNAME, EntryPoint="?Begin@ImGui@@YA_NPEBDPEA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool Begin([MarshalAs(UnmanagedType.LPUTF8Str)]string name, [MarshalAs(UnmanagedType.U1)]IntPtr p_open = default, ImGuiWindowFlags flags = default);
+        public static extern bool Begin([MarshalAs(UnmanagedType.LPUTF8Str)]string name, IntPtr p_open = default, ImGuiWindowFlags flags = 0);
 
         // imgui.h:261
         [DllImport(DLLNAME, EntryPoint="?End@ImGui@@YAXXZ")]
@@ -207,12 +209,12 @@ namespace SharpImGui
         // imgui.h:268
         [DllImport(DLLNAME, EntryPoint="?BeginChild@ImGui@@YA_NPEBDAEBUImVec2@@_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginChild([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, IntPtr size = default, [MarshalAs(UnmanagedType.U1)]bool border = default, ImGuiWindowFlags flags = default);
+        public static extern bool BeginChild([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id, ref Vector2 size, [MarshalAs(UnmanagedType.U1)]bool border = default, ImGuiWindowFlags flags = 0);
 
         // imgui.h:269
         [DllImport(DLLNAME, EntryPoint="?BeginChild@ImGui@@YA_NIAEBUImVec2@@_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginChild(ImGuiID id = default, IntPtr size = default, [MarshalAs(UnmanagedType.U1)]bool border = default, ImGuiWindowFlags flags = default);
+        public static extern bool BeginChild(ImGuiID id, ref Vector2 size, [MarshalAs(UnmanagedType.U1)]bool border = default, ImGuiWindowFlags flags = 0);
 
         // imgui.h:270
         [DllImport(DLLNAME, EntryPoint="?EndChild@ImGui@@YAXXZ")]
@@ -231,12 +233,12 @@ namespace SharpImGui
         // imgui.h:276
         [DllImport(DLLNAME, EntryPoint="?IsWindowFocused@ImGui@@YA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsWindowFocused(ImGuiFocusedFlags flags = default);
+        public static extern bool IsWindowFocused(ImGuiFocusedFlags flags = 0);
 
         // imgui.h:277
         [DllImport(DLLNAME, EntryPoint="?IsWindowHovered@ImGui@@YA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsWindowHovered(ImGuiHoveredFlags flags = default);
+        public static extern bool IsWindowHovered(ImGuiHoveredFlags flags = 0);
 
         // imgui.h:278
         [DllImport(DLLNAME, EntryPoint="?GetWindowDrawList@ImGui@@YAPEAUImDrawList@@XZ")]
@@ -252,11 +254,11 @@ namespace SharpImGui
 
         // imgui.h:281
         [DllImport(DLLNAME, EntryPoint="?GetWindowPos@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetWindowPos();
+        public static extern Vector2 GetWindowPos();
 
         // imgui.h:282
         [DllImport(DLLNAME, EntryPoint="?GetWindowSize@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetWindowSize();
+        public static extern Vector2 GetWindowSize();
 
         // imgui.h:283
         [DllImport(DLLNAME, EntryPoint="?GetWindowWidth@ImGui@@YAMXZ")]
@@ -268,23 +270,23 @@ namespace SharpImGui
 
         // imgui.h:287
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowPos@ImGui@@YAXAEBUImVec2@@H0@Z")]
-        public static extern void SetNextWindowPos(IntPtr pos = default, ImGuiCond cond = default, IntPtr pivot = default);
+        public static extern void SetNextWindowPos(ref Vector2 pos, ImGuiCond cond, ref Vector2 pivot);
 
         // imgui.h:288
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowSize@ImGui@@YAXAEBUImVec2@@H@Z")]
-        public static extern void SetNextWindowSize(IntPtr size = default, ImGuiCond cond = default);
+        public static extern void SetNextWindowSize(ref Vector2 size, ImGuiCond cond = 0);
 
         // imgui.h:289
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowSizeConstraints@ImGui@@YAXAEBUImVec2@@0P6AXPEAUImGuiSizeCallbackData@@@ZPEAX@Z")]
-        public static extern void SetNextWindowSizeConstraints(IntPtr size_min = default, IntPtr size_max = default, IntPtr custom_callback = default, IntPtr custom_callback_data = default);
+        public static extern void SetNextWindowSizeConstraints(ref Vector2 size_min, ref Vector2 size_max, IntPtr custom_callback = default, IntPtr custom_callback_data = default);
 
         // imgui.h:290
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowContentSize@ImGui@@YAXAEBUImVec2@@@Z")]
-        public static extern void SetNextWindowContentSize(IntPtr size = default);
+        public static extern void SetNextWindowContentSize(ref Vector2 size);
 
         // imgui.h:291
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowCollapsed@ImGui@@YAX_NH@Z")]
-        public static extern void SetNextWindowCollapsed([MarshalAs(UnmanagedType.U1)]bool collapsed = default, ImGuiCond cond = default);
+        public static extern void SetNextWindowCollapsed([MarshalAs(UnmanagedType.U1)]bool collapsed, ImGuiCond cond = 0);
 
         // imgui.h:292
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowFocus@ImGui@@YAXXZ")]
@@ -292,23 +294,23 @@ namespace SharpImGui
 
         // imgui.h:293
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowBgAlpha@ImGui@@YAXM@Z")]
-        public static extern void SetNextWindowBgAlpha(float alpha = default);
+        public static extern void SetNextWindowBgAlpha(float alpha);
 
         // imgui.h:294
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowViewport@ImGui@@YAXI@Z")]
-        public static extern void SetNextWindowViewport(ImGuiID viewport_id = default);
+        public static extern void SetNextWindowViewport(ImGuiID viewport_id);
 
         // imgui.h:295
         [DllImport(DLLNAME, EntryPoint="?SetWindowPos@ImGui@@YAXAEBUImVec2@@H@Z")]
-        public static extern void SetWindowPos(IntPtr pos = default, ImGuiCond cond = default);
+        public static extern void SetWindowPos(ref Vector2 pos, ImGuiCond cond = 0);
 
         // imgui.h:296
         [DllImport(DLLNAME, EntryPoint="?SetWindowSize@ImGui@@YAXAEBUImVec2@@H@Z")]
-        public static extern void SetWindowSize(IntPtr size = default, ImGuiCond cond = default);
+        public static extern void SetWindowSize(ref Vector2 size, ImGuiCond cond = 0);
 
         // imgui.h:297
         [DllImport(DLLNAME, EntryPoint="?SetWindowCollapsed@ImGui@@YAX_NH@Z")]
-        public static extern void SetWindowCollapsed([MarshalAs(UnmanagedType.U1)]bool collapsed = default, ImGuiCond cond = default);
+        public static extern void SetWindowCollapsed([MarshalAs(UnmanagedType.U1)]bool collapsed, ImGuiCond cond = 0);
 
         // imgui.h:298
         [DllImport(DLLNAME, EntryPoint="?SetWindowFocus@ImGui@@YAXXZ")]
@@ -316,39 +318,39 @@ namespace SharpImGui
 
         // imgui.h:299
         [DllImport(DLLNAME, EntryPoint="?SetWindowFontScale@ImGui@@YAXM@Z")]
-        public static extern void SetWindowFontScale(float scale = default);
+        public static extern void SetWindowFontScale(float scale);
 
         // imgui.h:300
         [DllImport(DLLNAME, EntryPoint="?SetWindowPos@ImGui@@YAXPEBDAEBUImVec2@@H@Z")]
-        public static extern void SetWindowPos([MarshalAs(UnmanagedType.LPUTF8Str)]string name = default, IntPtr pos = default, ImGuiCond cond = default);
+        public static extern void SetWindowPos([MarshalAs(UnmanagedType.LPUTF8Str)]string name, ref Vector2 pos, ImGuiCond cond = 0);
 
         // imgui.h:301
         [DllImport(DLLNAME, EntryPoint="?SetWindowSize@ImGui@@YAXPEBDAEBUImVec2@@H@Z")]
-        public static extern void SetWindowSize([MarshalAs(UnmanagedType.LPUTF8Str)]string name = default, IntPtr size = default, ImGuiCond cond = default);
+        public static extern void SetWindowSize([MarshalAs(UnmanagedType.LPUTF8Str)]string name, ref Vector2 size, ImGuiCond cond = 0);
 
         // imgui.h:302
         [DllImport(DLLNAME, EntryPoint="?SetWindowCollapsed@ImGui@@YAXPEBD_NH@Z")]
-        public static extern void SetWindowCollapsed([MarshalAs(UnmanagedType.LPUTF8Str)]string name = default, [MarshalAs(UnmanagedType.U1)]bool collapsed = default, ImGuiCond cond = default);
+        public static extern void SetWindowCollapsed([MarshalAs(UnmanagedType.LPUTF8Str)]string name, [MarshalAs(UnmanagedType.U1)]bool collapsed, ImGuiCond cond = 0);
 
         // imgui.h:303
         [DllImport(DLLNAME, EntryPoint="?SetWindowFocus@ImGui@@YAXPEBD@Z")]
-        public static extern void SetWindowFocus([MarshalAs(UnmanagedType.LPUTF8Str)]string name = default);
+        public static extern void SetWindowFocus([MarshalAs(UnmanagedType.LPUTF8Str)]string name);
 
         // imgui.h:307
         [DllImport(DLLNAME, EntryPoint="?GetContentRegionMax@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetContentRegionMax();
+        public static extern Vector2 GetContentRegionMax();
 
         // imgui.h:308
         [DllImport(DLLNAME, EntryPoint="?GetContentRegionAvail@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetContentRegionAvail();
+        public static extern Vector2 GetContentRegionAvail();
 
         // imgui.h:309
         [DllImport(DLLNAME, EntryPoint="?GetWindowContentRegionMin@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetWindowContentRegionMin();
+        public static extern Vector2 GetWindowContentRegionMin();
 
         // imgui.h:310
         [DllImport(DLLNAME, EntryPoint="?GetWindowContentRegionMax@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetWindowContentRegionMax();
+        public static extern Vector2 GetWindowContentRegionMax();
 
         // imgui.h:311
         [DllImport(DLLNAME, EntryPoint="?GetWindowContentRegionWidth@ImGui@@YAMXZ")]
@@ -372,31 +374,31 @@ namespace SharpImGui
 
         // imgui.h:318
         [DllImport(DLLNAME, EntryPoint="?SetScrollX@ImGui@@YAXM@Z")]
-        public static extern void SetScrollX(float scroll_x = default);
+        public static extern void SetScrollX(float scroll_x);
 
         // imgui.h:319
         [DllImport(DLLNAME, EntryPoint="?SetScrollY@ImGui@@YAXM@Z")]
-        public static extern void SetScrollY(float scroll_y = default);
+        public static extern void SetScrollY(float scroll_y);
 
         // imgui.h:320
         [DllImport(DLLNAME, EntryPoint="?SetScrollHereX@ImGui@@YAXM@Z")]
-        public static extern void SetScrollHereX(float center_x_ratio = default);
+        public static extern void SetScrollHereX(float center_x_ratio = 0.5f);
 
         // imgui.h:321
         [DllImport(DLLNAME, EntryPoint="?SetScrollHereY@ImGui@@YAXM@Z")]
-        public static extern void SetScrollHereY(float center_y_ratio = default);
+        public static extern void SetScrollHereY(float center_y_ratio = 0.5f);
 
         // imgui.h:322
         [DllImport(DLLNAME, EntryPoint="?SetScrollFromPosX@ImGui@@YAXMM@Z")]
-        public static extern void SetScrollFromPosX(float local_x = default, float center_x_ratio = default);
+        public static extern void SetScrollFromPosX(float local_x, float center_x_ratio = 0.5f);
 
         // imgui.h:323
         [DllImport(DLLNAME, EntryPoint="?SetScrollFromPosY@ImGui@@YAXMM@Z")]
-        public static extern void SetScrollFromPosY(float local_y = default, float center_y_ratio = default);
+        public static extern void SetScrollFromPosY(float local_y, float center_y_ratio = 0.5f);
 
         // imgui.h:326
         [DllImport(DLLNAME, EntryPoint="?PushFont@ImGui@@YAXPEAUImFont@@@Z")]
-        public static extern void PushFont(IntPtr font = default);
+        public static extern void PushFont(IntPtr font);
 
         // imgui.h:327
         [DllImport(DLLNAME, EntryPoint="?PopFont@ImGui@@YAXXZ")]
@@ -404,31 +406,31 @@ namespace SharpImGui
 
         // imgui.h:328
         [DllImport(DLLNAME, EntryPoint="?PushStyleColor@ImGui@@YAXHI@Z")]
-        public static extern void PushStyleColor(ImGuiCol idx = default, uint col = default);
+        public static extern void PushStyleColor(ImGuiCol idx, uint col);
 
         // imgui.h:329
         [DllImport(DLLNAME, EntryPoint="?PushStyleColor@ImGui@@YAXHAEBUImVec4@@@Z")]
-        public static extern void PushStyleColor(ImGuiCol idx = default, IntPtr col = default);
+        public static extern void PushStyleColor(ImGuiCol idx, ref Vector4 col);
 
         // imgui.h:330
         [DllImport(DLLNAME, EntryPoint="?PopStyleColor@ImGui@@YAXH@Z")]
-        public static extern void PopStyleColor(int count = default);
+        public static extern void PopStyleColor(int count = 1);
 
         // imgui.h:331
         [DllImport(DLLNAME, EntryPoint="?PushStyleVar@ImGui@@YAXHM@Z")]
-        public static extern void PushStyleVar(ImGuiStyleVar idx = default, float val = default);
+        public static extern void PushStyleVar(ImGuiStyleVar idx, float val);
 
         // imgui.h:332
         [DllImport(DLLNAME, EntryPoint="?PushStyleVar@ImGui@@YAXHAEBUImVec2@@@Z")]
-        public static extern void PushStyleVar(ImGuiStyleVar idx = default, IntPtr val = default);
+        public static extern void PushStyleVar(ImGuiStyleVar idx, ref Vector2 val);
 
         // imgui.h:333
         [DllImport(DLLNAME, EntryPoint="?PopStyleVar@ImGui@@YAXH@Z")]
-        public static extern void PopStyleVar(int count = default);
+        public static extern void PopStyleVar(int count = 1);
 
         // imgui.h:334
         [DllImport(DLLNAME, EntryPoint="?GetStyleColorVec4@ImGui@@YAAEBUImVec4@@H@Z")]
-        public static extern IntPtr GetStyleColorVec4(ImGuiCol idx = default);
+        public static extern IntPtr GetStyleColorVec4(ImGuiCol idx);
 
         // imgui.h:335
         [DllImport(DLLNAME, EntryPoint="?GetFont@ImGui@@YAPEAUImFont@@XZ")]
@@ -440,23 +442,23 @@ namespace SharpImGui
 
         // imgui.h:337
         [DllImport(DLLNAME, EntryPoint="?GetFontTexUvWhitePixel@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetFontTexUvWhitePixel();
+        public static extern Vector2 GetFontTexUvWhitePixel();
 
         // imgui.h:338
         [DllImport(DLLNAME, EntryPoint="?GetColorU32@ImGui@@YAIHM@Z")]
-        public static extern uint GetColorU32(ImGuiCol idx = default, float alpha_mul = default);
+        public static extern uint GetColorU32(ImGuiCol idx, float alpha_mul = 1.0f);
 
         // imgui.h:339
         [DllImport(DLLNAME, EntryPoint="?GetColorU32@ImGui@@YAIAEBUImVec4@@@Z")]
-        public static extern uint GetColorU32(IntPtr col = default);
+        public static extern uint GetColorU32(ref Vector4 col);
 
         // imgui.h:340
         [DllImport(DLLNAME, EntryPoint="?GetColorU32@ImGui@@YAII@Z")]
-        public static extern uint GetColorU32(uint col = default);
+        public static extern uint GetColorU32(uint col);
 
         // imgui.h:343
         [DllImport(DLLNAME, EntryPoint="?PushItemWidth@ImGui@@YAXM@Z")]
-        public static extern void PushItemWidth(float item_width = default);
+        public static extern void PushItemWidth(float item_width);
 
         // imgui.h:344
         [DllImport(DLLNAME, EntryPoint="?PopItemWidth@ImGui@@YAXXZ")]
@@ -464,7 +466,7 @@ namespace SharpImGui
 
         // imgui.h:345
         [DllImport(DLLNAME, EntryPoint="?SetNextItemWidth@ImGui@@YAXM@Z")]
-        public static extern void SetNextItemWidth(float item_width = default);
+        public static extern void SetNextItemWidth(float item_width);
 
         // imgui.h:346
         [DllImport(DLLNAME, EntryPoint="?CalcItemWidth@ImGui@@YAMXZ")]
@@ -472,7 +474,7 @@ namespace SharpImGui
 
         // imgui.h:347
         [DllImport(DLLNAME, EntryPoint="?PushTextWrapPos@ImGui@@YAXM@Z")]
-        public static extern void PushTextWrapPos(float wrap_local_pos_x = default);
+        public static extern void PushTextWrapPos(float wrap_local_pos_x = 0.0f);
 
         // imgui.h:348
         [DllImport(DLLNAME, EntryPoint="?PopTextWrapPos@ImGui@@YAXXZ")]
@@ -480,7 +482,7 @@ namespace SharpImGui
 
         // imgui.h:349
         [DllImport(DLLNAME, EntryPoint="?PushAllowKeyboardFocus@ImGui@@YAX_N@Z")]
-        public static extern void PushAllowKeyboardFocus([MarshalAs(UnmanagedType.U1)]bool allow_keyboard_focus = default);
+        public static extern void PushAllowKeyboardFocus([MarshalAs(UnmanagedType.U1)]bool allow_keyboard_focus);
 
         // imgui.h:350
         [DllImport(DLLNAME, EntryPoint="?PopAllowKeyboardFocus@ImGui@@YAXXZ")]
@@ -488,7 +490,7 @@ namespace SharpImGui
 
         // imgui.h:351
         [DllImport(DLLNAME, EntryPoint="?PushButtonRepeat@ImGui@@YAX_N@Z")]
-        public static extern void PushButtonRepeat([MarshalAs(UnmanagedType.U1)]bool repeat = default);
+        public static extern void PushButtonRepeat([MarshalAs(UnmanagedType.U1)]bool repeat);
 
         // imgui.h:352
         [DllImport(DLLNAME, EntryPoint="?PopButtonRepeat@ImGui@@YAXXZ")]
@@ -500,7 +502,7 @@ namespace SharpImGui
 
         // imgui.h:358
         [DllImport(DLLNAME, EntryPoint="?SameLine@ImGui@@YAXMM@Z")]
-        public static extern void SameLine(float offset_from_start_x = default, float spacing = default);
+        public static extern void SameLine(float offset_from_start_x = 0.0f, float spacing = -1.0f);
 
         // imgui.h:359
         [DllImport(DLLNAME, EntryPoint="?NewLine@ImGui@@YAXXZ")]
@@ -512,15 +514,15 @@ namespace SharpImGui
 
         // imgui.h:361
         [DllImport(DLLNAME, EntryPoint="?Dummy@ImGui@@YAXAEBUImVec2@@@Z")]
-        public static extern void Dummy(IntPtr size = default);
+        public static extern void Dummy(ref Vector2 size);
 
         // imgui.h:362
         [DllImport(DLLNAME, EntryPoint="?Indent@ImGui@@YAXM@Z")]
-        public static extern void Indent(float indent_w = default);
+        public static extern void Indent(float indent_w = 0.0f);
 
         // imgui.h:363
         [DllImport(DLLNAME, EntryPoint="?Unindent@ImGui@@YAXM@Z")]
-        public static extern void Unindent(float indent_w = default);
+        public static extern void Unindent(float indent_w = 0.0f);
 
         // imgui.h:364
         [DllImport(DLLNAME, EntryPoint="?BeginGroup@ImGui@@YAXXZ")]
@@ -532,7 +534,7 @@ namespace SharpImGui
 
         // imgui.h:366
         [DllImport(DLLNAME, EntryPoint="?GetCursorPos@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetCursorPos();
+        public static extern Vector2 GetCursorPos();
 
         // imgui.h:367
         [DllImport(DLLNAME, EntryPoint="?GetCursorPosX@ImGui@@YAMXZ")]
@@ -544,27 +546,27 @@ namespace SharpImGui
 
         // imgui.h:369
         [DllImport(DLLNAME, EntryPoint="?SetCursorPos@ImGui@@YAXAEBUImVec2@@@Z")]
-        public static extern void SetCursorPos(IntPtr local_pos = default);
+        public static extern void SetCursorPos(ref Vector2 local_pos);
 
         // imgui.h:370
         [DllImport(DLLNAME, EntryPoint="?SetCursorPosX@ImGui@@YAXM@Z")]
-        public static extern void SetCursorPosX(float local_x = default);
+        public static extern void SetCursorPosX(float local_x);
 
         // imgui.h:371
         [DllImport(DLLNAME, EntryPoint="?SetCursorPosY@ImGui@@YAXM@Z")]
-        public static extern void SetCursorPosY(float local_y = default);
+        public static extern void SetCursorPosY(float local_y);
 
         // imgui.h:372
         [DllImport(DLLNAME, EntryPoint="?GetCursorStartPos@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetCursorStartPos();
+        public static extern Vector2 GetCursorStartPos();
 
         // imgui.h:373
         [DllImport(DLLNAME, EntryPoint="?GetCursorScreenPos@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetCursorScreenPos();
+        public static extern Vector2 GetCursorScreenPos();
 
         // imgui.h:374
         [DllImport(DLLNAME, EntryPoint="?SetCursorScreenPos@ImGui@@YAXAEBUImVec2@@@Z")]
-        public static extern void SetCursorScreenPos(IntPtr pos = default);
+        public static extern void SetCursorScreenPos(ref Vector2 pos);
 
         // imgui.h:375
         [DllImport(DLLNAME, EntryPoint="?AlignTextToFramePadding@ImGui@@YAXXZ")]
@@ -588,19 +590,19 @@ namespace SharpImGui
 
         // imgui.h:388
         [DllImport(DLLNAME, EntryPoint="?PushID@ImGui@@YAXPEBD@Z")]
-        public static extern void PushID([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default);
+        public static extern void PushID([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id);
 
         // imgui.h:389
         [DllImport(DLLNAME, EntryPoint="?PushID@ImGui@@YAXPEBD0@Z")]
-        public static extern void PushID([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id_begin = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string str_id_end = default);
+        public static extern void PushID([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id_begin, [MarshalAs(UnmanagedType.LPUTF8Str)]string str_id_end);
 
         // imgui.h:390
         [DllImport(DLLNAME, EntryPoint="?PushID@ImGui@@YAXPEBX@Z")]
-        public static extern void PushID(IntPtr ptr_id = default);
+        public static extern void PushID(IntPtr ptr_id);
 
         // imgui.h:391
         [DllImport(DLLNAME, EntryPoint="?PushID@ImGui@@YAXH@Z")]
-        public static extern void PushID(int int_id = default);
+        public static extern void PushID(int int_id);
 
         // imgui.h:392
         [DllImport(DLLNAME, EntryPoint="?PopID@ImGui@@YAXXZ")]
@@ -608,101 +610,96 @@ namespace SharpImGui
 
         // imgui.h:393
         [DllImport(DLLNAME, EntryPoint="?GetID@ImGui@@YAIPEBD@Z")]
-        public static extern ImGuiID GetID([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default);
+        public static extern ImGuiID GetID([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id);
 
         // imgui.h:394
         [DllImport(DLLNAME, EntryPoint="?GetID@ImGui@@YAIPEBD0@Z")]
-        public static extern ImGuiID GetID([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id_begin = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string str_id_end = default);
+        public static extern ImGuiID GetID([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id_begin, [MarshalAs(UnmanagedType.LPUTF8Str)]string str_id_end);
 
         // imgui.h:395
         [DllImport(DLLNAME, EntryPoint="?GetID@ImGui@@YAIPEBX@Z")]
-        public static extern ImGuiID GetID(IntPtr ptr_id = default);
+        public static extern ImGuiID GetID(IntPtr ptr_id);
 
         // imgui.h:398
         [DllImport(DLLNAME, EntryPoint="?TextUnformatted@ImGui@@YAXPEBD0@Z")]
-        public static extern void TextUnformatted([MarshalAs(UnmanagedType.LPUTF8Str)]string text = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string text_end = default);
+        public static extern void TextUnformatted([MarshalAs(UnmanagedType.LPUTF8Str)]string text, [MarshalAs(UnmanagedType.LPUTF8Str)]string text_end = default);
 
         // imgui.h:399
         [DllImport(DLLNAME, EntryPoint="?Text@ImGui@@YAXPEBDZZ")]
-        public static extern void Text([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
+        public static extern void Text([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt);
 
         // imgui.h:401
         [DllImport(DLLNAME, EntryPoint="?TextColored@ImGui@@YAXAEBUImVec4@@PEBDZZ")]
-        public static extern void TextColored(IntPtr col = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
+        public static extern void TextColored(ref Vector4 col, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt);
 
         // imgui.h:403
         [DllImport(DLLNAME, EntryPoint="?TextDisabled@ImGui@@YAXPEBDZZ")]
-        public static extern void TextDisabled([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
+        public static extern void TextDisabled([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt);
 
         // imgui.h:405
         [DllImport(DLLNAME, EntryPoint="?TextWrapped@ImGui@@YAXPEBDZZ")]
-        public static extern void TextWrapped([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
+        public static extern void TextWrapped([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt);
 
         // imgui.h:407
         [DllImport(DLLNAME, EntryPoint="?LabelText@ImGui@@YAXPEBD0ZZ")]
-        public static extern void LabelText([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
+        public static extern void LabelText([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt);
 
         // imgui.h:409
         [DllImport(DLLNAME, EntryPoint="?BulletText@ImGui@@YAXPEBDZZ")]
-        public static extern void BulletText([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
+        public static extern void BulletText([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt);
 
         // imgui.h:414
         [DllImport(DLLNAME, EntryPoint="?Button@ImGui@@YA_NPEBDAEBUImVec2@@@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool Button([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr size = default);
+        public static extern bool Button([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector2 size);
 
         // imgui.h:415
         [DllImport(DLLNAME, EntryPoint="?SmallButton@ImGui@@YA_NPEBD@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SmallButton([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default);
+        public static extern bool SmallButton([MarshalAs(UnmanagedType.LPUTF8Str)]string label);
 
         // imgui.h:416
         [DllImport(DLLNAME, EntryPoint="?InvisibleButton@ImGui@@YA_NPEBDAEBUImVec2@@@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InvisibleButton([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, IntPtr size = default);
+        public static extern bool InvisibleButton([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id, ref Vector2 size);
 
         // imgui.h:417
         [DllImport(DLLNAME, EntryPoint="?ArrowButton@ImGui@@YA_NPEBDH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ArrowButton([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, ImGuiDir dir = default);
+        public static extern bool ArrowButton([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id, ImGuiDir dir);
 
         // imgui.h:418
         [DllImport(DLLNAME, EntryPoint="?Image@ImGui@@YAXPEAXAEBUImVec2@@11AEBUImVec4@@2@Z")]
-        public static extern void Image(IntPtr user_texture_id = default, IntPtr size = default, IntPtr uv0 = default, IntPtr uv1 = default, IntPtr tint_col = default, IntPtr border_col = default);
+        public static extern void Image(IntPtr user_texture_id, ref Vector2 size, ref Vector2 uv0, ref Vector2 uv1, ref Vector4 tint_col, ref Vector4 border_col);
 
         // imgui.h:419
         [DllImport(DLLNAME, EntryPoint="?ImageButton@ImGui@@YA_NPEAXAEBUImVec2@@11HAEBUImVec4@@2@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ImageButton(IntPtr user_texture_id = default, IntPtr size = default, IntPtr uv0 = default, IntPtr uv1 = default, int frame_padding = default, IntPtr bg_col = default, IntPtr tint_col = default);
+        public static extern bool ImageButton(IntPtr user_texture_id, ref Vector2 size, ref Vector2 uv0, ref Vector2 uv1, int frame_padding, ref Vector4 bg_col, ref Vector4 tint_col);
 
         // imgui.h:420
         [DllImport(DLLNAME, EntryPoint="?Checkbox@ImGui@@YA_NPEBDPEA_N@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool Checkbox([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]ref bool v);
 
-        // imgui.h:420
-        [DllImport(DLLNAME, EntryPoint="?Checkbox@ImGui@@YA_NPEBDPEA_N@Z")]
-        [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool Checkbox([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]IntPtr v = default);
-
         // imgui.h:421
         [DllImport(DLLNAME, EntryPoint="?CheckboxFlags@ImGui@@YA_NPEBDPEAII@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool CheckboxFlags([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr flags = default, uint flags_value = default);
+        public static extern bool CheckboxFlags([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr flags, uint flags_value);
 
         // imgui.h:422
         [DllImport(DLLNAME, EntryPoint="?RadioButton@ImGui@@YA_NPEBD_N@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool RadioButton([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, [MarshalAs(UnmanagedType.U1)]bool active = default);
+        public static extern bool RadioButton([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]bool active);
 
         // imgui.h:423
         [DllImport(DLLNAME, EntryPoint="?RadioButton@ImGui@@YA_NPEBDPEAHH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool RadioButton([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, int v_button = default);
+        public static extern bool RadioButton([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, int v_button);
 
         // imgui.h:424
         [DllImport(DLLNAME, EntryPoint="?ProgressBar@ImGui@@YAXMAEBUImVec2@@PEBD@Z")]
-        public static extern void ProgressBar(float fraction = default, IntPtr size_arg = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string overlay = default);
+        public static extern void ProgressBar(float fraction, ref Vector2 size_arg, [MarshalAs(UnmanagedType.LPUTF8Str)]string overlay = default);
 
         // imgui.h:425
         [DllImport(DLLNAME, EntryPoint="?Bullet@ImGui@@YAXXZ")]
@@ -711,7 +708,7 @@ namespace SharpImGui
         // imgui.h:430
         [DllImport(DLLNAME, EntryPoint="?BeginCombo@ImGui@@YA_NPEBD0H@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginCombo([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string preview_value = default, ImGuiComboFlags flags = default);
+        public static extern bool BeginCombo([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.LPUTF8Str)]string preview_value, ImGuiComboFlags flags = 0);
 
         // imgui.h:431
         [DllImport(DLLNAME, EntryPoint="?EndCombo@ImGui@@YAXXZ")]
@@ -720,280 +717,280 @@ namespace SharpImGui
         // imgui.h:432
         [DllImport(DLLNAME, EntryPoint="?Combo@ImGui@@YA_NPEBDPEAHQEBQEBDHH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool Combo([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr current_item = default, IntPtr items = default, int items_count = default, int popup_max_height_in_items = default);
+        public static extern bool Combo([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr current_item, IntPtr items, int items_count, int popup_max_height_in_items = -1);
 
         // imgui.h:433
         [DllImport(DLLNAME, EntryPoint="?Combo@ImGui@@YA_NPEBDPEAH0H@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool Combo([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr current_item = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string items_separated_by_zeros = default, int popup_max_height_in_items = default);
+        public static extern bool Combo([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr current_item, [MarshalAs(UnmanagedType.LPUTF8Str)]string items_separated_by_zeros, int popup_max_height_in_items = -1);
 
         // imgui.h:434
         [DllImport(DLLNAME, EntryPoint="?Combo@ImGui@@YA_NPEBDPEAHP6A_NPEAXHPEAPEBD@Z2HH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool Combo([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr current_item = default, IntPtr items_getter = default, IntPtr data = default, int items_count = default, int popup_max_height_in_items = default);
+        public static extern bool Combo([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr current_item, IntPtr items_getter, IntPtr data, int items_count, int popup_max_height_in_items = -1);
 
         // imgui.h:443
         [DllImport(DLLNAME, EntryPoint="?DragFloat@ImGui@@YA_NPEBDPEAMMMM0M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DragFloat([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref float v, float v_speed = default, float v_min = default, float v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool DragFloat([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref float v, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", float power = 1.0f);
 
         // imgui.h:444
         [DllImport(DLLNAME, EntryPoint="?DragFloat2@ImGui@@YA_NPEBDQEAMMMM0M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DragFloat2([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, float v_speed = default, float v_min = default, float v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool DragFloat2([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector2 v, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", float power = 1.0f);
 
         // imgui.h:445
         [DllImport(DLLNAME, EntryPoint="?DragFloat3@ImGui@@YA_NPEBDQEAMMMM0M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DragFloat3([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, float v_speed = default, float v_min = default, float v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool DragFloat3([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector3 v, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", float power = 1.0f);
 
         // imgui.h:446
         [DllImport(DLLNAME, EntryPoint="?DragFloat4@ImGui@@YA_NPEBDQEAMMMM0M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DragFloat4([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, float v_speed = default, float v_min = default, float v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool DragFloat4([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector4 v, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", float power = 1.0f);
 
         // imgui.h:447
         [DllImport(DLLNAME, EntryPoint="?DragFloatRange2@ImGui@@YA_NPEBDPEAM1MMM00M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DragFloatRange2([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref float v_current_min, ref float v_current_max, float v_speed = default, float v_min = default, float v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format_max = default, float power = default);
+        public static extern bool DragFloatRange2([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref float v_current_min, ref float v_current_max, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", [MarshalAs(UnmanagedType.LPUTF8Str)]string format_max = default, float power = 1.0f);
 
         // imgui.h:448
         [DllImport(DLLNAME, EntryPoint="?DragInt@ImGui@@YA_NPEBDPEAHMHH0@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DragInt([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, float v_speed = default, int v_min = default, int v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default);
+        public static extern bool DragInt([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, float v_speed = 1.0f, int v_min = 0, int v_max = 0, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%d");
 
         // imgui.h:449
         [DllImport(DLLNAME, EntryPoint="?DragInt2@ImGui@@YA_NPEBDQEAHMHH0@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DragInt2([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, float v_speed = default, int v_min = default, int v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default);
+        public static extern bool DragInt2([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, float v_speed = 1.0f, int v_min = 0, int v_max = 0, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%d");
 
         // imgui.h:450
         [DllImport(DLLNAME, EntryPoint="?DragInt3@ImGui@@YA_NPEBDQEAHMHH0@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DragInt3([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, float v_speed = default, int v_min = default, int v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default);
+        public static extern bool DragInt3([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, float v_speed = 1.0f, int v_min = 0, int v_max = 0, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%d");
 
         // imgui.h:451
         [DllImport(DLLNAME, EntryPoint="?DragInt4@ImGui@@YA_NPEBDQEAHMHH0@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DragInt4([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, float v_speed = default, int v_min = default, int v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default);
+        public static extern bool DragInt4([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, float v_speed = 1.0f, int v_min = 0, int v_max = 0, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%d");
 
         // imgui.h:452
         [DllImport(DLLNAME, EntryPoint="?DragIntRange2@ImGui@@YA_NPEBDPEAH1MHH00@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DragIntRange2([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v_current_min = default, IntPtr v_current_max = default, float v_speed = default, int v_min = default, int v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format_max = default);
+        public static extern bool DragIntRange2([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v_current_min, IntPtr v_current_max, float v_speed = 1.0f, int v_min = 0, int v_max = 0, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%d", [MarshalAs(UnmanagedType.LPUTF8Str)]string format_max = default);
 
         // imgui.h:453
         [DllImport(DLLNAME, EntryPoint="?DragScalar@ImGui@@YA_NPEBDHPEAXMPEBX20M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DragScalar([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, ImGuiDataType data_type = default, IntPtr v = default, float v_speed = default, IntPtr v_min = default, IntPtr v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool DragScalar([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ImGuiDataType data_type, IntPtr v, float v_speed, IntPtr v_min = default, IntPtr v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = 1.0f);
 
         // imgui.h:454
         [DllImport(DLLNAME, EntryPoint="?DragScalarN@ImGui@@YA_NPEBDHPEAXHMPEBX20M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool DragScalarN([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, ImGuiDataType data_type = default, IntPtr v = default, int components = default, float v_speed = default, IntPtr v_min = default, IntPtr v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool DragScalarN([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ImGuiDataType data_type, IntPtr v, int components, float v_speed, IntPtr v_min = default, IntPtr v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = 1.0f);
 
         // imgui.h:459
         [DllImport(DLLNAME, EntryPoint="?SliderFloat@ImGui@@YA_NPEBDPEAMMM0M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SliderFloat([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref float v, float v_min = default, float v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool SliderFloat([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref float v, float v_min, float v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", float power = 1.0f);
 
         // imgui.h:460
         [DllImport(DLLNAME, EntryPoint="?SliderFloat2@ImGui@@YA_NPEBDQEAMMM0M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SliderFloat2([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, float v_min = default, float v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool SliderFloat2([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector2 v, float v_min, float v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", float power = 1.0f);
 
         // imgui.h:461
         [DllImport(DLLNAME, EntryPoint="?SliderFloat3@ImGui@@YA_NPEBDQEAMMM0M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SliderFloat3([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, float v_min = default, float v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool SliderFloat3([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector3 v, float v_min, float v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", float power = 1.0f);
 
         // imgui.h:462
         [DllImport(DLLNAME, EntryPoint="?SliderFloat4@ImGui@@YA_NPEBDQEAMMM0M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SliderFloat4([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, float v_min = default, float v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool SliderFloat4([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector4 v, float v_min, float v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", float power = 1.0f);
 
         // imgui.h:463
         [DllImport(DLLNAME, EntryPoint="?SliderAngle@ImGui@@YA_NPEBDPEAMMM0@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SliderAngle([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref float v_rad, float v_degrees_min = default, float v_degrees_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default);
+        public static extern bool SliderAngle([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref float v_rad, float v_degrees_min = -360.0f, float v_degrees_max = +360.0f, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.0f deg");
 
         // imgui.h:464
         [DllImport(DLLNAME, EntryPoint="?SliderInt@ImGui@@YA_NPEBDPEAHHH0@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SliderInt([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, int v_min = default, int v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default);
+        public static extern bool SliderInt([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, int v_min, int v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%d");
 
         // imgui.h:465
         [DllImport(DLLNAME, EntryPoint="?SliderInt2@ImGui@@YA_NPEBDQEAHHH0@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SliderInt2([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, int v_min = default, int v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default);
+        public static extern bool SliderInt2([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, int v_min, int v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%d");
 
         // imgui.h:466
         [DllImport(DLLNAME, EntryPoint="?SliderInt3@ImGui@@YA_NPEBDQEAHHH0@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SliderInt3([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, int v_min = default, int v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default);
+        public static extern bool SliderInt3([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, int v_min, int v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%d");
 
         // imgui.h:467
         [DllImport(DLLNAME, EntryPoint="?SliderInt4@ImGui@@YA_NPEBDQEAHHH0@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SliderInt4([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, int v_min = default, int v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default);
+        public static extern bool SliderInt4([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, int v_min, int v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%d");
 
         // imgui.h:468
         [DllImport(DLLNAME, EntryPoint="?SliderScalar@ImGui@@YA_NPEBDHPEAXPEBX20M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SliderScalar([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, ImGuiDataType data_type = default, IntPtr v = default, IntPtr v_min = default, IntPtr v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool SliderScalar([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ImGuiDataType data_type, IntPtr v, IntPtr v_min, IntPtr v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = 1.0f);
 
         // imgui.h:469
         [DllImport(DLLNAME, EntryPoint="?SliderScalarN@ImGui@@YA_NPEBDHPEAXHPEBX20M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SliderScalarN([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, ImGuiDataType data_type = default, IntPtr v = default, int components = default, IntPtr v_min = default, IntPtr v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool SliderScalarN([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ImGuiDataType data_type, IntPtr v, int components, IntPtr v_min, IntPtr v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = 1.0f);
 
         // imgui.h:470
         [DllImport(DLLNAME, EntryPoint="?VSliderFloat@ImGui@@YA_NPEBDAEBUImVec2@@PEAMMM0M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool VSliderFloat([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr size, ref float v, float v_min = default, float v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool VSliderFloat([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector2 size, ref float v, float v_min, float v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", float power = 1.0f);
 
         // imgui.h:471
         [DllImport(DLLNAME, EntryPoint="?VSliderInt@ImGui@@YA_NPEBDAEBUImVec2@@PEAHHH0@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool VSliderInt([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr size = default, IntPtr v = default, int v_min = default, int v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default);
+        public static extern bool VSliderInt([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector2 size, IntPtr v, int v_min, int v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%d");
 
         // imgui.h:472
         [DllImport(DLLNAME, EntryPoint="?VSliderScalar@ImGui@@YA_NPEBDAEBUImVec2@@HPEAXPEBX30M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool VSliderScalar([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr size = default, ImGuiDataType data_type = default, IntPtr v = default, IntPtr v_min = default, IntPtr v_max = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = default);
+        public static extern bool VSliderScalar([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector2 size, ImGuiDataType data_type, IntPtr v, IntPtr v_min, IntPtr v_max, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, float power = 1.0f);
 
         // imgui.h:477
         [DllImport(DLLNAME, EntryPoint="?InputText@ImGui@@YA_NPEBDPEAD_KHP6AHPEAUImGuiInputTextCallbackData@@@ZPEAX@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputText([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr buf = default, ulong buf_size = default, ImGuiInputTextFlags flags = default, IntPtr callback = default, IntPtr user_data = default);
+        public static extern bool InputText([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr buf, ulong buf_size, ImGuiInputTextFlags flags = 0, IntPtr callback = default, IntPtr user_data = default);
 
         // imgui.h:478
         [DllImport(DLLNAME, EntryPoint="?InputTextMultiline@ImGui@@YA_NPEBDPEAD_KAEBUImVec2@@HP6AHPEAUImGuiInputTextCallbackData@@@ZPEAX@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputTextMultiline([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr buf = default, ulong buf_size = default, IntPtr size = default, ImGuiInputTextFlags flags = default, IntPtr callback = default, IntPtr user_data = default);
+        public static extern bool InputTextMultiline([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr buf, ulong buf_size, ref Vector2 size, ImGuiInputTextFlags flags = 0, IntPtr callback = default, IntPtr user_data = default);
 
         // imgui.h:479
         [DllImport(DLLNAME, EntryPoint="?InputTextWithHint@ImGui@@YA_NPEBD0PEAD_KHP6AHPEAUImGuiInputTextCallbackData@@@ZPEAX@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputTextWithHint([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string hint = default, IntPtr buf = default, ulong buf_size = default, ImGuiInputTextFlags flags = default, IntPtr callback = default, IntPtr user_data = default);
+        public static extern bool InputTextWithHint([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.LPUTF8Str)]string hint, IntPtr buf, ulong buf_size, ImGuiInputTextFlags flags = 0, IntPtr callback = default, IntPtr user_data = default);
 
         // imgui.h:480
         [DllImport(DLLNAME, EntryPoint="?InputFloat@ImGui@@YA_NPEBDPEAMMM0H@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputFloat([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref float v, float step = default, float step_fast = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputFloat([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref float v, float step = 0.0f, float step_fast = 0.0f, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", ImGuiInputTextFlags flags = 0);
 
         // imgui.h:481
         [DllImport(DLLNAME, EntryPoint="?InputFloat2@ImGui@@YA_NPEBDQEAM0H@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputFloat2([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputFloat2([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector2 v, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", ImGuiInputTextFlags flags = 0);
 
         // imgui.h:482
         [DllImport(DLLNAME, EntryPoint="?InputFloat3@ImGui@@YA_NPEBDQEAM0H@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputFloat3([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputFloat3([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector3 v, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", ImGuiInputTextFlags flags = 0);
 
         // imgui.h:483
         [DllImport(DLLNAME, EntryPoint="?InputFloat4@ImGui@@YA_NPEBDQEAM0H@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputFloat4([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputFloat4([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector4 v, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.3f", ImGuiInputTextFlags flags = 0);
 
         // imgui.h:484
         [DllImport(DLLNAME, EntryPoint="?InputInt@ImGui@@YA_NPEBDPEAHHHH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputInt([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, int step = default, int step_fast = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputInt([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, int step = 1, int step_fast = 100, ImGuiInputTextFlags flags = 0);
 
         // imgui.h:485
         [DllImport(DLLNAME, EntryPoint="?InputInt2@ImGui@@YA_NPEBDQEAHH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputInt2([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputInt2([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, ImGuiInputTextFlags flags = 0);
 
         // imgui.h:486
         [DllImport(DLLNAME, EntryPoint="?InputInt3@ImGui@@YA_NPEBDQEAHH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputInt3([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputInt3([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, ImGuiInputTextFlags flags = 0);
 
         // imgui.h:487
         [DllImport(DLLNAME, EntryPoint="?InputInt4@ImGui@@YA_NPEBDQEAHH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputInt4([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputInt4([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, ImGuiInputTextFlags flags = 0);
 
         // imgui.h:488
         [DllImport(DLLNAME, EntryPoint="?InputDouble@ImGui@@YA_NPEBDPEANNN0H@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputDouble([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, double step = default, double step_fast = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputDouble([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr v, double step = 0.0, double step_fast = 0.0, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = "%.6f", ImGuiInputTextFlags flags = 0);
 
         // imgui.h:489
         [DllImport(DLLNAME, EntryPoint="?InputScalar@ImGui@@YA_NPEBDHPEAXPEBX20H@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputScalar([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, ImGuiDataType data_type = default, IntPtr v = default, IntPtr step = default, IntPtr step_fast = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputScalar([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ImGuiDataType data_type, IntPtr v, IntPtr step = default, IntPtr step_fast = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, ImGuiInputTextFlags flags = 0);
 
         // imgui.h:490
         [DllImport(DLLNAME, EntryPoint="?InputScalarN@ImGui@@YA_NPEBDHPEAXHPEBX20H@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputScalarN([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, ImGuiDataType data_type = default, IntPtr v = default, int components = default, IntPtr step = default, IntPtr step_fast = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputScalarN([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ImGuiDataType data_type, IntPtr v, int components, IntPtr step = default, IntPtr step_fast = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string format = default, ImGuiInputTextFlags flags = 0);
 
         // imgui.h:495
         [DllImport(DLLNAME, EntryPoint="?ColorEdit3@ImGui@@YA_NPEBDQEAMH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ColorEdit3([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr col = default, ImGuiColorEditFlags flags = default);
+        public static extern bool ColorEdit3([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector3 col, ImGuiColorEditFlags flags = 0);
 
         // imgui.h:496
         [DllImport(DLLNAME, EntryPoint="?ColorEdit4@ImGui@@YA_NPEBDQEAMH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ColorEdit4([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr col = default, ImGuiColorEditFlags flags = default);
+        public static extern bool ColorEdit4([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector4 col, ImGuiColorEditFlags flags = 0);
 
         // imgui.h:497
         [DllImport(DLLNAME, EntryPoint="?ColorPicker3@ImGui@@YA_NPEBDQEAMH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ColorPicker3([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr col = default, ImGuiColorEditFlags flags = default);
+        public static extern bool ColorPicker3([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector3 col, ImGuiColorEditFlags flags = 0);
 
         // imgui.h:498
         [DllImport(DLLNAME, EntryPoint="?ColorPicker4@ImGui@@YA_NPEBDQEAMHPEBM@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ColorPicker4([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr col = default, ImGuiColorEditFlags flags = default, IntPtr ref_col = default);
+        public static extern bool ColorPicker4([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector4 col, ImGuiColorEditFlags flags = 0, IntPtr ref_col = default);
 
         // imgui.h:499
         [DllImport(DLLNAME, EntryPoint="?ColorButton@ImGui@@YA_NPEBDAEBUImVec4@@HUImVec2@@@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ColorButton([MarshalAs(UnmanagedType.LPUTF8Str)]string desc_id = default, IntPtr col = default, ImGuiColorEditFlags flags = default, ImVec2 size = default);
+        public static extern bool ColorButton([MarshalAs(UnmanagedType.LPUTF8Str)]string desc_id, ref Vector4 col, ImGuiColorEditFlags flags = 0, Vector2 size = default);
 
         // imgui.h:500
         [DllImport(DLLNAME, EntryPoint="?SetColorEditOptions@ImGui@@YAXH@Z")]
-        public static extern void SetColorEditOptions(ImGuiColorEditFlags flags = default);
+        public static extern void SetColorEditOptions(ImGuiColorEditFlags flags);
 
         // imgui.h:504
         [DllImport(DLLNAME, EntryPoint="?TreeNode@ImGui@@YA_NPEBD@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool TreeNode([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default);
+        public static extern bool TreeNode([MarshalAs(UnmanagedType.LPUTF8Str)]string label);
 
         // imgui.h:505
         [DllImport(DLLNAME, EntryPoint="?TreeNode@ImGui@@YA_NPEBD0ZZ")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool TreeNode([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
+        public static extern bool TreeNode([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt);
 
         // imgui.h:506
         [DllImport(DLLNAME, EntryPoint="?TreeNode@ImGui@@YA_NPEBXPEBDZZ")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool TreeNode(IntPtr ptr_id = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
+        public static extern bool TreeNode(IntPtr ptr_id, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt);
 
         // imgui.h:509
         [DllImport(DLLNAME, EntryPoint="?TreeNodeEx@ImGui@@YA_NPEBDH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool TreeNodeEx([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, ImGuiTreeNodeFlags flags = default);
+        public static extern bool TreeNodeEx([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ImGuiTreeNodeFlags flags = 0);
 
         // imgui.h:510
         [DllImport(DLLNAME, EntryPoint="?TreeNodeEx@ImGui@@YA_NPEBDH0ZZ")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool TreeNodeEx([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, ImGuiTreeNodeFlags flags = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
+        public static extern bool TreeNodeEx([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id, ImGuiTreeNodeFlags flags, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt);
 
         // imgui.h:511
         [DllImport(DLLNAME, EntryPoint="?TreeNodeEx@ImGui@@YA_NPEBXHPEBDZZ")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool TreeNodeEx(IntPtr ptr_id = default, ImGuiTreeNodeFlags flags = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
+        public static extern bool TreeNodeEx(IntPtr ptr_id, ImGuiTreeNodeFlags flags, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt);
 
         // imgui.h:514
         [DllImport(DLLNAME, EntryPoint="?TreePush@ImGui@@YAXPEBD@Z")]
-        public static extern void TreePush([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default);
+        public static extern void TreePush([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id);
 
         // imgui.h:515
         [DllImport(DLLNAME, EntryPoint="?TreePush@ImGui@@YAXPEBX@Z")]
@@ -1010,56 +1007,46 @@ namespace SharpImGui
         // imgui.h:518
         [DllImport(DLLNAME, EntryPoint="?CollapsingHeader@ImGui@@YA_NPEBDH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool CollapsingHeader([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, ImGuiTreeNodeFlags flags = default);
+        public static extern bool CollapsingHeader([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ImGuiTreeNodeFlags flags = 0);
 
         // imgui.h:519
         [DllImport(DLLNAME, EntryPoint="?CollapsingHeader@ImGui@@YA_NPEBDPEA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool CollapsingHeader([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]ref bool p_open, ImGuiTreeNodeFlags flags = default);
-
-        // imgui.h:519
-        [DllImport(DLLNAME, EntryPoint="?CollapsingHeader@ImGui@@YA_NPEBDPEA_NH@Z")]
-        [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool CollapsingHeader([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]IntPtr p_open = default, ImGuiTreeNodeFlags flags = default);
+        public static extern bool CollapsingHeader([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]ref bool p_open, ImGuiTreeNodeFlags flags = 0);
 
         // imgui.h:520
         [DllImport(DLLNAME, EntryPoint="?SetNextItemOpen@ImGui@@YAX_NH@Z")]
-        public static extern void SetNextItemOpen([MarshalAs(UnmanagedType.U1)]bool is_open = default, ImGuiCond cond = default);
+        public static extern void SetNextItemOpen([MarshalAs(UnmanagedType.U1)]bool is_open, ImGuiCond cond = 0);
 
         // imgui.h:525
         [DllImport(DLLNAME, EntryPoint="?Selectable@ImGui@@YA_NPEBD_NHAEBUImVec2@@@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool Selectable([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, [MarshalAs(UnmanagedType.U1)]bool selected = default, ImGuiSelectableFlags flags = default, IntPtr size = default);
+        public static extern bool Selectable([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]bool selected, ImGuiSelectableFlags flags, ref Vector2 size);
 
         // imgui.h:526
         [DllImport(DLLNAME, EntryPoint="?Selectable@ImGui@@YA_NPEBDPEA_NHAEBUImVec2@@@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool Selectable([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]ref bool p_selected, ImGuiSelectableFlags flags = default, IntPtr size = default);
-
-        // imgui.h:526
-        [DllImport(DLLNAME, EntryPoint="?Selectable@ImGui@@YA_NPEBDPEA_NHAEBUImVec2@@@Z")]
-        [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool Selectable([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]IntPtr p_selected = default, ImGuiSelectableFlags flags = default, IntPtr size = default);
+        public static extern bool Selectable([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]ref bool p_selected, ImGuiSelectableFlags flags, ref Vector2 size);
 
         // imgui.h:530
         [DllImport(DLLNAME, EntryPoint="?ListBox@ImGui@@YA_NPEBDPEAHQEBQEBDHH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ListBox([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr current_item = default, IntPtr items = default, int items_count = default, int height_in_items = default);
+        public static extern bool ListBox([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr current_item, IntPtr items, int items_count, int height_in_items = -1);
 
         // imgui.h:531
         [DllImport(DLLNAME, EntryPoint="?ListBox@ImGui@@YA_NPEBDPEAHP6A_NPEAXHPEAPEBD@Z2HH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ListBox([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr current_item = default, IntPtr items_getter = default, IntPtr data = default, int items_count = default, int height_in_items = default);
+        public static extern bool ListBox([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr current_item, IntPtr items_getter, IntPtr data, int items_count, int height_in_items = -1);
 
         // imgui.h:532
         [DllImport(DLLNAME, EntryPoint="?ListBoxHeader@ImGui@@YA_NPEBDAEBUImVec2@@@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ListBoxHeader([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr size = default);
+        public static extern bool ListBoxHeader([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector2 size);
 
         // imgui.h:533
         [DllImport(DLLNAME, EntryPoint="?ListBoxHeader@ImGui@@YA_NPEBDHH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ListBoxHeader([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, int items_count = default, int height_in_items = default);
+        public static extern bool ListBoxHeader([MarshalAs(UnmanagedType.LPUTF8Str)]string label, int items_count, int height_in_items = -1);
 
         // imgui.h:534
         [DllImport(DLLNAME, EntryPoint="?ListBoxFooter@ImGui@@YAXXZ")]
@@ -1067,35 +1054,35 @@ namespace SharpImGui
 
         // imgui.h:537
         [DllImport(DLLNAME, EntryPoint="?PlotLines@ImGui@@YAXPEBDPEBMHH0MMUImVec2@@H@Z")]
-        public static extern void PlotLines([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr values = default, int values_count = default, int values_offset = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string overlay_text = default, float scale_min = default, float scale_max = default, ImVec2 graph_size = default, int stride = default);
+        public static extern void PlotLines([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr values, int values_count, int values_offset = 0, [MarshalAs(UnmanagedType.LPUTF8Str)]string overlay_text = default, float scale_min = float.MaxValue, float scale_max = float.MaxValue, Vector2 graph_size = default, int stride = 4);
 
         // imgui.h:538
         [DllImport(DLLNAME, EntryPoint="?PlotLines@ImGui@@YAXPEBDP6AMPEAXH@Z1HH0MMUImVec2@@@Z")]
-        public static extern void PlotLines([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr values_getter = default, IntPtr data = default, int values_count = default, int values_offset = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string overlay_text = default, float scale_min = default, float scale_max = default, ImVec2 graph_size = default);
+        public static extern void PlotLines([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr values_getter, IntPtr data, int values_count, int values_offset = 0, [MarshalAs(UnmanagedType.LPUTF8Str)]string overlay_text = default, float scale_min = float.MaxValue, float scale_max = float.MaxValue, Vector2 graph_size = default);
 
         // imgui.h:539
         [DllImport(DLLNAME, EntryPoint="?PlotHistogram@ImGui@@YAXPEBDPEBMHH0MMUImVec2@@H@Z")]
-        public static extern void PlotHistogram([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr values = default, int values_count = default, int values_offset = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string overlay_text = default, float scale_min = default, float scale_max = default, ImVec2 graph_size = default, int stride = default);
+        public static extern void PlotHistogram([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr values, int values_count, int values_offset = 0, [MarshalAs(UnmanagedType.LPUTF8Str)]string overlay_text = default, float scale_min = float.MaxValue, float scale_max = float.MaxValue, Vector2 graph_size = default, int stride = 4);
 
         // imgui.h:540
         [DllImport(DLLNAME, EntryPoint="?PlotHistogram@ImGui@@YAXPEBDP6AMPEAXH@Z1HH0MMUImVec2@@@Z")]
-        public static extern void PlotHistogram([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr values_getter = default, IntPtr data = default, int values_count = default, int values_offset = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string overlay_text = default, float scale_min = default, float scale_max = default, ImVec2 graph_size = default);
+        public static extern void PlotHistogram([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr values_getter, IntPtr data, int values_count, int values_offset = 0, [MarshalAs(UnmanagedType.LPUTF8Str)]string overlay_text = default, float scale_min = float.MaxValue, float scale_max = float.MaxValue, Vector2 graph_size = default);
 
         // imgui.h:544
         [DllImport(DLLNAME, EntryPoint="?Value@ImGui@@YAXPEBD_N@Z")]
-        public static extern void Value([MarshalAs(UnmanagedType.LPUTF8Str)]string prefix = default, [MarshalAs(UnmanagedType.U1)]bool b = default);
+        public static extern void Value([MarshalAs(UnmanagedType.LPUTF8Str)]string prefix, [MarshalAs(UnmanagedType.U1)]bool b);
 
         // imgui.h:545
         [DllImport(DLLNAME, EntryPoint="?Value@ImGui@@YAXPEBDH@Z")]
-        public static extern void Value([MarshalAs(UnmanagedType.LPUTF8Str)]string prefix = default, int v = default);
+        public static extern void Value([MarshalAs(UnmanagedType.LPUTF8Str)]string prefix, int v);
 
         // imgui.h:546
         [DllImport(DLLNAME, EntryPoint="?Value@ImGui@@YAXPEBDI@Z")]
-        public static extern void Value([MarshalAs(UnmanagedType.LPUTF8Str)]string prefix = default, uint v = default);
+        public static extern void Value([MarshalAs(UnmanagedType.LPUTF8Str)]string prefix, uint v);
 
         // imgui.h:547
         [DllImport(DLLNAME, EntryPoint="?Value@ImGui@@YAXPEBDM0@Z")]
-        public static extern void Value([MarshalAs(UnmanagedType.LPUTF8Str)]string prefix = default, float v = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string float_format = default);
+        public static extern void Value([MarshalAs(UnmanagedType.LPUTF8Str)]string prefix, float v, [MarshalAs(UnmanagedType.LPUTF8Str)]string float_format = default);
 
         // imgui.h:550
         [DllImport(DLLNAME, EntryPoint="?BeginMainMenuBar@ImGui@@YA_NXZ")]
@@ -1118,7 +1105,7 @@ namespace SharpImGui
         // imgui.h:554
         [DllImport(DLLNAME, EntryPoint="?BeginMenu@ImGui@@YA_NPEBD_N@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginMenu([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, [MarshalAs(UnmanagedType.U1)]bool enabled = default);
+        public static extern bool BeginMenu([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]bool enabled = true);
 
         // imgui.h:555
         [DllImport(DLLNAME, EntryPoint="?EndMenu@ImGui@@YAXXZ")]
@@ -1127,17 +1114,12 @@ namespace SharpImGui
         // imgui.h:556
         [DllImport(DLLNAME, EntryPoint="?MenuItem@ImGui@@YA_NPEBD0_N1@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool MenuItem([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string shortcut = default, [MarshalAs(UnmanagedType.U1)]bool selected = default, [MarshalAs(UnmanagedType.U1)]bool enabled = default);
+        public static extern bool MenuItem([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.LPUTF8Str)]string shortcut = default, [MarshalAs(UnmanagedType.U1)]bool selected = default, [MarshalAs(UnmanagedType.U1)]bool enabled = true);
 
         // imgui.h:557
         [DllImport(DLLNAME, EntryPoint="?MenuItem@ImGui@@YA_NPEBD0PEA_N_N@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool MenuItem([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.LPUTF8Str)]string shortcut, [MarshalAs(UnmanagedType.U1)]ref bool p_selected, [MarshalAs(UnmanagedType.U1)]bool enabled = default);
-
-        // imgui.h:557
-        [DllImport(DLLNAME, EntryPoint="?MenuItem@ImGui@@YA_NPEBD0PEA_N_N@Z")]
-        [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool MenuItem([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.LPUTF8Str)]string shortcut, [MarshalAs(UnmanagedType.U1)]IntPtr p_selected = default, [MarshalAs(UnmanagedType.U1)]bool enabled = default);
+        public static extern bool MenuItem([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.LPUTF8Str)]string shortcut, [MarshalAs(UnmanagedType.U1)]ref bool p_selected, [MarshalAs(UnmanagedType.U1)]bool enabled = true);
 
         // imgui.h:560
         [DllImport(DLLNAME, EntryPoint="?BeginTooltip@ImGui@@YAXXZ")]
@@ -1149,41 +1131,41 @@ namespace SharpImGui
 
         // imgui.h:562
         [DllImport(DLLNAME, EntryPoint="?SetTooltip@ImGui@@YAXPEBDZZ")]
-        public static extern void SetTooltip([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
+        public static extern void SetTooltip([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt);
 
         // imgui.h:573
         [DllImport(DLLNAME, EntryPoint="?OpenPopup@ImGui@@YAXPEBD@Z")]
-        public static extern void OpenPopup([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default);
+        public static extern void OpenPopup([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id);
 
         // imgui.h:574
         [DllImport(DLLNAME, EntryPoint="?BeginPopup@ImGui@@YA_NPEBDH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginPopup([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, ImGuiWindowFlags flags = default);
+        public static extern bool BeginPopup([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id, ImGuiWindowFlags flags = 0);
 
         // imgui.h:575
         [DllImport(DLLNAME, EntryPoint="?BeginPopupContextItem@ImGui@@YA_NPEBDH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginPopupContextItem([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, int mouse_button = default);
+        public static extern bool BeginPopupContextItem([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, int mouse_button = 1);
 
         // imgui.h:576
         [DllImport(DLLNAME, EntryPoint="?BeginPopupContextWindow@ImGui@@YA_NPEBDH_N@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginPopupContextWindow([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, int mouse_button = default, [MarshalAs(UnmanagedType.U1)]bool also_over_items = default);
+        public static extern bool BeginPopupContextWindow([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, int mouse_button = 1, [MarshalAs(UnmanagedType.U1)]bool also_over_items = true);
 
         // imgui.h:577
         [DllImport(DLLNAME, EntryPoint="?BeginPopupContextVoid@ImGui@@YA_NPEBDH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginPopupContextVoid([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, int mouse_button = default);
+        public static extern bool BeginPopupContextVoid([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, int mouse_button = 1);
 
         // imgui.h:578
         [DllImport(DLLNAME, EntryPoint="?BeginPopupModal@ImGui@@YA_NPEBDPEA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginPopupModal([MarshalAs(UnmanagedType.LPUTF8Str)]string name, [MarshalAs(UnmanagedType.U1)]ref bool p_open, ImGuiWindowFlags flags = default);
+        public static extern bool BeginPopupModal([MarshalAs(UnmanagedType.LPUTF8Str)]string name, [MarshalAs(UnmanagedType.U1)]ref bool p_open, ImGuiWindowFlags flags = 0);
 
         // imgui.h:578
         [DllImport(DLLNAME, EntryPoint="?BeginPopupModal@ImGui@@YA_NPEBDPEA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginPopupModal([MarshalAs(UnmanagedType.LPUTF8Str)]string name, [MarshalAs(UnmanagedType.U1)]IntPtr p_open = default, ImGuiWindowFlags flags = default);
+        public static extern bool BeginPopupModal([MarshalAs(UnmanagedType.LPUTF8Str)]string name, IntPtr p_open = default, ImGuiWindowFlags flags = 0);
 
         // imgui.h:579
         [DllImport(DLLNAME, EntryPoint="?EndPopup@ImGui@@YAXXZ")]
@@ -1192,12 +1174,12 @@ namespace SharpImGui
         // imgui.h:580
         [DllImport(DLLNAME, EntryPoint="?OpenPopupOnItemClick@ImGui@@YA_NPEBDH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool OpenPopupOnItemClick([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, int mouse_button = default);
+        public static extern bool OpenPopupOnItemClick([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, int mouse_button = 1);
 
         // imgui.h:581
         [DllImport(DLLNAME, EntryPoint="?IsPopupOpen@ImGui@@YA_NPEBD@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsPopupOpen([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default);
+        public static extern bool IsPopupOpen([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id);
 
         // imgui.h:582
         [DllImport(DLLNAME, EntryPoint="?CloseCurrentPopup@ImGui@@YAXXZ")]
@@ -1205,7 +1187,7 @@ namespace SharpImGui
 
         // imgui.h:587
         [DllImport(DLLNAME, EntryPoint="?Columns@ImGui@@YAXHPEBD_N@Z")]
-        public static extern void Columns(int count = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string id = default, [MarshalAs(UnmanagedType.U1)]bool border = default);
+        public static extern void Columns(int count = 1, [MarshalAs(UnmanagedType.LPUTF8Str)]string id = default, [MarshalAs(UnmanagedType.U1)]bool border = true);
 
         // imgui.h:588
         [DllImport(DLLNAME, EntryPoint="?NextColumn@ImGui@@YAXXZ")]
@@ -1217,19 +1199,19 @@ namespace SharpImGui
 
         // imgui.h:590
         [DllImport(DLLNAME, EntryPoint="?GetColumnWidth@ImGui@@YAMH@Z")]
-        public static extern float GetColumnWidth(int column_index = default);
+        public static extern float GetColumnWidth(int column_index = -1);
 
         // imgui.h:591
         [DllImport(DLLNAME, EntryPoint="?SetColumnWidth@ImGui@@YAXHM@Z")]
-        public static extern void SetColumnWidth(int column_index = default, float width = default);
+        public static extern void SetColumnWidth(int column_index, float width);
 
         // imgui.h:592
         [DllImport(DLLNAME, EntryPoint="?GetColumnOffset@ImGui@@YAMH@Z")]
-        public static extern float GetColumnOffset(int column_index = default);
+        public static extern float GetColumnOffset(int column_index = -1);
 
         // imgui.h:593
         [DllImport(DLLNAME, EntryPoint="?SetColumnOffset@ImGui@@YAXHM@Z")]
-        public static extern void SetColumnOffset(int column_index = default, float offset_x = default);
+        public static extern void SetColumnOffset(int column_index, float offset_x);
 
         // imgui.h:594
         [DllImport(DLLNAME, EntryPoint="?GetColumnsCount@ImGui@@YAHXZ")]
@@ -1238,7 +1220,7 @@ namespace SharpImGui
         // imgui.h:599
         [DllImport(DLLNAME, EntryPoint="?BeginTabBar@ImGui@@YA_NPEBDH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginTabBar([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, ImGuiTabBarFlags flags = default);
+        public static extern bool BeginTabBar([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id, ImGuiTabBarFlags flags = 0);
 
         // imgui.h:600
         [DllImport(DLLNAME, EntryPoint="?EndTabBar@ImGui@@YAXXZ")]
@@ -1247,12 +1229,12 @@ namespace SharpImGui
         // imgui.h:601
         [DllImport(DLLNAME, EntryPoint="?BeginTabItem@ImGui@@YA_NPEBDPEA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginTabItem([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]ref bool p_open, ImGuiTabItemFlags flags = default);
+        public static extern bool BeginTabItem([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]ref bool p_open, ImGuiTabItemFlags flags = 0);
 
         // imgui.h:601
         [DllImport(DLLNAME, EntryPoint="?BeginTabItem@ImGui@@YA_NPEBDPEA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginTabItem([MarshalAs(UnmanagedType.LPUTF8Str)]string label, [MarshalAs(UnmanagedType.U1)]IntPtr p_open = default, ImGuiTabItemFlags flags = default);
+        public static extern bool BeginTabItem([MarshalAs(UnmanagedType.LPUTF8Str)]string label, IntPtr p_open = default, ImGuiTabItemFlags flags = 0);
 
         // imgui.h:602
         [DllImport(DLLNAME, EntryPoint="?EndTabItem@ImGui@@YAXXZ")]
@@ -1260,23 +1242,23 @@ namespace SharpImGui
 
         // imgui.h:603
         [DllImport(DLLNAME, EntryPoint="?SetTabItemClosed@ImGui@@YAXPEBD@Z")]
-        public static extern void SetTabItemClosed([MarshalAs(UnmanagedType.LPUTF8Str)]string tab_or_docked_window_label = default);
+        public static extern void SetTabItemClosed([MarshalAs(UnmanagedType.LPUTF8Str)]string tab_or_docked_window_label);
 
         // imgui.h:611
         [DllImport(DLLNAME, EntryPoint="?DockSpace@ImGui@@YAXIAEBUImVec2@@HPEBUImGuiWindowClass@@@Z")]
-        public static extern void DockSpace(ImGuiID id = default, IntPtr size = default, ImGuiDockNodeFlags flags = default, IntPtr window_class = default);
+        public static extern void DockSpace(ImGuiID id, ref Vector2 size, ImGuiDockNodeFlags flags = 0, IntPtr window_class = default);
 
         // imgui.h:612
         [DllImport(DLLNAME, EntryPoint="?DockSpaceOverViewport@ImGui@@YAIPEAUImGuiViewport@@HPEBUImGuiWindowClass@@@Z")]
-        public static extern ImGuiID DockSpaceOverViewport(IntPtr viewport = default, ImGuiDockNodeFlags flags = default, IntPtr window_class = default);
+        public static extern ImGuiID DockSpaceOverViewport(IntPtr viewport = default, ImGuiDockNodeFlags flags = 0, IntPtr window_class = default);
 
         // imgui.h:613
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowDockID@ImGui@@YAXIH@Z")]
-        public static extern void SetNextWindowDockID(ImGuiID dock_id = default, ImGuiCond cond = default);
+        public static extern void SetNextWindowDockID(ImGuiID dock_id, ImGuiCond cond = 0);
 
         // imgui.h:614
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowClass@ImGui@@YAXPEBUImGuiWindowClass@@@Z")]
-        public static extern void SetNextWindowClass(IntPtr window_class = default);
+        public static extern void SetNextWindowClass(IntPtr window_class);
 
         // imgui.h:615
         [DllImport(DLLNAME, EntryPoint="?GetWindowDockID@ImGui@@YAIXZ")]
@@ -1289,15 +1271,15 @@ namespace SharpImGui
 
         // imgui.h:620
         [DllImport(DLLNAME, EntryPoint="?LogToTTY@ImGui@@YAXH@Z")]
-        public static extern void LogToTTY(int auto_open_depth = default);
+        public static extern void LogToTTY(int auto_open_depth = -1);
 
         // imgui.h:621
         [DllImport(DLLNAME, EntryPoint="?LogToFile@ImGui@@YAXHPEBD@Z")]
-        public static extern void LogToFile(int auto_open_depth = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string filename = default);
+        public static extern void LogToFile(int auto_open_depth = -1, [MarshalAs(UnmanagedType.LPUTF8Str)]string filename = default);
 
         // imgui.h:622
         [DllImport(DLLNAME, EntryPoint="?LogToClipboard@ImGui@@YAXH@Z")]
-        public static extern void LogToClipboard(int auto_open_depth = default);
+        public static extern void LogToClipboard(int auto_open_depth = -1);
 
         // imgui.h:623
         [DllImport(DLLNAME, EntryPoint="?LogFinish@ImGui@@YAXXZ")]
@@ -1309,17 +1291,17 @@ namespace SharpImGui
 
         // imgui.h:625
         [DllImport(DLLNAME, EntryPoint="?LogText@ImGui@@YAXPEBDZZ")]
-        public static extern void LogText([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
+        public static extern void LogText([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt);
 
         // imgui.h:629
         [DllImport(DLLNAME, EntryPoint="?BeginDragDropSource@ImGui@@YA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginDragDropSource(ImGuiDragDropFlags flags = default);
+        public static extern bool BeginDragDropSource(ImGuiDragDropFlags flags = 0);
 
         // imgui.h:630
         [DllImport(DLLNAME, EntryPoint="?SetDragDropPayload@ImGui@@YA_NPEBDPEBX_KH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool SetDragDropPayload([MarshalAs(UnmanagedType.LPUTF8Str)]string type = default, IntPtr data = default, ulong sz = default, ImGuiCond cond = default);
+        public static extern bool SetDragDropPayload([MarshalAs(UnmanagedType.LPUTF8Str)]string type, IntPtr data, ulong sz, ImGuiCond cond = 0);
 
         // imgui.h:631
         [DllImport(DLLNAME, EntryPoint="?EndDragDropSource@ImGui@@YAXXZ")]
@@ -1332,7 +1314,7 @@ namespace SharpImGui
 
         // imgui.h:633
         [DllImport(DLLNAME, EntryPoint="?AcceptDragDropPayload@ImGui@@YAPEBUImGuiPayload@@PEBDH@Z")]
-        public static extern IntPtr AcceptDragDropPayload([MarshalAs(UnmanagedType.LPUTF8Str)]string type = default, ImGuiDragDropFlags flags = default);
+        public static extern IntPtr AcceptDragDropPayload([MarshalAs(UnmanagedType.LPUTF8Str)]string type, ImGuiDragDropFlags flags = 0);
 
         // imgui.h:634
         [DllImport(DLLNAME, EntryPoint="?EndDragDropTarget@ImGui@@YAXXZ")]
@@ -1344,7 +1326,7 @@ namespace SharpImGui
 
         // imgui.h:638
         [DllImport(DLLNAME, EntryPoint="?PushClipRect@ImGui@@YAXAEBUImVec2@@0_N@Z")]
-        public static extern void PushClipRect(IntPtr clip_rect_min = default, IntPtr clip_rect_max = default, [MarshalAs(UnmanagedType.U1)]bool intersect_with_current_clip_rect = default);
+        public static extern void PushClipRect(ref Vector2 clip_rect_min, ref Vector2 clip_rect_max, [MarshalAs(UnmanagedType.U1)]bool intersect_with_current_clip_rect);
 
         // imgui.h:639
         [DllImport(DLLNAME, EntryPoint="?PopClipRect@ImGui@@YAXXZ")]
@@ -1356,12 +1338,12 @@ namespace SharpImGui
 
         // imgui.h:644
         [DllImport(DLLNAME, EntryPoint="?SetKeyboardFocusHere@ImGui@@YAXH@Z")]
-        public static extern void SetKeyboardFocusHere(int offset = default);
+        public static extern void SetKeyboardFocusHere(int offset = 0);
 
         // imgui.h:649
         [DllImport(DLLNAME, EntryPoint="?IsItemHovered@ImGui@@YA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsItemHovered(ImGuiHoveredFlags flags = default);
+        public static extern bool IsItemHovered(ImGuiHoveredFlags flags = 0);
 
         // imgui.h:650
         [DllImport(DLLNAME, EntryPoint="?IsItemActive@ImGui@@YA_NXZ")]
@@ -1376,7 +1358,7 @@ namespace SharpImGui
         // imgui.h:652
         [DllImport(DLLNAME, EntryPoint="?IsItemClicked@ImGui@@YA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsItemClicked(int mouse_button = default);
+        public static extern bool IsItemClicked(int mouse_button = 0);
 
         // imgui.h:653
         [DllImport(DLLNAME, EntryPoint="?IsItemVisible@ImGui@@YA_NXZ")]
@@ -1420,15 +1402,15 @@ namespace SharpImGui
 
         // imgui.h:661
         [DllImport(DLLNAME, EntryPoint="?GetItemRectMin@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetItemRectMin();
+        public static extern Vector2 GetItemRectMin();
 
         // imgui.h:662
         [DllImport(DLLNAME, EntryPoint="?GetItemRectMax@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetItemRectMax();
+        public static extern Vector2 GetItemRectMax();
 
         // imgui.h:663
         [DllImport(DLLNAME, EntryPoint="?GetItemRectSize@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetItemRectSize();
+        public static extern Vector2 GetItemRectSize();
 
         // imgui.h:664
         [DllImport(DLLNAME, EntryPoint="?SetItemAllowOverlap@ImGui@@YAXXZ")]
@@ -1437,12 +1419,12 @@ namespace SharpImGui
         // imgui.h:667
         [DllImport(DLLNAME, EntryPoint="?IsRectVisible@ImGui@@YA_NAEBUImVec2@@@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsRectVisible(IntPtr size = default);
+        public static extern bool IsRectVisible(ref Vector2 size);
 
         // imgui.h:668
         [DllImport(DLLNAME, EntryPoint="?IsRectVisible@ImGui@@YA_NAEBUImVec2@@0@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsRectVisible(IntPtr rect_min = default, IntPtr rect_max = default);
+        public static extern bool IsRectVisible(ref Vector2 rect_min, ref Vector2 rect_max);
 
         // imgui.h:669
         [DllImport(DLLNAME, EntryPoint="?GetTime@ImGui@@YANXZ")]
@@ -1462,11 +1444,11 @@ namespace SharpImGui
 
         // imgui.h:673
         [DllImport(DLLNAME, EntryPoint="?GetBackgroundDrawList@ImGui@@YAPEAUImDrawList@@PEAUImGuiViewport@@@Z")]
-        public static extern IntPtr GetBackgroundDrawList(IntPtr viewport = default);
+        public static extern IntPtr GetBackgroundDrawList(IntPtr viewport);
 
         // imgui.h:674
         [DllImport(DLLNAME, EntryPoint="?GetForegroundDrawList@ImGui@@YAPEAUImDrawList@@PEAUImGuiViewport@@@Z")]
-        public static extern IntPtr GetForegroundDrawList(IntPtr viewport = default);
+        public static extern IntPtr GetForegroundDrawList(IntPtr viewport);
 
         // imgui.h:675
         [DllImport(DLLNAME, EntryPoint="?GetDrawListSharedData@ImGui@@YAPEAUImDrawListSharedData@@XZ")]
@@ -1474,11 +1456,11 @@ namespace SharpImGui
 
         // imgui.h:676
         [DllImport(DLLNAME, EntryPoint="?GetStyleColorName@ImGui@@YAPEBDH@Z")]
-        public static extern IntPtr GetStyleColorName(ImGuiCol idx = default);
+        public static extern IntPtr GetStyleColorName(ImGuiCol idx);
 
         // imgui.h:677
         [DllImport(DLLNAME, EntryPoint="?SetStateStorage@ImGui@@YAXPEAUImGuiStorage@@@Z")]
-        public static extern void SetStateStorage(IntPtr storage = default);
+        public static extern void SetStateStorage(IntPtr storage);
 
         // imgui.h:678
         [DllImport(DLLNAME, EntryPoint="?GetStateStorage@ImGui@@YAPEAUImGuiStorage@@XZ")]
@@ -1486,16 +1468,16 @@ namespace SharpImGui
 
         // imgui.h:679
         [DllImport(DLLNAME, EntryPoint="?CalcTextSize@ImGui@@YA?AUImVec2@@PEBD0_NM@Z")]
-        public static extern ImVec2 CalcTextSize([MarshalAs(UnmanagedType.LPUTF8Str)]string text = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string text_end = default, [MarshalAs(UnmanagedType.U1)]bool hide_text_after_double_hash = default, float wrap_width = default);
+        public static extern Vector2 CalcTextSize([MarshalAs(UnmanagedType.LPUTF8Str)]string text, [MarshalAs(UnmanagedType.LPUTF8Str)]string text_end = default, [MarshalAs(UnmanagedType.U1)]bool hide_text_after_double_hash = default, float wrap_width = -1.0f);
 
         // imgui.h:680
         [DllImport(DLLNAME, EntryPoint="?CalcListClipping@ImGui@@YAXHMPEAH0@Z")]
-        public static extern void CalcListClipping(int items_count = default, float items_height = default, IntPtr out_items_display_start = default, IntPtr out_items_display_end = default);
+        public static extern void CalcListClipping(int items_count, float items_height, IntPtr out_items_display_start, IntPtr out_items_display_end);
 
         // imgui.h:681
         [DllImport(DLLNAME, EntryPoint="?BeginChildFrame@ImGui@@YA_NIAEBUImVec2@@H@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool BeginChildFrame(ImGuiID id = default, IntPtr size = default, ImGuiWindowFlags flags = default);
+        public static extern bool BeginChildFrame(ImGuiID id, ref Vector2 size, ImGuiWindowFlags flags = 0);
 
         // imgui.h:682
         [DllImport(DLLNAME, EntryPoint="?EndChildFrame@ImGui@@YAXXZ")]
@@ -1503,11 +1485,11 @@ namespace SharpImGui
 
         // imgui.h:685
         [DllImport(DLLNAME, EntryPoint="?ColorConvertU32ToFloat4@ImGui@@YA?AUImVec4@@I@Z")]
-        public static extern ImVec4 ColorConvertU32ToFloat4(uint _in = default);
+        public static extern Vector4 ColorConvertU32ToFloat4(uint _in);
 
         // imgui.h:686
         [DllImport(DLLNAME, EntryPoint="?ColorConvertFloat4ToU32@ImGui@@YAIAEBUImVec4@@@Z")]
-        public static extern uint ColorConvertFloat4ToU32(IntPtr _in = default);
+        public static extern uint ColorConvertFloat4ToU32(ref Vector4 _in);
 
         // imgui.h:687
         [DllImport(DLLNAME, EntryPoint="?ColorConvertRGBtoHSV@ImGui@@YAXMMMAEAM00@Z")]
@@ -1519,31 +1501,31 @@ namespace SharpImGui
 
         // imgui.h:691
         [DllImport(DLLNAME, EntryPoint="?GetKeyIndex@ImGui@@YAHH@Z")]
-        public static extern int GetKeyIndex(ImGuiKey imgui_key = default);
+        public static extern int GetKeyIndex(ImGuiKey imgui_key);
 
         // imgui.h:692
         [DllImport(DLLNAME, EntryPoint="?IsKeyDown@ImGui@@YA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsKeyDown(int user_key_index = default);
+        public static extern bool IsKeyDown(int user_key_index);
 
         // imgui.h:693
         [DllImport(DLLNAME, EntryPoint="?IsKeyPressed@ImGui@@YA_NH_N@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsKeyPressed(int user_key_index = default, [MarshalAs(UnmanagedType.U1)]bool repeat = default);
+        public static extern bool IsKeyPressed(int user_key_index, [MarshalAs(UnmanagedType.U1)]bool repeat = true);
 
         // imgui.h:694
         [DllImport(DLLNAME, EntryPoint="?IsKeyReleased@ImGui@@YA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsKeyReleased(int user_key_index = default);
+        public static extern bool IsKeyReleased(int user_key_index);
 
         // imgui.h:695
         [DllImport(DLLNAME, EntryPoint="?GetKeyPressedAmount@ImGui@@YAHHMM@Z")]
-        public static extern int GetKeyPressedAmount(int key_index = default, float repeat_delay = default, float rate = default);
+        public static extern int GetKeyPressedAmount(int key_index, float repeat_delay, float rate);
 
         // imgui.h:696
         [DllImport(DLLNAME, EntryPoint="?IsMouseDown@ImGui@@YA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsMouseDown(int button = default);
+        public static extern bool IsMouseDown(int button);
 
         // imgui.h:697
         [DllImport(DLLNAME, EntryPoint="?IsAnyMouseDown@ImGui@@YA_NXZ")]
@@ -1553,48 +1535,48 @@ namespace SharpImGui
         // imgui.h:698
         [DllImport(DLLNAME, EntryPoint="?IsMouseClicked@ImGui@@YA_NH_N@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsMouseClicked(int button = default, [MarshalAs(UnmanagedType.U1)]bool repeat = default);
+        public static extern bool IsMouseClicked(int button, [MarshalAs(UnmanagedType.U1)]bool repeat = default);
 
         // imgui.h:699
         [DllImport(DLLNAME, EntryPoint="?IsMouseDoubleClicked@ImGui@@YA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsMouseDoubleClicked(int button = default);
+        public static extern bool IsMouseDoubleClicked(int button);
 
         // imgui.h:700
         [DllImport(DLLNAME, EntryPoint="?IsMouseReleased@ImGui@@YA_NH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsMouseReleased(int button = default);
+        public static extern bool IsMouseReleased(int button);
 
         // imgui.h:701
         [DllImport(DLLNAME, EntryPoint="?IsMouseDragging@ImGui@@YA_NHM@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsMouseDragging(int button = default, float lock_threshold = default);
+        public static extern bool IsMouseDragging(int button = 0, float lock_threshold = -1.0f);
 
         // imgui.h:702
         [DllImport(DLLNAME, EntryPoint="?IsMouseHoveringRect@ImGui@@YA_NAEBUImVec2@@0_N@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsMouseHoveringRect(IntPtr r_min = default, IntPtr r_max = default, [MarshalAs(UnmanagedType.U1)]bool clip = default);
+        public static extern bool IsMouseHoveringRect(ref Vector2 r_min, ref Vector2 r_max, [MarshalAs(UnmanagedType.U1)]bool clip = true);
 
         // imgui.h:703
         [DllImport(DLLNAME, EntryPoint="?IsMousePosValid@ImGui@@YA_NPEBUImVec2@@@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool IsMousePosValid(IntPtr mouse_pos = default);
+        public static extern bool IsMousePosValid(ref Vector2 mouse_pos);
 
         // imgui.h:704
         [DllImport(DLLNAME, EntryPoint="?GetMousePos@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetMousePos();
+        public static extern Vector2 GetMousePos();
 
         // imgui.h:705
         [DllImport(DLLNAME, EntryPoint="?GetMousePosOnOpeningCurrentPopup@ImGui@@YA?AUImVec2@@XZ")]
-        public static extern ImVec2 GetMousePosOnOpeningCurrentPopup();
+        public static extern Vector2 GetMousePosOnOpeningCurrentPopup();
 
         // imgui.h:706
         [DllImport(DLLNAME, EntryPoint="?GetMouseDragDelta@ImGui@@YA?AUImVec2@@HM@Z")]
-        public static extern ImVec2 GetMouseDragDelta(int button = default, float lock_threshold = default);
+        public static extern Vector2 GetMouseDragDelta(int button = 0, float lock_threshold = -1.0f);
 
         // imgui.h:707
         [DllImport(DLLNAME, EntryPoint="?ResetMouseDragDelta@ImGui@@YAXH@Z")]
-        public static extern void ResetMouseDragDelta(int button = default);
+        public static extern void ResetMouseDragDelta(int button = 0);
 
         // imgui.h:708
         [DllImport(DLLNAME, EntryPoint="?GetMouseCursor@ImGui@@YAHXZ")]
@@ -1602,15 +1584,15 @@ namespace SharpImGui
 
         // imgui.h:709
         [DllImport(DLLNAME, EntryPoint="?SetMouseCursor@ImGui@@YAXH@Z")]
-        public static extern void SetMouseCursor(ImGuiMouseCursor type = default);
+        public static extern void SetMouseCursor(ImGuiMouseCursor type);
 
         // imgui.h:710
         [DllImport(DLLNAME, EntryPoint="?CaptureKeyboardFromApp@ImGui@@YAX_N@Z")]
-        public static extern void CaptureKeyboardFromApp([MarshalAs(UnmanagedType.U1)]bool want_capture_keyboard_value = default);
+        public static extern void CaptureKeyboardFromApp([MarshalAs(UnmanagedType.U1)]bool want_capture_keyboard_value = true);
 
         // imgui.h:711
         [DllImport(DLLNAME, EntryPoint="?CaptureMouseFromApp@ImGui@@YAX_N@Z")]
-        public static extern void CaptureMouseFromApp([MarshalAs(UnmanagedType.U1)]bool want_capture_mouse_value = default);
+        public static extern void CaptureMouseFromApp([MarshalAs(UnmanagedType.U1)]bool want_capture_mouse_value = true);
 
         // imgui.h:714
         [DllImport(DLLNAME, EntryPoint="?GetClipboardText@ImGui@@YAPEBDXZ")]
@@ -1618,19 +1600,19 @@ namespace SharpImGui
 
         // imgui.h:715
         [DllImport(DLLNAME, EntryPoint="?SetClipboardText@ImGui@@YAXPEBD@Z")]
-        public static extern void SetClipboardText([MarshalAs(UnmanagedType.LPUTF8Str)]string text = default);
+        public static extern void SetClipboardText([MarshalAs(UnmanagedType.LPUTF8Str)]string text);
 
         // imgui.h:720
         [DllImport(DLLNAME, EntryPoint="?LoadIniSettingsFromDisk@ImGui@@YAXPEBD@Z")]
-        public static extern void LoadIniSettingsFromDisk([MarshalAs(UnmanagedType.LPUTF8Str)]string ini_filename = default);
+        public static extern void LoadIniSettingsFromDisk([MarshalAs(UnmanagedType.LPUTF8Str)]string ini_filename);
 
         // imgui.h:721
         [DllImport(DLLNAME, EntryPoint="?LoadIniSettingsFromMemory@ImGui@@YAXPEBD_K@Z")]
-        public static extern void LoadIniSettingsFromMemory([MarshalAs(UnmanagedType.LPUTF8Str)]string ini_data = default, ulong ini_size = default);
+        public static extern void LoadIniSettingsFromMemory([MarshalAs(UnmanagedType.LPUTF8Str)]string ini_data, ulong ini_size = 0);
 
         // imgui.h:722
         [DllImport(DLLNAME, EntryPoint="?SaveIniSettingsToDisk@ImGui@@YAXPEBD@Z")]
-        public static extern void SaveIniSettingsToDisk([MarshalAs(UnmanagedType.LPUTF8Str)]string ini_filename = default);
+        public static extern void SaveIniSettingsToDisk([MarshalAs(UnmanagedType.LPUTF8Str)]string ini_filename);
 
         // imgui.h:723
         [DllImport(DLLNAME, EntryPoint="?SaveIniSettingsToMemory@ImGui@@YAPEBDPEA_K@Z")]
@@ -1638,15 +1620,15 @@ namespace SharpImGui
 
         // imgui.h:728
         [DllImport(DLLNAME, EntryPoint="?SetAllocatorFunctions@ImGui@@YAXP6APEAX_KPEAX@ZP6AX11@Z1@Z")]
-        public static extern void SetAllocatorFunctions(IntPtr alloc_func = default, IntPtr free_func = default, IntPtr user_data = default);
+        public static extern void SetAllocatorFunctions(IntPtr alloc_func, IntPtr free_func, IntPtr user_data = default);
 
         // imgui.h:729
         [DllImport(DLLNAME, EntryPoint="?MemAlloc@ImGui@@YAPEAX_K@Z")]
-        public static extern IntPtr MemAlloc(ulong size = default);
+        public static extern IntPtr MemAlloc(ulong size);
 
         // imgui.h:730
         [DllImport(DLLNAME, EntryPoint="?MemFree@ImGui@@YAXPEAX@Z")]
-        public static extern void MemFree(IntPtr ptr = default);
+        public static extern void MemFree(IntPtr ptr);
 
         // imgui.h:734
         [DllImport(DLLNAME, EntryPoint="?GetPlatformIO@ImGui@@YAAEAUImGuiPlatformIO@@XZ")]
@@ -1670,11 +1652,11 @@ namespace SharpImGui
 
         // imgui.h:739
         [DllImport(DLLNAME, EntryPoint="?FindViewportByID@ImGui@@YAPEAUImGuiViewport@@I@Z")]
-        public static extern IntPtr FindViewportByID(ImGuiID id = default);
+        public static extern IntPtr FindViewportByID(ImGuiID id);
 
         // imgui.h:740
         [DllImport(DLLNAME, EntryPoint="?FindViewportByPlatformHandle@ImGui@@YAPEAUImGuiViewport@@PEAX@Z")]
-        public static extern IntPtr FindViewportByPlatformHandle(IntPtr platform_handle = default);
+        public static extern IntPtr FindViewportByPlatformHandle(IntPtr platform_handle);
 
         // imgui.h:1637
         [DllImport(DLLNAME, EntryPoint="?TreeAdvanceToLabelPos@ImGui@@YAXXZ")]
@@ -1682,7 +1664,7 @@ namespace SharpImGui
 
         // imgui.h:1639
         [DllImport(DLLNAME, EntryPoint="?SetNextTreeNodeOpen@ImGui@@YAX_NH@Z")]
-        public static extern void SetNextTreeNodeOpen([MarshalAs(UnmanagedType.U1)]bool open = default, ImGuiCond cond = default);
+        public static extern void SetNextTreeNodeOpen([MarshalAs(UnmanagedType.U1)]bool open, ImGuiCond cond = 0);
 
         // imgui.h:1641
         [DllImport(DLLNAME, EntryPoint="?GetContentRegionAvailWidth@ImGui@@YAMXZ")]
@@ -1694,7 +1676,7 @@ namespace SharpImGui
 
         // imgui.h:1645
         [DllImport(DLLNAME, EntryPoint="?SetScrollHere@ImGui@@YAXM@Z")]
-        public static extern void SetScrollHere(float center_ratio = default);
+        public static extern void SetScrollHere(float center_ratio = 0.5f);
 
         // imgui.h:1647
         [DllImport(DLLNAME, EntryPoint="?IsItemDeactivatedAfterChange@ImGui@@YA_NXZ")]
@@ -1704,22 +1686,22 @@ namespace SharpImGui
         // imgui.h:1649
         [DllImport(DLLNAME, EntryPoint="?InputFloat@ImGui@@YA_NPEBDPEAMMMHH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputFloat([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref float v, float step = default, float step_fast = default, int decimal_precision = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputFloat([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref float v, float step, float step_fast, int decimal_precision, ImGuiInputTextFlags flags = 0);
 
         // imgui.h:1650
         [DllImport(DLLNAME, EntryPoint="?InputFloat2@ImGui@@YA_NPEBDQEAMHH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputFloat2([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, int decimal_precision = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputFloat2([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector2 v, int decimal_precision, ImGuiInputTextFlags flags = 0);
 
         // imgui.h:1651
         [DllImport(DLLNAME, EntryPoint="?InputFloat3@ImGui@@YA_NPEBDQEAMHH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputFloat3([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, int decimal_precision = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputFloat3([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector3 v, int decimal_precision, ImGuiInputTextFlags flags = 0);
 
         // imgui.h:1652
         [DllImport(DLLNAME, EntryPoint="?InputFloat4@ImGui@@YA_NPEBDQEAMHH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool InputFloat4([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, IntPtr v = default, int decimal_precision = default, ImGuiInputTextFlags flags = default);
+        public static extern bool InputFloat4([MarshalAs(UnmanagedType.LPUTF8Str)]string label, ref Vector4 v, int decimal_precision, ImGuiInputTextFlags flags = 0);
 
         // imgui.h:1654
         [DllImport(DLLNAME, EntryPoint="?IsAnyWindowFocused@ImGui@@YA_NXZ")]
@@ -1733,7 +1715,7 @@ namespace SharpImGui
 
         // imgui.h:1656
         [DllImport(DLLNAME, EntryPoint="?CalcItemRectClosestPoint@ImGui@@YA?AUImVec2@@AEBU2@_NM@Z")]
-        public static extern ImVec2 CalcItemRectClosestPoint(IntPtr pos = default, [MarshalAs(UnmanagedType.U1)]bool on_edge = default, float outward = default);
+        public static extern Vector2 CalcItemRectClosestPoint(ref Vector2 pos, [MarshalAs(UnmanagedType.U1)]bool on_edge = default, float outward = 0.0f);
 
         // imgui.h:1658
         [DllImport(DLLNAME, EntryPoint="?ShowTestWindow@ImGui@@YAXXZ")]
@@ -1751,7 +1733,7 @@ namespace SharpImGui
 
         // imgui.h:1661
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowContentWidth@ImGui@@YAXM@Z")]
-        public static extern void SetNextWindowContentWidth(float w = default);
+        public static extern void SetNextWindowContentWidth(float w);
 
         // imgui.h:1662
         [DllImport(DLLNAME, EntryPoint="?GetItemsLineHeightWithSpacing@ImGui@@YAMXZ")]
@@ -1760,12 +1742,7 @@ namespace SharpImGui
         // imgui.h:1664
         [DllImport(DLLNAME, EntryPoint="?Begin@ImGui@@YA_NPEBDPEA_NAEBUImVec2@@MH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool Begin([MarshalAs(UnmanagedType.LPUTF8Str)]string name, [MarshalAs(UnmanagedType.U1)]ref bool p_open, IntPtr size_on_first_use = default, float bg_alpha_override = default, ImGuiWindowFlags flags = default);
-
-        // imgui.h:1664
-        [DllImport(DLLNAME, EntryPoint="?Begin@ImGui@@YA_NPEBDPEA_NAEBUImVec2@@MH@Z")]
-        [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool Begin([MarshalAs(UnmanagedType.LPUTF8Str)]string name, [MarshalAs(UnmanagedType.U1)]IntPtr p_open = default, IntPtr size_on_first_use = default, float bg_alpha_override = default, ImGuiWindowFlags flags = default);
+        public static extern bool Begin([MarshalAs(UnmanagedType.LPUTF8Str)]string name, [MarshalAs(UnmanagedType.U1)]ref bool p_open, ref Vector2 size_on_first_use, float bg_alpha_override = -1.0f, ImGuiWindowFlags flags = 0);
 
         // imgui.h:1665
         [DllImport(DLLNAME, EntryPoint="?IsRootWindowOrAnyChildHovered@ImGui@@YA_NXZ")]
@@ -1778,6 +1755,6 @@ namespace SharpImGui
 
         // imgui.h:1667
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowPosCenter@ImGui@@YAXH@Z")]
-        public static extern void SetNextWindowPosCenter(ImGuiCond cond = default);
+        public static extern void SetNextWindowPosCenter(ImGuiCond cond);
     }
 }

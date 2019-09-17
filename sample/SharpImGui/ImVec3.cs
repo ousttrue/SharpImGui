@@ -6,9 +6,9 @@ using System.Numerics;
 
 namespace SharpImGui
 {
-    // imgui_impl_dx11.h:15
+    // :-1
     
-    public struct ID3D11Device
+    public struct ImVec3
     {
     }
 }
