@@ -562,25 +562,49 @@ namespace SharpImGui
         [DllImport(DLLNAME)]
         public static extern void igText(IntPtr fmt);
 
+        // cimgui.h:1068
+        [DllImport(DLLNAME)]
+        public static extern void igTextV(IntPtr fmt, int args);
+
         // cimgui.h:1069
         [DllImport(DLLNAME)]
         public static extern void igTextColored(ImVec4 col, IntPtr fmt);
+
+        // cimgui.h:1070
+        [DllImport(DLLNAME)]
+        public static extern void igTextColoredV(ImVec4 col, IntPtr fmt, int args);
 
         // cimgui.h:1071
         [DllImport(DLLNAME)]
         public static extern void igTextDisabled(IntPtr fmt);
 
+        // cimgui.h:1072
+        [DllImport(DLLNAME)]
+        public static extern void igTextDisabledV(IntPtr fmt, int args);
+
         // cimgui.h:1073
         [DllImport(DLLNAME)]
         public static extern void igTextWrapped(IntPtr fmt);
+
+        // cimgui.h:1074
+        [DllImport(DLLNAME)]
+        public static extern void igTextWrappedV(IntPtr fmt, int args);
 
         // cimgui.h:1075
         [DllImport(DLLNAME)]
         public static extern void igLabelText(IntPtr label, IntPtr fmt);
 
+        // cimgui.h:1076
+        [DllImport(DLLNAME)]
+        public static extern void igLabelTextV(IntPtr label, IntPtr fmt, int args);
+
         // cimgui.h:1077
         [DllImport(DLLNAME)]
         public static extern void igBulletText(IntPtr fmt);
+
+        // cimgui.h:1078
+        [DllImport(DLLNAME)]
+        public static extern void igBulletTextV(IntPtr fmt, int args);
 
         // cimgui.h:1079
         [DllImport(DLLNAME)]
@@ -968,6 +992,18 @@ namespace SharpImGui
 
         public static extern bool igTreeNodePtr(IntPtr ptr_id, IntPtr fmt);
 
+        // cimgui.h:1145
+        [DllImport(DLLNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+
+        public static extern bool igTreeNodeVStr(IntPtr str_id, IntPtr fmt, int args);
+
+        // cimgui.h:1146
+        [DllImport(DLLNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+
+        public static extern bool igTreeNodeVPtr(IntPtr ptr_id, IntPtr fmt, int args);
+
         // cimgui.h:1147
         [DllImport(DLLNAME)]
         [return: MarshalAs(UnmanagedType.U1)]
@@ -985,6 +1021,18 @@ namespace SharpImGui
         [return: MarshalAs(UnmanagedType.U1)]
 
         public static extern bool igTreeNodeExPtr(IntPtr ptr_id, ImGuiTreeNodeFlags flags, IntPtr fmt);
+
+        // cimgui.h:1150
+        [DllImport(DLLNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+
+        public static extern bool igTreeNodeExVStr(IntPtr str_id, ImGuiTreeNodeFlags flags, IntPtr fmt, int args);
+
+        // cimgui.h:1151
+        [DllImport(DLLNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+
+        public static extern bool igTreeNodeExVPtr(IntPtr ptr_id, ImGuiTreeNodeFlags flags, IntPtr fmt, int args);
 
         // cimgui.h:1152
         [DllImport(DLLNAME)]
@@ -1143,6 +1191,10 @@ namespace SharpImGui
         // cimgui.h:1184
         [DllImport(DLLNAME)]
         public static extern void igSetTooltip(IntPtr fmt);
+
+        // cimgui.h:1185
+        [DllImport(DLLNAME)]
+        public static extern void igSetTooltipV(IntPtr fmt, int args);
 
         // cimgui.h:1186
         [DllImport(DLLNAME)]
@@ -1813,6 +1865,10 @@ namespace SharpImGui
         // cimgui.h:1329
         [DllImport(DLLNAME)]
         public static extern void ImGuiTextBuffer_append(IntPtr self, IntPtr str, IntPtr str_end);
+
+        // cimgui.h:1330
+        [DllImport(DLLNAME)]
+        public static extern void ImGuiTextBuffer_appendfv(IntPtr self, IntPtr fmt, int args);
 
         // cimgui.h:1331
         [DllImport(DLLNAME)]
@@ -2667,89 +2723,5 @@ namespace SharpImGui
         // cimgui.h:2042
         [DllImport(DLLNAME)]
         public static extern void igColorConvertHSVtoRGB(float h, float s, float v, IntPtr out_r, IntPtr out_g, IntPtr out_b);
-
-        // extras.h:10
-        [DllImport(DLLNAME)]
-        [return: MarshalAs(UnmanagedType.U1)]
-
-        public static extern bool ImGui_ImplDX11_Init(IntPtr device, IntPtr device_context);
-
-        // extras.h:11
-        [DllImport(DLLNAME)]
-        public static extern void ImGui_ImplDX11_Shutdown();
-
-        // extras.h:12
-        [DllImport(DLLNAME)]
-        public static extern void ImGui_ImplDX11_NewFrame();
-
-        // extras.h:13
-        [DllImport(DLLNAME)]
-        public static extern void ImGui_ImplDX11_RenderDrawData(IntPtr draw_data);
-
-        // extras.h:16
-        [DllImport(DLLNAME)]
-        public static extern void ImGui_ImplDX11_InvalidateDeviceObjects();
-
-        // extras.h:17
-        [DllImport(DLLNAME)]
-        [return: MarshalAs(UnmanagedType.U1)]
-
-        public static extern bool ImGui_ImplDX11_CreateDeviceObjects();
-
-        // extras.h:21
-        [DllImport(DLLNAME)]
-        [return: MarshalAs(UnmanagedType.U1)]
-
-        public static extern bool ImGui_ImplWin32_Init(IntPtr hwnd);
-
-        // extras.h:22
-        [DllImport(DLLNAME)]
-        public static extern void ImGui_ImplWin32_Shutdown();
-
-        // extras.h:23
-        [DllImport(DLLNAME)]
-        public static extern void ImGui_ImplWin32_NewFrame();
-
-        // extras.h:26
-        [DllImport(DLLNAME)]
-        public static extern void ImGui_ImplWin32_EnableDpiAwareness();
-
-        // extras.h:27
-        [DllImport(DLLNAME)]
-        public static extern float ImGui_ImplWin32_GetDpiScaleForHwnd(IntPtr hwnd);
-
-        // extras.h:28
-        [DllImport(DLLNAME)]
-        public static extern float ImGui_ImplWin32_GetDpiScaleForMonitor(IntPtr monitor);
-
-        // extras.h:33
-        [DllImport(DLLNAME)]
-        public static extern IntPtr ImGui_ImplWin32_WndProcHandler(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
-
-        // extras.h:37
-        [DllImport(DLLNAME)]
-        public static extern void exDockSpace(ImGuiID id, ImVec2 size, ImGuiDockNodeFlags flags, IntPtr window_class);
-
-        // extras.h:38
-        [DllImport(DLLNAME)]
-        public static extern ImGuiID exDockSpaceOverViewport(IntPtr viewport, ImGuiDockNodeFlags flags, IntPtr window_class);
-
-        // extras.h:39
-        [DllImport(DLLNAME)]
-        public static extern void exSetNextWindowDockID(ImGuiID dock_id, ImGuiCond cond);
-
-        // extras.h:40
-        [DllImport(DLLNAME)]
-        public static extern void exSetNextWindowClass(IntPtr window_class);
-
-        // extras.h:41
-        [DllImport(DLLNAME)]
-        public static extern ImGuiID exGetWindowDockID();
-
-        // extras.h:42
-        [DllImport(DLLNAME)]
-        [return: MarshalAs(UnmanagedType.U1)]
-
-        public static extern bool exIsWindowDocked();
     }
 }

@@ -8,11 +8,11 @@ namespace SharpImGui
     
     public struct ImGuiTextFilter
     {
-        // offsetof: 0
+        // offsetof: -1
         public IntPtr InputBuf;
-        // offsetof: 256
+        // offsetof: -1
         public ImVector Filters;
-        // offsetof: 272
+        // offsetof: -1
         public int CountGrep;
     }
 }

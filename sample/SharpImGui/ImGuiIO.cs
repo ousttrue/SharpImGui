@@ -19,13 +19,13 @@ namespace SharpImGui
         }
         public ImGuiConfigFlags ConfigFlags
         {
-            get => (ImGuiConfigFlags)Marshal.ReadInt32(IntPtr.Add(m_p, 0));
-            set => Marshal.WriteInt32(IntPtr.Add(m_p, 0), (int)value);
+            get => (ImGuiConfigFlags)Marshal.ReadInt32(IntPtr.Add(m_p, -1));
+            set => Marshal.WriteInt32(IntPtr.Add(m_p, -1), (int)value);
         }
         public ImGuiBackendFlags BackendFlags
         {
-            get => (ImGuiBackendFlags)Marshal.ReadInt32(IntPtr.Add(m_p, 4));
-            set => Marshal.WriteInt32(IntPtr.Add(m_p, 4), (int)value);
+            get => (ImGuiBackendFlags)Marshal.ReadInt32(IntPtr.Add(m_p, -1));
+            set => Marshal.WriteInt32(IntPtr.Add(m_p, -1), (int)value);
         }
     }
 }

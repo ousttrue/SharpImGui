@@ -8,11 +8,11 @@ namespace SharpImGui
     
     public struct ImDrawListSplitter
     {
-        // offsetof: 0
+        // offsetof: -1
         public int _Current;
-        // offsetof: 4
+        // offsetof: -1
         public int _Count;
-        // offsetof: 8
+        // offsetof: -1
         public ImVector _Channels;
     }
 }

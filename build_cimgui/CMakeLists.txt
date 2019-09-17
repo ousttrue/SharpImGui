@@ -1,3 +1,4 @@
+set(SUB_NAME cimgui)
 set(DEP_DIR ${CMAKE_CURRENT_LIST_DIR}/../dependencies)
 
 
@@ -12,20 +13,23 @@ file(GLOB IMGUI_SOURCES
 )
 
 set(IMGUI_STATIC "no" CACHE STRING "Build as a static library")
-add_library(cimgui SHARED ${IMGUI_SOURCES})
+add_library(${SUB_NAME} SHARED ${IMGUI_SOURCES})
 
-target_compile_definitions(cimgui PUBLIC IMGUI_DISABLE_OBSOLETE_FUNCTIONS=1)
+target_compile_definitions(${SUB_NAME} PUBLIC 
+    IMGUI_DISABLE_OBSOLETE_FUNCTIONS=1
 
-target_include_directories(cimgui PUBLIC 
+    )
+
+target_include_directories(${SUB_NAME} PUBLIC 
     ${DEP_DIR}/cimgui
     ${DEP_DIR}
     ${DEP_DIR}/imgui/examples
     ${DEP_DIR}/imgui
 )
-set_target_properties(cimgui PROPERTIES PREFIX "")
+set_target_properties(${SUB_NAME} PROPERTIES PREFIX "")
 
 #install
-install(TARGETS cimgui
+install(TARGETS ${SUB_NAME}
     RUNTIME DESTINATION  .
     LIBRARY DESTINATION  .
     ARCHIVE DESTINATION  .

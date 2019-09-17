@@ -8,35 +8,35 @@ namespace SharpImGui
     
     public struct ImFontAtlas
     {
-        // offsetof: 0
+        // offsetof: -1
         [MarshalAs(UnmanagedType.U1)]public bool Locked;
-        // offsetof: 4
+        // offsetof: -1
         public ImFontAtlasFlags Flags;
-        // offsetof: 8
+        // offsetof: -1
         public ImTextureID TexID;
-        // offsetof: 16
+        // offsetof: -1
         public int TexDesiredWidth;
-        // offsetof: 20
+        // offsetof: -1
         public int TexGlyphPadding;
-        // offsetof: 24
+        // offsetof: -1
         public IntPtr TexPixelsAlpha8;
-        // offsetof: 32
+        // offsetof: -1
         public IntPtr TexPixelsRGBA32;
-        // offsetof: 40
+        // offsetof: -1
         public int TexWidth;
-        // offsetof: 44
+        // offsetof: -1
         public int TexHeight;
-        // offsetof: 48
+        // offsetof: -1
         public ImVec2 TexUvScale;
-        // offsetof: 56
+        // offsetof: -1
         public ImVec2 TexUvWhitePixel;
-        // offsetof: 64
+        // offsetof: -1
         public ImVector Fonts;
-        // offsetof: 80
+        // offsetof: -1
         public ImVector CustomRects;
-        // offsetof: 96
+        // offsetof: -1
         public ImVector ConfigData;
-        // offsetof: 112
+        // offsetof: -1
         public IntPtr CustomRectIds;
     }
 }

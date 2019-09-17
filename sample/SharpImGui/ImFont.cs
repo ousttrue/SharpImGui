@@ -8,37 +8,37 @@ namespace SharpImGui
     
     public struct ImFont
     {
-        // offsetof: 0
+        // offsetof: -1
         public ImVector IndexAdvanceX;
-        // offsetof: 16
+        // offsetof: -1
         public float FallbackAdvanceX;
-        // offsetof: 20
+        // offsetof: -1
         public float FontSize;
-        // offsetof: 24
+        // offsetof: -1
         public ImVector IndexLookup;
-        // offsetof: 40
+        // offsetof: -1
         public ImVector Glyphs;
-        // offsetof: 56
+        // offsetof: -1
         public IntPtr FallbackGlyph;
-        // offsetof: 64
+        // offsetof: -1
         public ImVec2 DisplayOffset;
-        // offsetof: 72
+        // offsetof: -1
         public IntPtr ContainerAtlas;
-        // offsetof: 80
+        // offsetof: -1
         public IntPtr ConfigData;
-        // offsetof: 88
+        // offsetof: -1
         public short ConfigDataCount;
-        // offsetof: 90
+        // offsetof: -1
         public ImWchar FallbackChar;
-        // offsetof: 92
+        // offsetof: -1
         public float Scale;
-        // offsetof: 96
+        // offsetof: -1
         public float Ascent;
-        // offsetof: 100
+        // offsetof: -1
         public float Descent;
-        // offsetof: 104
+        // offsetof: -1
         public int MetricsTotalSurface;
-        // offsetof: 108
+        // offsetof: -1
         [MarshalAs(UnmanagedType.U1)]public bool DirtyLookupTables;
     }
 }
