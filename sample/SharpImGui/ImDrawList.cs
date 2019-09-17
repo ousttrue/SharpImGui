@@ -8,33 +8,33 @@ namespace SharpImGui
     
     public struct ImDrawList
     {
-        // offsetof: -1
+        // offsetof: 0
         public ImVector CmdBuffer;
-        // offsetof: -1
+        // offsetof: 16
         public ImVector IdxBuffer;
-        // offsetof: -1
+        // offsetof: 32
         public ImVector VtxBuffer;
-        // offsetof: -1
+        // offsetof: 48
         public ImDrawListFlags Flags;
-        // offsetof: -1
+        // offsetof: 56
         public IntPtr _Data;
-        // offsetof: -1
+        // offsetof: 64
         public IntPtr _OwnerName;
-        // offsetof: -1
+        // offsetof: 72
         public uint _VtxCurrentOffset;
-        // offsetof: -1
+        // offsetof: 76
         public uint _VtxCurrentIdx;
-        // offsetof: -1
+        // offsetof: 80
         public IntPtr _VtxWritePtr;
-        // offsetof: -1
+        // offsetof: 88
         public IntPtr _IdxWritePtr;
-        // offsetof: -1
+        // offsetof: 96
         public ImVector _ClipRectStack;
-        // offsetof: -1
+        // offsetof: 112
         public ImVector _TextureIdStack;
-        // offsetof: -1
+        // offsetof: 128
         public ImVector _Path;
-        // offsetof: -1
+        // offsetof: 144
         public ImDrawListSplitter _Splitter;
     }
 }

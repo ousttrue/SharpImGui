@@ -13,7 +13,7 @@ namespace SharpImGui
         // offsetof: 4
         public ImVec4 ClipRect;
         // offsetof: 24
-        public ImTextureID TextureId;
+        public IntPtr TextureId;
         // offsetof: 32
         public uint VtxOffset;
         // offsetof: 36

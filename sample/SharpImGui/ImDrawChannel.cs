@@ -8,9 +8,9 @@ namespace SharpImGui
     
     public struct ImDrawChannel
     {
-        // offsetof: -1
+        // offsetof: 0
         public ImVector _CmdBuffer;
-        // offsetof: -1
+        // offsetof: 16
         public ImVector _IdxBuffer;
     }
 }

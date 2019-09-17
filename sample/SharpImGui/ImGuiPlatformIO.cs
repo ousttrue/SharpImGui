@@ -8,59 +8,59 @@ namespace SharpImGui
     
     public struct ImGuiPlatformIO
     {
-        // offsetof: -1
+        // offsetof: 0
         public IntPtr Platform_CreateWindow;
-        // offsetof: -1
+        // offsetof: 8
         public IntPtr Platform_DestroyWindow;
-        // offsetof: -1
+        // offsetof: 16
         public IntPtr Platform_ShowWindow;
-        // offsetof: -1
+        // offsetof: 24
         public IntPtr Platform_SetWindowPos;
-        // offsetof: -1
+        // offsetof: 32
         public IntPtr Platform_GetWindowPos;
-        // offsetof: -1
+        // offsetof: 40
         public IntPtr Platform_SetWindowSize;
-        // offsetof: -1
+        // offsetof: 48
         public IntPtr Platform_GetWindowSize;
-        // offsetof: -1
+        // offsetof: 56
         public IntPtr Platform_SetWindowFocus;
-        // offsetof: -1
+        // offsetof: 64
         public IntPtr Platform_GetWindowFocus;
-        // offsetof: -1
+        // offsetof: 72
         public IntPtr Platform_GetWindowMinimized;
-        // offsetof: -1
+        // offsetof: 80
         public IntPtr Platform_SetWindowTitle;
-        // offsetof: -1
+        // offsetof: 88
         public IntPtr Platform_SetWindowAlpha;
-        // offsetof: -1
+        // offsetof: 96
         public IntPtr Platform_UpdateWindow;
-        // offsetof: -1
+        // offsetof: 104
         public IntPtr Platform_RenderWindow;
-        // offsetof: -1
+        // offsetof: 112
         public IntPtr Platform_SwapBuffers;
-        // offsetof: -1
+        // offsetof: 120
         public IntPtr Platform_GetWindowDpiScale;
-        // offsetof: -1
+        // offsetof: 128
         public IntPtr Platform_OnChangedViewport;
-        // offsetof: -1
+        // offsetof: 136
         public IntPtr Platform_SetImeInputPos;
-        // offsetof: -1
+        // offsetof: 144
         public IntPtr Platform_CreateVkSurface;
-        // offsetof: -1
+        // offsetof: 152
         public IntPtr Renderer_CreateWindow;
-        // offsetof: -1
+        // offsetof: 160
         public IntPtr Renderer_DestroyWindow;
-        // offsetof: -1
+        // offsetof: 168
         public IntPtr Renderer_SetWindowSize;
-        // offsetof: -1
+        // offsetof: 176
         public IntPtr Renderer_RenderWindow;
-        // offsetof: -1
+        // offsetof: 184
         public IntPtr Renderer_SwapBuffers;
-        // offsetof: -1
+        // offsetof: 192
         public ImVector Monitors;
-        // offsetof: -1
+        // offsetof: 208
         public IntPtr MainViewport;
-        // offsetof: -1
+        // offsetof: 216
         public ImVector Viewports;
     }
 }

@@ -60,10 +60,10 @@ namespace sample
             }
         }
 
-        public void SetHWnd(HWND hwnd)
+        public void SetHWnd(IntPtr hwnd)
         {
             RECT rect = default;
-            User32.GetClientRect(hwnd, out rect);
+            User32.GetClientRect(new Win32API.HWND { Value = hwnd }, out rect);
             int width = rect.right.Value - rect.left.Value;
             int height = rect.bottom.Value - rect.top.Value;
 
@@ -74,7 +74,7 @@ namespace sample
                     new Rational(60, 1),
                     Format.R8G8B8A8_UNorm),
                 IsWindowed = true,
-                OutputHandle = hwnd.Value,
+                OutputHandle = hwnd,
                 SampleDescription = new SampleDescription(1, 0),
                 SwapEffect = SwapEffect.Discard,
                 Usage = Usage.RenderTargetOutput
@@ -104,7 +104,7 @@ namespace sample
             //     io.ConfigFlags |= ImGuiConfigFlags_DpiEnableScaleViewports; // FIXME-DPI
             // #endif
 
-            ImGui.ImGui_ImplWin32_Init(hwnd.Value);
+            ImGui.ImGui_ImplWin32_Init(hwnd);
             ImGui.ImGui_ImplDX11_Init(
                 Device.NativePointer,
                 Device.ImmediateContext.NativePointer);
@@ -164,20 +164,13 @@ namespace sample
     {
         const string WINDOW_CLASS = "SharpImGuiClass";
 
-        // ?ImGui_ImplWin32_WndProcHandler@@YA_JPEAUHWND__@@I_K_J@Z
-        // extras.h:33
-        // [DllImport("imgui.dll", EntryPoint="?ImGui_ImplWin32_WndProcHandler@@YAHHHHH@Z")]
-        [DllImport("imgui.dll", EntryPoint="?ImGui_ImplWin32_WndProcHandler@@YA_JPEAUHWND__@@I_K_J@Z")]
-                                            
-        public static extern IntPtr ImGui_ImplWin32_WndProcHandler(IntPtr hwnd, uint msg, IntPtr wParam, IntPtr lParam);
-
         static void Main(string[] args)
         {
             var manager = new DeviceManager();
 
-            var windowProc = new WNDPROC((HWND _hwnd, WM uMsg, WPARAM wParam, LPARAM lParam) =>
+            var windowProc = new WNDPROC((Win32API.HWND _hwnd, WM uMsg, Win32API.WPARAM wParam, Win32API.LPARAM lParam) =>
             {
-                if (ImGui_ImplWin32_WndProcHandler(_hwnd.Value, (uint)uMsg, wParam.Value, lParam.Value) != IntPtr.Zero)
+                if (ImGui.ImGui_ImplWin32_WndProcHandler(_hwnd.Value, (uint)uMsg, wParam.Value, lParam.Value) != IntPtr.Zero)
                 {
                     return 1;
                 }

@@ -60,8 +60,8 @@ namespace SharpImGui
         public static extern bool ImGui_ImplDX11_CreateDeviceObjects();
 
         // extras.h:9
-        [DllImport(DLLNAME, EntryPoint="?ImGui_ImplWin32_WndProcHandler@@YAHHHHH@Z")]
-        public static extern int ImGui_ImplWin32_WndProcHandler();
+        [DllImport(DLLNAME, EntryPoint="?ImGui_ImplWin32_WndProcHandler@@YA_JPEAUHWND__@@I_K_J@Z")]
+        public static extern IntPtr ImGui_ImplWin32_WndProcHandler(IntPtr hwnd = default, uint msg = default, IntPtr wParam = default, IntPtr lParam = default);
 
         // extras.h:11
         [DllImport(DLLNAME, EntryPoint="?exDockSpace@@YAXIUImVec2@@HPEBUImGuiWindowClass@@@Z")]
@@ -626,49 +626,25 @@ namespace SharpImGui
         [DllImport(DLLNAME, EntryPoint="?Text@ImGui@@YAXPEBDZZ")]
         public static extern void Text([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
 
-        // imgui.h:400
-        [DllImport(DLLNAME, EntryPoint="?TextV@ImGui@@YAXPEBDH@Z")]
-        public static extern void TextV([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default, int args = default);
-
         // imgui.h:401
         [DllImport(DLLNAME, EntryPoint="?TextColored@ImGui@@YAXAEBUImVec4@@PEBDZZ")]
         public static extern void TextColored(IntPtr col = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
-
-        // imgui.h:402
-        [DllImport(DLLNAME, EntryPoint="?TextColoredV@ImGui@@YAXAEBUImVec4@@PEBDH@Z")]
-        public static extern void TextColoredV(IntPtr col = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default, int args = default);
 
         // imgui.h:403
         [DllImport(DLLNAME, EntryPoint="?TextDisabled@ImGui@@YAXPEBDZZ")]
         public static extern void TextDisabled([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
 
-        // imgui.h:404
-        [DllImport(DLLNAME, EntryPoint="?TextDisabledV@ImGui@@YAXPEBDH@Z")]
-        public static extern void TextDisabledV([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default, int args = default);
-
         // imgui.h:405
         [DllImport(DLLNAME, EntryPoint="?TextWrapped@ImGui@@YAXPEBDZZ")]
         public static extern void TextWrapped([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
-
-        // imgui.h:406
-        [DllImport(DLLNAME, EntryPoint="?TextWrappedV@ImGui@@YAXPEBDH@Z")]
-        public static extern void TextWrappedV([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default, int args = default);
 
         // imgui.h:407
         [DllImport(DLLNAME, EntryPoint="?LabelText@ImGui@@YAXPEBD0ZZ")]
         public static extern void LabelText([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
 
-        // imgui.h:408
-        [DllImport(DLLNAME, EntryPoint="?LabelTextV@ImGui@@YAXPEBD0H@Z")]
-        public static extern void LabelTextV([MarshalAs(UnmanagedType.LPUTF8Str)]string label = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default, int args = default);
-
         // imgui.h:409
         [DllImport(DLLNAME, EntryPoint="?BulletText@ImGui@@YAXPEBDZZ")]
         public static extern void BulletText([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
-
-        // imgui.h:410
-        [DllImport(DLLNAME, EntryPoint="?BulletTextV@ImGui@@YAXPEBDH@Z")]
-        public static extern void BulletTextV([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default, int args = default);
 
         // imgui.h:414
         [DllImport(DLLNAME, EntryPoint="?Button@ImGui@@YA_NPEBDAEBUImVec2@@@Z")]
@@ -692,12 +668,12 @@ namespace SharpImGui
 
         // imgui.h:418
         [DllImport(DLLNAME, EntryPoint="?Image@ImGui@@YAXPEAXAEBUImVec2@@11AEBUImVec4@@2@Z")]
-        public static extern void Image(ImTextureID user_texture_id = default, IntPtr size = default, IntPtr uv0 = default, IntPtr uv1 = default, IntPtr tint_col = default, IntPtr border_col = default);
+        public static extern void Image(IntPtr user_texture_id = default, IntPtr size = default, IntPtr uv0 = default, IntPtr uv1 = default, IntPtr tint_col = default, IntPtr border_col = default);
 
         // imgui.h:419
         [DllImport(DLLNAME, EntryPoint="?ImageButton@ImGui@@YA_NPEAXAEBUImVec2@@11HAEBUImVec4@@2@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool ImageButton(ImTextureID user_texture_id = default, IntPtr size = default, IntPtr uv0 = default, IntPtr uv1 = default, int frame_padding = default, IntPtr bg_col = default, IntPtr tint_col = default);
+        public static extern bool ImageButton(IntPtr user_texture_id = default, IntPtr size = default, IntPtr uv0 = default, IntPtr uv1 = default, int frame_padding = default, IntPtr bg_col = default, IntPtr tint_col = default);
 
         // imgui.h:420
         [DllImport(DLLNAME, EntryPoint="?Checkbox@ImGui@@YA_NPEBDPEA_N@Z")]
@@ -1000,16 +976,6 @@ namespace SharpImGui
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool TreeNode(IntPtr ptr_id = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
 
-        // imgui.h:507
-        [DllImport(DLLNAME, EntryPoint="?TreeNodeV@ImGui@@YA_NPEBD0H@Z")]
-        [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool TreeNodeV([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default, int args = default);
-
-        // imgui.h:508
-        [DllImport(DLLNAME, EntryPoint="?TreeNodeV@ImGui@@YA_NPEBXPEBDH@Z")]
-        [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool TreeNodeV(IntPtr ptr_id = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default, int args = default);
-
         // imgui.h:509
         [DllImport(DLLNAME, EntryPoint="?TreeNodeEx@ImGui@@YA_NPEBDH@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
@@ -1024,16 +990,6 @@ namespace SharpImGui
         [DllImport(DLLNAME, EntryPoint="?TreeNodeEx@ImGui@@YA_NPEBXHPEBDZZ")]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool TreeNodeEx(IntPtr ptr_id = default, ImGuiTreeNodeFlags flags = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
-
-        // imgui.h:512
-        [DllImport(DLLNAME, EntryPoint="?TreeNodeExV@ImGui@@YA_NPEBDH0H@Z")]
-        [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool TreeNodeExV([MarshalAs(UnmanagedType.LPUTF8Str)]string str_id = default, ImGuiTreeNodeFlags flags = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default, int args = default);
-
-        // imgui.h:513
-        [DllImport(DLLNAME, EntryPoint="?TreeNodeExV@ImGui@@YA_NPEBXHPEBDH@Z")]
-        [return: MarshalAs(UnmanagedType.U1)]
-        public static extern bool TreeNodeExV(IntPtr ptr_id = default, ImGuiTreeNodeFlags flags = default, [MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default, int args = default);
 
         // imgui.h:514
         [DllImport(DLLNAME, EntryPoint="?TreePush@ImGui@@YAXPEBD@Z")]
@@ -1194,10 +1150,6 @@ namespace SharpImGui
         // imgui.h:562
         [DllImport(DLLNAME, EntryPoint="?SetTooltip@ImGui@@YAXPEBDZZ")]
         public static extern void SetTooltip([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default);
-
-        // imgui.h:563
-        [DllImport(DLLNAME, EntryPoint="?SetTooltipV@ImGui@@YAXPEBDH@Z")]
-        public static extern void SetTooltipV([MarshalAs(UnmanagedType.LPUTF8Str)]string fmt = default, int args = default);
 
         // imgui.h:573
         [DllImport(DLLNAME, EntryPoint="?OpenPopup@ImGui@@YAXPEBD@Z")]

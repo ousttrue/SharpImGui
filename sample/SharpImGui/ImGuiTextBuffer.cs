@@ -8,7 +8,7 @@ namespace SharpImGui
     
     public struct ImGuiTextBuffer
     {
-        // offsetof: -1
+        // offsetof: 0
         public ImVector Buf;
     }
 }
