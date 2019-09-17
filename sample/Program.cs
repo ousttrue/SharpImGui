@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using SharpDX.Direct3D11;
 using SharpDX.DXGI;
+using SharpImGui;
 using Win32API;
 
 namespace sample
@@ -25,11 +26,11 @@ namespace sample
 
         public void Dispose()
         {
-            SharpImGui.CImGui.ImGui_ImplDX11_Shutdown();
-            SharpImGui.CImGui.ImGui_ImplWin32_Shutdown();
+            ImGui.ImGui_ImplDX11_Shutdown();
+            ImGui.ImGui_ImplWin32_Shutdown();
             if (m_imgui != IntPtr.Zero)
             {
-                SharpImGui.CImGui.igDestroyContext(m_imgui);
+                ImGui.DestroyContext(m_imgui);
                 m_imgui = IntPtr.Zero;
             }
 
@@ -86,13 +87,13 @@ namespace sample
                 desc,
                 out m_device, out m_swapChain);
 
-            m_imgui = SharpImGui.CImGui.igCreateContext(IntPtr.Zero);
-            var io = (SharpImGui.ImGuiIO)SharpImGui.CImGui.igGetIO();
-            io.ConfigFlags |= SharpImGui.ImGuiConfigFlags.NavEnableKeyboard;
+            m_imgui = ImGui.CreateContext(IntPtr.Zero);
+            var io = (ImGuiIO)ImGui.GetIO();
+            io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
             // Enable Keyboard Controls
-            // io.ConfigFlags |= SharpImGui.ImGuiConfigFlags.NavEnableGamepad;      // Enable Gamepad Controls
-            io.ConfigFlags |= SharpImGui.ImGuiConfigFlags.DockingEnable;           // Enable Docking
-            // io.ConfigFlags |= SharpImGui.ImGuiConfigFlags.ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
+            // io.ConfigFlags |= ImGuiConfigFlags.NavEnableGamepad;      // Enable Gamepad Controls
+            io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;           // Enable Docking
+            // io.ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
             //io.ConfigViewportsNoAutoMerge = true;
             //io.ConfigViewportsNoTaskBarIcon = true;
             //io.ConfigViewportsNoDefaultParent = true;
@@ -103,8 +104,8 @@ namespace sample
             //     io.ConfigFlags |= ImGuiConfigFlags_DpiEnableScaleViewports; // FIXME-DPI
             // #endif
 
-            SharpImGui.CImGui.ImGui_ImplWin32_Init(hwnd.Value);
-            SharpImGui.CImGui.ImGui_ImplDX11_Init(
+            ImGui.ImGui_ImplWin32_Init(hwnd.Value);
+            ImGui.ImGui_ImplDX11_Init(
                 Device.NativePointer,
                 Device.ImmediateContext.NativePointer);
         }
@@ -124,24 +125,24 @@ namespace sample
             }
 
             // Start the Dear ImGui frame
-            SharpImGui.CImGui.ImGui_ImplDX11_NewFrame();
-            SharpImGui.CImGui.ImGui_ImplWin32_NewFrame();
-            SharpImGui.CImGui.igNewFrame();
+            ImGui.ImGui_ImplDX11_NewFrame();
+            ImGui.ImGui_ImplWin32_NewFrame();
+            ImGui.NewFrame();
 
             // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
             if (m_show_demo_window)
             {
-                SharpImGui.CImGui.igShowDemoWindow(ref m_show_demo_window);
+                ImGui.ShowDemoWindow(ref m_show_demo_window);
             }
 
-            SharpImGui.CImGui.igRender();
+            ImGui.Render();
 
             Device.ImmediateContext.ClearRenderTargetView(m_rtv,
             new SharpDX.Mathematics.Interop.RawColor4(0.2f, 0.2f, 0.4f, 1.0f));
 
             Device.ImmediateContext.OutputMerger.SetRenderTargets(m_rtv);
 
-            SharpImGui.CImGui.ImGui_ImplDX11_RenderDrawData(SharpImGui.CImGui.igGetDrawData());
+            ImGui.ImGui_ImplDX11_RenderDrawData(ImGui.GetDrawData());
 
             m_swapChain.Present(0, PresentFlags.None);
         }
@@ -163,13 +164,20 @@ namespace sample
     {
         const string WINDOW_CLASS = "SharpImGuiClass";
 
+        // ?ImGui_ImplWin32_WndProcHandler@@YA_JPEAUHWND__@@I_K_J@Z
+        // extras.h:33
+        // [DllImport("imgui.dll", EntryPoint="?ImGui_ImplWin32_WndProcHandler@@YAHHHHH@Z")]
+        [DllImport("imgui.dll", EntryPoint="?ImGui_ImplWin32_WndProcHandler@@YA_JPEAUHWND__@@I_K_J@Z")]
+                                            
+        public static extern IntPtr ImGui_ImplWin32_WndProcHandler(IntPtr hwnd, uint msg, IntPtr wParam, IntPtr lParam);
+
         static void Main(string[] args)
         {
             var manager = new DeviceManager();
 
             var windowProc = new WNDPROC((HWND _hwnd, WM uMsg, WPARAM wParam, LPARAM lParam) =>
             {
-                if (SharpImGui.CImGui.ImGui_ImplWin32_WndProcHandler(_hwnd.Value, (uint)uMsg, wParam.Value, lParam.Value) != IntPtr.Zero)
+                if (ImGui_ImplWin32_WndProcHandler(_hwnd.Value, (uint)uMsg, wParam.Value, lParam.Value) != IntPtr.Zero)
                 {
                     return 1;
                 }

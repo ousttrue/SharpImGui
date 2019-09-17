@@ -4,11 +4,9 @@ using System.Runtime.InteropServices;
 
 namespace SharpImGui
 {
-    // cimgui.h:41
+    // imgui_impl_dx11.h:15
     
-    public struct ImColor_Simple
+    public struct ID3D11Device
     {
-        // offsetof: 0
-        public ImVec4_Simple Value;
     }
 }

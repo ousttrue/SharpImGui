@@ -27,7 +27,22 @@
             "console": "internalConsole"
         },
         {
-            "name": "Generate",
+            "name": "Generate(ImGui)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/dependencies/cpptypeinfo/generator.py",
+            "args": [
+                "${workspaceFolder}/sample/SharpImGui",
+                "${workspaceFolder}/dependencies/imgui/imgui.h",
+                "${workspaceFolder}/dependencies/imgui/examples/imgui_impl_win32.h",
+                "${workspaceFolder}/dependencies/imgui/examples/imgui_impl_dx11.h",
+                "${workspaceFolder}/build_imgui/extras.h",
+            ],
+            "cwd": "${workspaceFolder}/dependencies/cpptypeinfo",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Generate(CImGui)",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/dependencies/cpptypeinfo/generator.py",
@@ -35,7 +50,7 @@
                 "${workspaceFolder}/sample/SharpImGui",
                 "${workspaceFolder}/dependencies/imgui/imgui.h",
                 "${workspaceFolder}/dependencies/cimgui/cimgui.h",
-                "${workspaceFolder}/src/extras.h",
+                "${workspaceFolder}/build_cimgui/extras.h",
             ],
             "cwd": "${workspaceFolder}/dependencies/cpptypeinfo",
             "console": "integratedTerminal"

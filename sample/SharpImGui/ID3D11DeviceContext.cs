@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 
 namespace SharpImGui
 {
-    // cimgui.h:891
+    // imgui_impl_dx11.h:16
     
-    public struct SDL_Event
+    public struct ID3D11DeviceContext
     {
     }
 }
