@@ -179,6 +179,9 @@ namespace sample
             if (m_show_another_window)
             {
                 ImGui.Begin("Another Window", ref m_show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+
+                var x =ImGui.GetContentRegionAvail();
+
                 ImGui.Text("Hello from another window!");
                 Vector2 size = default;
                 if (ImGui.Button("Close Me", ref size))
