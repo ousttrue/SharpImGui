@@ -163,7 +163,18 @@ namespace sample
                 ImGui.Text($"counter = {m_counter}");
 
                 var frameRate = ((ImGuiIO)ImGui.GetIO()).Framerate;
-                ImGui.Text($"Application average {1000.0f / frameRate:.000} ms/frame ({frameRate:.0} FPS)");
+                ImGui.Text($"Application average {1000.0f / frameRate:000.} ms/frame ({frameRate:.0} FPS)");
+                ImGui.End();
+            }
+
+            // 3. Show another simple window.
+            if (m_show_another_window)
+            {
+                ImGui.Begin("Another Window", ref m_show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+                ImGui.Text("Hello from another window!");
+                Vector2 size = default;
+                if (ImGui.Button("Close Me", ref size))
+                    m_show_another_window = false;
                 ImGui.End();
             }
 
