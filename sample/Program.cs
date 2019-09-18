@@ -117,8 +117,7 @@ namespace sample
         float m_f = 0.0f;
         int m_counter = 0;
 
-        Vector3 m_clear_color;
-
+        Vector3 m_clear_color = new Vector3(0.4f, 0.3f, 0.6f);
 
         public void Draw()
         {

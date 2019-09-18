@@ -19,7 +19,7 @@
             "name": "Sample",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build_cs",
             "program": "${workspaceFolder}/sample/bin/Debug/netcoreapp2.2/sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
