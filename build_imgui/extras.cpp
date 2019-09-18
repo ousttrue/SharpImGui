@@ -29,3 +29,13 @@ IMGUI_IMPL_API bool exIsWindowDocked()
 {
     return ImGui::IsWindowDocked();
 }
+
+IMGUI_IMPL_API void *exImFontAtlas_GetGlyphRangesJapanese(ImFontAtlas *font)
+{
+    return (void *)font->GetGlyphRangesJapanese();
+}
+
+IMGUI_IMPL_API void *exImFontAtlas_AddFontFromFileTTF(ImFontAtlas *font, const char *filename, float size_pixels, const ImFontConfig *font_cfg_template, const ImWchar *glyph_ranges)
+{
+    return font->AddFontFromFileTTF(filename, size_pixels, font_cfg_template, glyph_ranges);
+}

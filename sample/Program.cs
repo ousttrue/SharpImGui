@@ -105,10 +105,19 @@ namespace sample
             //     io.ConfigFlags |= ImGuiConfigFlags_DpiEnableScaleViewports; // FIXME-DPI
             // #endif
 
+            AddJapaneseFontFromFileTTF("c:\\Windows\\Fonts\\meiryo.ttc", 18.0f);
+
             ImGui.ImGui_ImplWin32_Init(hwnd);
             ImGui.ImGui_ImplDX11_Init(
                 Device.NativePointer,
                 Device.ImmediateContext.NativePointer);
+        }
+
+        static void AddJapaneseFontFromFileTTF(string filename, float size_pixels)
+        {
+            var io = (ImGuiIO)ImGui.GetIO();
+            var glyph = ImGui.exImFontAtlas_GetGlyphRangesJapanese(io.Fonts);
+            ImGui.exImFontAtlas_AddFontFromFileTTF(io.Fonts, filename, size_pixels, IntPtr.Zero, glyph);
         }
 
         bool m_show_demo_window = true;

@@ -14,3 +14,6 @@ IMGUI_IMPL_API void exSetNextWindowDockID(ImGuiID dock_id, ImGuiCond cond);     
 IMGUI_IMPL_API void exSetNextWindowClass(const ImGuiWindowClass *window_class); // set next window class (rare/advanced uses: provide hints to the platform back-end via altered viewport flags and parent/child info)
 IMGUI_IMPL_API ImGuiID exGetWindowDockID();
 IMGUI_IMPL_API bool exIsWindowDocked(); // is current window docked into another window?
+
+IMGUI_IMPL_API void* exImFontAtlas_GetGlyphRangesJapanese(ImFontAtlas *font);
+IMGUI_IMPL_API void *exImFontAtlas_AddFontFromFileTTF(ImFontAtlas *font, const char *filename, float size_pixels, const ImFontConfig *font_cfg_template, const ImWchar *glyph_ranges);

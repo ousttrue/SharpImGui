@@ -90,6 +90,14 @@ namespace SharpImGui
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool exIsWindowDocked();
 
+        // extras.h:18
+        [DllImport(DLLNAME, EntryPoint="?exImFontAtlas_GetGlyphRangesJapanese@@YAPEAXPEAUImFontAtlas@@@Z")]
+        public static extern IntPtr exImFontAtlas_GetGlyphRangesJapanese(IntPtr font);
+
+        // extras.h:19
+        [DllImport(DLLNAME, EntryPoint="?exImFontAtlas_AddFontFromFileTTF@@YAPEAXPEAUImFontAtlas@@PEBDMPEBUImFontConfig@@PEBG@Z")]
+        public static extern IntPtr exImFontAtlas_AddFontFromFileTTF(IntPtr font, [MarshalAs(UnmanagedType.LPUTF8Str)]string filename, float size_pixels, IntPtr font_cfg_template, IntPtr glyph_ranges);
+
         // imgui.h:221
         [DllImport(DLLNAME, EntryPoint="?CreateContext@ImGui@@YAPEAUImGuiContext@@PEAUImFontAtlas@@@Z")]
         public static extern IntPtr CreateContext(IntPtr shared_font_atlas = default);
