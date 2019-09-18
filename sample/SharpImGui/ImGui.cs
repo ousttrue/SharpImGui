@@ -261,11 +261,11 @@ namespace SharpImGui
         public static extern IntPtr GetWindowViewport();
 
         // imgui.h:281
-        [DllImport(DLLNAME, EntryPoint="?GetWindowPos@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetWindowPos@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetWindowPos();
 
         // imgui.h:282
-        [DllImport(DLLNAME, EntryPoint="?GetWindowSize@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetWindowSize@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetWindowSize();
 
         // imgui.h:283
@@ -345,19 +345,19 @@ namespace SharpImGui
         public static extern void SetWindowFocus([MarshalAs(UnmanagedType.LPUTF8Str)]string name);
 
         // imgui.h:307
-        [DllImport(DLLNAME, EntryPoint="?GetContentRegionMax@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetContentRegionMax@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetContentRegionMax();
 
         // imgui.h:308
-        [DllImport(DLLNAME, EntryPoint="?GetContentRegionAvail@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetContentRegionAvail@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetContentRegionAvail();
 
         // imgui.h:309
-        [DllImport(DLLNAME, EntryPoint="?GetWindowContentRegionMin@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetWindowContentRegionMin@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetWindowContentRegionMin();
 
         // imgui.h:310
-        [DllImport(DLLNAME, EntryPoint="?GetWindowContentRegionMax@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetWindowContentRegionMax@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetWindowContentRegionMax();
 
         // imgui.h:311
@@ -449,7 +449,7 @@ namespace SharpImGui
         public static extern float GetFontSize();
 
         // imgui.h:337
-        [DllImport(DLLNAME, EntryPoint="?GetFontTexUvWhitePixel@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetFontTexUvWhitePixel@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetFontTexUvWhitePixel();
 
         // imgui.h:338
@@ -541,7 +541,7 @@ namespace SharpImGui
         public static extern void EndGroup();
 
         // imgui.h:366
-        [DllImport(DLLNAME, EntryPoint="?GetCursorPos@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetCursorPos@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetCursorPos();
 
         // imgui.h:367
@@ -565,11 +565,11 @@ namespace SharpImGui
         public static extern void SetCursorPosY(float local_y);
 
         // imgui.h:372
-        [DllImport(DLLNAME, EntryPoint="?GetCursorStartPos@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetCursorStartPos@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetCursorStartPos();
 
         // imgui.h:373
-        [DllImport(DLLNAME, EntryPoint="?GetCursorScreenPos@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetCursorScreenPos@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetCursorScreenPos();
 
         // imgui.h:374
@@ -1409,15 +1409,15 @@ namespace SharpImGui
         public static extern bool IsAnyItemFocused();
 
         // imgui.h:661
-        [DllImport(DLLNAME, EntryPoint="?GetItemRectMin@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetItemRectMin@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetItemRectMin();
 
         // imgui.h:662
-        [DllImport(DLLNAME, EntryPoint="?GetItemRectMax@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetItemRectMax@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetItemRectMax();
 
         // imgui.h:663
-        [DllImport(DLLNAME, EntryPoint="?GetItemRectSize@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetItemRectSize@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetItemRectSize();
 
         // imgui.h:664
@@ -1475,7 +1475,7 @@ namespace SharpImGui
         public static extern IntPtr GetStateStorage();
 
         // imgui.h:679
-        [DllImport(DLLNAME, EntryPoint="?CalcTextSize@ImGui@@YA?AUImVec2@@PEBD0_NM@Z")]
+        [DllImport(DLLNAME, EntryPoint="?CalcTextSize@ImGui@@YA?AUPodImVec2@@PEBD0_NM@Z")]
         public static extern Vector2 CalcTextSize([MarshalAs(UnmanagedType.LPUTF8Str)]string text, [MarshalAs(UnmanagedType.LPUTF8Str)]string text_end = default, [MarshalAs(UnmanagedType.U1)]bool hide_text_after_double_hash = default, float wrap_width = -1.0f);
 
         // imgui.h:680
@@ -1571,15 +1571,15 @@ namespace SharpImGui
         public static extern bool IsMousePosValid(ref Vector2 mouse_pos);
 
         // imgui.h:704
-        [DllImport(DLLNAME, EntryPoint="?GetMousePos@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetMousePos@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetMousePos();
 
         // imgui.h:705
-        [DllImport(DLLNAME, EntryPoint="?GetMousePosOnOpeningCurrentPopup@ImGui@@YA?AUImVec2@@XZ")]
+        [DllImport(DLLNAME, EntryPoint="?GetMousePosOnOpeningCurrentPopup@ImGui@@YA?AUPodImVec2@@XZ")]
         public static extern Vector2 GetMousePosOnOpeningCurrentPopup();
 
         // imgui.h:706
-        [DllImport(DLLNAME, EntryPoint="?GetMouseDragDelta@ImGui@@YA?AUImVec2@@HM@Z")]
+        [DllImport(DLLNAME, EntryPoint="?GetMouseDragDelta@ImGui@@YA?AUPodImVec2@@HM@Z")]
         public static extern Vector2 GetMouseDragDelta(int button = 0, float lock_threshold = -1.0f);
 
         // imgui.h:707

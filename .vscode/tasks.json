@@ -19,38 +19,12 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "dll_build",
-            "type": "shell",
-            "command": "cmake",
-            "options": {},
-            "args": [
-                "--build",
-                "${workspaceFolder}/build/Release",
-                "--config",
-                "Release",
-                "--target",
-                "all",
-                "--",
-                "-j",
-                "14"
-            ],
-            "problemMatcher": []
-        },
-        {
             "label": "dll_copy",
             "type": "shell",
             "command": "copy",
             "args": [
                 "${workspaceFolder}/build/Release/build_imgui/imgui.dll",
                 "${workspaceFolder}/sample/"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "dll_build_copy",
-            "dependsOn": [
-                "dll_build",
-                "dll_copy"
             ],
             "problemMatcher": []
         }

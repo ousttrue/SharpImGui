@@ -5,6 +5,9 @@
 
 int main()
 {
+    std::cout << std::is_pod<ImVec2>::value << std::endl;
+    std::cout << std::is_pod<PodImVec2>::value << std::endl;
+
     PRINT_OFFSET(MouseDrawCursor);
     return 0;
 }
