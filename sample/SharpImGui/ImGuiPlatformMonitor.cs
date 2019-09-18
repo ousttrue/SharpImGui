@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace SharpImGui
 {
-    // imgui.h:2330
+    // imgui.h:2332
     
     public struct ImGuiPlatformMonitor
     {

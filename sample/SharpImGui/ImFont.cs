@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace SharpImGui
 {
-    // imgui.h:2268
+    // imgui.h:2269
     
     public struct ImFont
     {
@@ -33,14 +33,16 @@ namespace SharpImGui
         // offsetof: 90
         public ImWchar FallbackChar;
         // offsetof: 92
-        public float Scale;
+        public ImWchar EllipsisChar;
         // offsetof: 96
-        public float Ascent;
+        public float Scale;
         // offsetof: 100
-        public float Descent;
+        public float Ascent;
         // offsetof: 104
-        public int MetricsTotalSurface;
+        public float Descent;
         // offsetof: 108
+        public int MetricsTotalSurface;
+        // offsetof: 112
         [MarshalAs(UnmanagedType.U1)]public bool DirtyLookupTables;
     }
 }

@@ -43,6 +43,8 @@ namespace SharpImGui
         // offsetof: 80
         public float RasterizerMultiply;
         // offsetof: 84
+        public ImWchar EllipsisChar;
+        // offsetof: 86
         public IntPtr Name;
         // offsetof: 128
         public IntPtr DstFont;

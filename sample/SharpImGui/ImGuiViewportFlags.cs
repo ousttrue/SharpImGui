@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace SharpImGui
 {
-    // imgui.h:2397
+    // imgui.h:2399
     [Flags]
     public enum ImGuiViewportFlags
     {

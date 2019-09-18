@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace SharpImGui
 {
-    // imgui.h:2117
+    // imgui.h:2118
     
     public struct ImFontGlyph
     {

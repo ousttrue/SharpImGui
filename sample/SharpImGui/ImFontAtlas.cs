@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace SharpImGui
 {
-    // imgui.h:2178
+    // imgui.h:2179
     
     public struct ImFontAtlas
     {
