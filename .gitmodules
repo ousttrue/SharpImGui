@@ -7,3 +7,6 @@
 [submodule "dependencies/cpptypeinfo"]
 	path = dependencies/cpptypeinfo
 	url = git@github.com:ousttrue/cpptypeinfo.git
+[submodule "dependencies/im3d_dll"]
+	path = dependencies/im3d_dll
+	url = git@github.com:ousttrue/im3d_dll.git
