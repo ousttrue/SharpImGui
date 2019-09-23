@@ -38,5 +38,4 @@
         "*.cshtml": "html",
         "iostream": "cpp"
     },
-    "cmake.buildDirectory" : "${workspaceRoot}/build/${buildType}",
 }
