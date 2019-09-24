@@ -42,6 +42,7 @@
                 "${workspaceFolder}/dependencies/im3d_dll/im3d/camera_state.h",
                 "${workspaceFolder}/dependencies/im3d_dll/im3d/mouse_state.h",
                 "${workspaceFolder}/dependencies/im3d_dll/im3d_dx11/im3d_impl_dx11.h",
+                "${workspaceFolder}/dependencies/im3d_dll/im3d_dx11/dx11_renderer.h",
             ],
             "cwd": "${workspaceFolder}/dependencies/cpptypeinfo",
             "console": "integratedTerminal"

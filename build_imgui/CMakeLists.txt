@@ -11,10 +11,12 @@ target_sources(${SUB_NAME} PRIVATE
     ${DEP_DIR}/imgui/imgui_widgets.cpp
     ${DEP_DIR}/imgui/examples/imgui_impl_win32.cpp
     ${DEP_DIR}/imgui/examples/imgui_impl_dx11.cpp
+    extras.cpp
     # im3d
     ${DEP_DIR}/im3d_dll/im3d/im3d.cpp
     ${DEP_DIR}/im3d_dll/im3d/im3d_newframe.cpp
     ${DEP_DIR}/im3d_dll/im3d_dx11/im3d_impl_dx11.cpp
+    ${DEP_DIR}/im3d_dll/im3d_dx11/dx11_renderer.cpp
     )
 
 target_compile_definitions(${SUB_NAME} PRIVATE 

@@ -111,6 +111,8 @@ namespace sample
             ImGui.ImGui_ImplDX11_Init(
                 Device.NativePointer,
                 Device.ImmediateContext.NativePointer);
+
+            ImGui.DX11_Initialize();
         }
 
         static void AddJapaneseFontFromFileTTF(string filename, float size_pixels)
@@ -127,6 +129,13 @@ namespace sample
         int m_counter = 0;
 
         Vector3 m_clear_color = new Vector3(0.4f, 0.3f, 0.6f);
+
+        static float[] s_matrix = new float[16]{
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1,
+            };
 
         public void Draw()
         {
@@ -180,7 +189,7 @@ namespace sample
             {
                 ImGui.Begin("Another Window", ref m_show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
 
-                var x =ImGui.GetContentRegionAvail();
+                var x = ImGui.GetContentRegionAvail();
 
                 ImGui.Text("Hello from another window!");
                 Vector2 size = default;
@@ -191,11 +200,15 @@ namespace sample
 
             ImGui.Render();
 
+            //
+            // D3D
+            //
             Device.ImmediateContext.ClearRenderTargetView(m_rtv,
             new SharpDX.Mathematics.Interop.RawColor4(m_clear_color.X, m_clear_color.Y, m_clear_color.Z, 1.0f));
 
             Device.ImmediateContext.OutputMerger.SetRenderTargets(m_rtv);
 
+            ImGui.DX11_DrawTeapot(Device.ImmediateContext.NativePointer, s_matrix, s_matrix);
             ImGui.ImGui_ImplDX11_RenderDrawData(ImGui.GetDrawData());
 
             m_swapChain.Present(0, PresentFlags.None);
