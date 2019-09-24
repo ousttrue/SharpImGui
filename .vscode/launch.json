@@ -37,6 +37,11 @@
                 "${workspaceFolder}/dependencies/imgui/examples/imgui_impl_win32.h",
                 "${workspaceFolder}/dependencies/imgui/examples/imgui_impl_dx11.h",
                 "${workspaceFolder}/build_imgui/extras.h",
+                "${workspaceFolder}/dependencies/im3d_dll/im3d/im3d.h",
+                "${workspaceFolder}/dependencies/im3d_dll/im3d/im3d_newframe.h",
+                "${workspaceFolder}/dependencies/im3d_dll/im3d/camera_state.h",
+                "${workspaceFolder}/dependencies/im3d_dll/im3d/mouse_state.h",
+                "${workspaceFolder}/dependencies/im3d_dll/im3d_dx11/im3d_impl_dx11.h",
             ],
             "cwd": "${workspaceFolder}/dependencies/cpptypeinfo",
             "console": "integratedTerminal"
