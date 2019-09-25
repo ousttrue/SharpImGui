@@ -27,6 +27,19 @@
             "console": "internalConsole"
         },
         {
+            "name": "debug",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "dotnet.exe",
+            "args": [
+                "${workspaceFolder}/sample/bin/Debug/netcoreapp2.2/sample.dll"
+            ],
+            "cwd": "${workspaceFolder}/sample",
+            "stopAtEntry": false,
+            "environment": [],
+            "externalConsole": false
+        },
+        {
             "name": "Generate(ImGui)",
             "type": "python",
             "request": "launch",

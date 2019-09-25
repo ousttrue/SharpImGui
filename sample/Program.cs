@@ -17,6 +17,7 @@ namespace sample
         SwapChain m_swapChain;
 
         SharpDX.Direct3D11.RenderTargetView m_rtv;
+        // SharpDX.Direct3D11.DepthStencilView m_dsv;
 
         IntPtr m_imgui;
 
@@ -59,6 +60,11 @@ namespace sample
                 m_rtv.Dispose();
                 m_rtv = null;
             }
+            // if (m_dsv != null)
+            // {
+            //     m_dsv.Dispose();
+            //     m_dsv = null;
+            // }
         }
 
         public void SetHWnd(IntPtr hwnd)
@@ -130,25 +136,14 @@ namespace sample
 
         Vector3 m_clear_color = new Vector3(0.4f, 0.3f, 0.6f);
 
-        static float[] s_matrix = new float[16]{
-                1, 0, 0, 0,
-                0, 1, 0, 0,
-                0, 0, 1, 0,
-                0, 0, 0, 1,
-            };
+        Matrix4x4 m_view = Matrix4x4.CreateTranslation(0, 0, -2);
 
-        public void Draw()
+        Matrix4x4 m_projection = Matrix4x4.Identity;
+
+        Matrix4x4 m_model = Matrix4x4.Identity;
+
+        void UpdateGui()
         {
-            if (m_rtv == null)
-            {
-                // New RenderTargetView from the backbuffer
-                using (var backBuffer = Texture2D.FromSwapChain<Texture2D>(m_swapChain, 0))
-                {
-                    backBuffer.DebugName = "backBuffer";
-                    m_rtv = new RenderTargetView(Device, backBuffer);
-                }
-            }
-
             // Start the Dear ImGui frame
             ImGui.ImGui_ImplDX11_NewFrame();
             ImGui.ImGui_ImplWin32_NewFrame();
@@ -169,7 +164,7 @@ namespace sample
                 ImGui.Checkbox("Another Window", ref m_show_another_window);
 
                 ImGui.SliderFloat("float", ref m_f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-                ImGui.ColorEdit3("clear color", ref m_clear_color); // Edit 3 floats representing a color
+                ImGui.ColorEdit3("clear color", ref m_clear_color.X); // Edit 3 floats representing a color
 
                 var size = Vector2.Zero;
                 if (ImGui.Button("Button", ref size))
@@ -199,23 +194,60 @@ namespace sample
             }
 
             ImGui.Render();
+        }
+
+        public void Draw()
+        {
+            if (m_rtv == null)
+            {
+                // New RenderTargetView from the backbuffer
+                using (var backBuffer = Texture2D.FromSwapChain<Texture2D>(m_swapChain, 0))
+                {
+                    backBuffer.DebugName = "backBuffer";
+                    m_rtv = new RenderTargetView(Device, backBuffer);
+
+                    // var depthDesc = backBuffer.Description;
+                    // depthDesc.MipLevels = 1;
+                    // depthDesc.ArraySize = 1;
+                    // depthDesc.Format = SharpDX.DXGI.Format.D24_UNorm_S8_UInt;
+                    // depthDesc.BindFlags = BindFlags.DepthStencil;
+                    // using (var depthTexture = new SharpDX.Direct3D11.Texture2D(backBuffer.Device, depthDesc))
+                    // {
+                    //     m_dsv = new SharpDX.Direct3D11.DepthStencilView(backBuffer.Device, depthTexture);
+                    // }
+                }
+            }
+
+            // UpdateGui();
 
             //
             // D3D
             //
             Device.ImmediateContext.ClearRenderTargetView(m_rtv,
             new SharpDX.Mathematics.Interop.RawColor4(m_clear_color.X, m_clear_color.Y, m_clear_color.Z, 1.0f));
+            // Device.ImmediateContext.ClearDepthStencilView(m_dsv,
+            //     DepthStencilClearFlags.Depth | DepthStencilClearFlags.Stencil,
+            // 1.0f, 0);
 
             Device.ImmediateContext.OutputMerger.SetRenderTargets(m_rtv);
+            Device.ImmediateContext.Rasterizer.SetViewport(0, 0, m_width, m_height, 0, 1.0f);
 
-            ImGui.DX11_DrawTeapot(Device.ImmediateContext.NativePointer, s_matrix, s_matrix);
-            ImGui.ImGui_ImplDX11_RenderDrawData(ImGui.GetDrawData());
+            var viewProjection = m_view * m_projection;
+
+            ImGui.DX11_DrawTeapot(Device.ImmediateContext.NativePointer, ref viewProjection.M11, ref m_model.M11);
+            // ImGui.ImGui_ImplDX11_RenderDrawData(ImGui.GetDrawData());
 
             m_swapChain.Present(0, PresentFlags.None);
         }
 
+        int m_width;
+        int m_height;
         public void Resize(int width, int height)
         {
+            m_width = width;
+            m_height = height;
+            var aspect = (float)width / height;
+            m_projection = Matrix4x4.CreatePerspectiveFieldOfView(30.0f / 180.0f * MathF.PI, aspect, 0.01f, 10);
             if (m_swapChain == null)
             {
                 return;
