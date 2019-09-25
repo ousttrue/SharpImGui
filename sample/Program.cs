@@ -5,6 +5,8 @@ using SharpDX.DXGI;
 using SharpImGui;
 using System.Numerics;
 using Win32API;
+using System.Diagnostics;
+using System.Threading;
 
 namespace sample
 {
@@ -142,6 +144,8 @@ namespace sample
 
         Matrix4x4 m_model = Matrix4x4.Identity;
 
+        Matrix4x4 m_viewProjection = Matrix4x4.Identity;
+
         void UpdateGui()
         {
             // Start the Dear ImGui frame
@@ -196,8 +200,10 @@ namespace sample
             ImGui.Render();
         }
 
-        public void Draw()
+        public void Update()
         {
+            m_viewProjection = m_view * m_projection;
+
             if (m_rtv == null)
             {
                 // New RenderTargetView from the backbuffer
@@ -218,7 +224,7 @@ namespace sample
                 }
             }
 
-            // UpdateGui();
+            UpdateGui();
 
             //
             // D3D
@@ -228,14 +234,15 @@ namespace sample
             // Device.ImmediateContext.ClearDepthStencilView(m_dsv,
             //     DepthStencilClearFlags.Depth | DepthStencilClearFlags.Stencil,
             // 1.0f, 0);
+        }
 
+        public void Draw()
+        {
             Device.ImmediateContext.OutputMerger.SetRenderTargets(m_rtv);
             Device.ImmediateContext.Rasterizer.SetViewport(0, 0, m_width, m_height, 0, 1.0f);
 
-            var viewProjection = m_view * m_projection;
-
-            ImGui.DX11_DrawTeapot(Device.ImmediateContext.NativePointer, ref viewProjection.M11, ref m_model.M11);
-            // ImGui.ImGui_ImplDX11_RenderDrawData(ImGui.GetDrawData());
+            ImGui.DX11_DrawTeapot(Device.ImmediateContext.NativePointer, ref m_viewProjection.M11, ref m_model.M11);
+            ImGui.ImGui_ImplDX11_RenderDrawData(ImGui.GetDrawData());
 
             m_swapChain.Present(0, PresentFlags.None);
         }
@@ -256,6 +263,55 @@ namespace sample
             var desc = m_swapChain.Description;
             m_swapChain.ResizeBuffers(desc.BufferCount, width, height,
                 desc.ModeDescription.Format, desc.Flags);
+        }
+    }
+
+    class FpsTimer
+    {
+        TimeSpan m_frameTime;
+        Stopwatch m_sw;
+
+        int m_sleep;
+
+        public FpsTimer(int fps)
+        {
+            m_frameTime = TimeSpan.FromMilliseconds(1000.0 / fps);
+            m_sw = Stopwatch.StartNew();
+            m_sleep = (int)m_frameTime.TotalMilliseconds;
+        }
+
+
+        TimeSpan m_begin;
+        // public void BeginFrame()
+        // {
+        //     m_begin = m_sw.Elapsed;
+        // }
+
+        public void Wait()
+        {
+            var now = m_sw.Elapsed;
+            var delta = now - m_begin;
+            m_begin = now;
+
+            if (delta > m_frameTime)
+            {
+                m_sleep--;
+                if (m_sleep < 1)
+                {
+                    m_sleep = 1;
+                }
+            }
+            else
+            {
+                m_sleep++;
+                if(m_sleep > m_frameTime.TotalMilliseconds)
+                {
+                    m_sleep = (int)m_frameTime.TotalMilliseconds;
+                }
+            }
+
+            Thread.Sleep(m_sleep);
+            // Console.WriteLine(sleep);
         }
     }
 
@@ -332,20 +388,30 @@ namespace sample
 
             User32.ShowWindow(hwnd, SW.SHOW);
 
+            var fps = new FpsTimer(30);
             MSG msg = default;
-            while (msg.message != WM.QUIT)
+            while (true)
             {
+                // fps.BeginFrame();
+
                 // Poll and handle messages (inputs, window resize, etc.)
                 // You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
                 // - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application.
                 // - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application.
                 // Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
-                if (User32.PeekMessageW(ref msg, IntPtr.Zero, 0, 0, PM.REMOVE))
+                while (User32.PeekMessageW(ref msg, IntPtr.Zero, 0, 0, PM.REMOVE))
                 {
+                    if (msg.message == WM.QUIT)
+                    {
+                        return;
+                    }
                     User32.TranslateMessage(ref msg);
                     User32.DispatchMessage(ref msg);
-                    continue;
                 }
+
+                manager.Update();
+
+                fps.Wait();
 
                 manager.Draw();
             }
