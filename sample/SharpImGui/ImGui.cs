@@ -1784,7 +1784,7 @@ namespace SharpImGui
 
         // camera_state.h:16
         [DllImport(DLLNAME, EntryPoint="?Mult@camera@@YA?AV?$array@M$0BA@@std@@AEBV23@0@Z")]
-        public static extern array Mult(IntPtr l, IntPtr r);
+        public static extern Matrix4x4 Mult(IntPtr l, IntPtr r);
 
         // camera_state.h:58
         [DllImport(DLLNAME, EntryPoint="?Transpose@camera@@YAXAEAV?$array@M$0BA@@std@@@Z")]

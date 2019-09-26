@@ -15,11 +15,11 @@ namespace sample
         SharpDX.Direct3D11.Device m_device;
         public SharpDX.Direct3D11.Device Device => m_device;
 
-        // SharpDX.Direct3D11.DeviceContext m_context;
         SwapChain m_swapChain;
 
         SharpDX.Direct3D11.RenderTargetView m_rtv;
-        // SharpDX.Direct3D11.DepthStencilView m_dsv;
+        SharpDX.Direct3D11.DepthStencilView m_dsv;
+        // SharpDX.Direct3D11.DepthStencilState m_ds;
 
         IntPtr m_imgui;
 
@@ -62,10 +62,15 @@ namespace sample
                 m_rtv.Dispose();
                 m_rtv = null;
             }
-            // if (m_dsv != null)
+            if (m_dsv != null)
+            {
+                m_dsv.Dispose();
+                m_dsv = null;
+            }
+            // if (m_ds != null)
             // {
-            //     m_dsv.Dispose();
-            //     m_dsv = null;
+            //     m_ds.Dispose();
+            //     m_ds = null;
             // }
         }
 
@@ -205,17 +210,28 @@ namespace sample
                     backBuffer.DebugName = "backBuffer";
                     m_rtv = new RenderTargetView(Device, backBuffer);
 
-                    // var depthDesc = backBuffer.Description;
-                    // depthDesc.MipLevels = 1;
-                    // depthDesc.ArraySize = 1;
-                    // depthDesc.Format = SharpDX.DXGI.Format.D24_UNorm_S8_UInt;
-                    // depthDesc.BindFlags = BindFlags.DepthStencil;
-                    // using (var depthTexture = new SharpDX.Direct3D11.Texture2D(backBuffer.Device, depthDesc))
-                    // {
-                    //     m_dsv = new SharpDX.Direct3D11.DepthStencilView(backBuffer.Device, depthTexture);
-                    // }
+                    var depthDesc = backBuffer.Description;
+                    depthDesc.MipLevels = 1;
+                    depthDesc.ArraySize = 1;
+                    depthDesc.Format = SharpDX.DXGI.Format.D24_UNorm_S8_UInt;
+                    depthDesc.BindFlags = BindFlags.DepthStencil;
+                    using (var depthTexture = new SharpDX.Direct3D11.Texture2D(backBuffer.Device, depthDesc))
+                    {
+                        m_dsv = new SharpDX.Direct3D11.DepthStencilView(backBuffer.Device, depthTexture);
+                    }
                 }
             }
+
+            // if (m_ds == null)
+            // {
+            //     m_ds = new DepthStencilState(Device,
+            //     new DepthStencilStateDescription
+            //     {
+            //         IsDepthEnabled = true,
+            //         DepthWriteMask = DepthWriteMask.All,
+            //         DepthComparison = Comparison.Less,
+            //     });
+            // }
 
             UpdateGui();
 
@@ -224,19 +240,17 @@ namespace sample
             //
             Device.ImmediateContext.ClearRenderTargetView(m_rtv,
             new SharpDX.Mathematics.Interop.RawColor4(m_clear_color.X, m_clear_color.Y, m_clear_color.Z, 1.0f));
-            // Device.ImmediateContext.ClearDepthStencilView(m_dsv,
-            //     DepthStencilClearFlags.Depth | DepthStencilClearFlags.Stencil,
-            // 1.0f, 0);
+            Device.ImmediateContext.ClearDepthStencilView(m_dsv, DepthStencilClearFlags.Depth | DepthStencilClearFlags.Stencil, 1.0f, 0);
         }
 
         public void Draw(ref Matrix4x4 viewProjection)
         {
-            Device.ImmediateContext.OutputMerger.SetRenderTargets(m_rtv);
+            Device.ImmediateContext.OutputMerger.SetRenderTargets(m_dsv, m_rtv);
             Device.ImmediateContext.Rasterizer.SetViewport(0, 0, m_width, m_height, 0, 1.0f);
 
+            // Device.ImmediateContext.OutputMerger.SetDepthStencilState(m_ds);
             ImGui.DX11_DrawTeapot(Device.ImmediateContext.NativePointer, ref viewProjection.M11, ref m_model.M11);
             ImGui.ImGui_ImplDX11_RenderDrawData(ImGui.GetDrawData());
-
             m_swapChain.Present(0, PresentFlags.None);
         }
 
@@ -390,7 +404,7 @@ namespace sample
                 if (mouse.Buttons.HasFlag(ButtonFlags.Right))
                 {
                     const float FACTOR = 1.0f / 180.0f * 1.7f;
-                    yawRadians -= deltaX * FACTOR;
+                    yawRadians += deltaX * FACTOR;
                     pitchRadians += deltaY * FACTOR;
                 }
                 if (mouse.Buttons.HasFlag(ButtonFlags.Middle))

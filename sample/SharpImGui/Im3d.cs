@@ -12,7 +12,7 @@ namespace SharpImGui
 
         // im3d_newframe.h:6
         [DllImport(DLLNAME, EntryPoint="?Im3dGui_NewFrame@@YAXPEBUCameraState@camera@@PEBUMouseState@@M@Z")]
-        public static extern void Im3dGui_NewFrame(IntPtr camera, IntPtr mouse, float deltaTime);
+        public static extern void Im3dGui_NewFrame(ref CameraState camera, ref MouseState mouse, float deltaTime);
 
         // im3d_impl_dx11.h:14
         [DllImport(DLLNAME, EntryPoint="?Im3d_DX11_Draw@@YAXPEAXPEBMHHPEBUDrawList@Im3d@@H@Z")]
