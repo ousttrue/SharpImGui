@@ -13,16 +13,16 @@ namespace SharpImGui
         // offsetof: 0
         public float fovYRadians;
         // offsetof: 4
-        public array projection;
+        public Matrix4x4 projection;
         // offsetof: 68
         public float viewportWidth;
         // offsetof: 72
         public float viewportHeight;
         // offsetof: 76
-        public array view;
+        public Matrix4x4 view;
         // offsetof: 140
-        public array viewInverse;
+        public Matrix4x4 viewInverse;
         // offsetof: 204
-        public array viewProjection;
+        public Matrix4x4 viewProjection;
     }
 }

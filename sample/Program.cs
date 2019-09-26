@@ -138,13 +138,7 @@ namespace sample
 
         Vector3 m_clear_color = new Vector3(0.4f, 0.3f, 0.6f);
 
-        Matrix4x4 m_view = Matrix4x4.CreateTranslation(0, 0, -2);
-
-        Matrix4x4 m_projection = Matrix4x4.Identity;
-
         Matrix4x4 m_model = Matrix4x4.Identity;
-
-        Matrix4x4 m_viewProjection = Matrix4x4.Identity;
 
         void UpdateGui()
         {
@@ -200,10 +194,9 @@ namespace sample
             ImGui.Render();
         }
 
-        public void Update()
+        public void Update(ref Matrix4x4 viewProjection, int w, int h)
         {
-            m_viewProjection = m_view * m_projection;
-
+            Resize(w, h);
             if (m_rtv == null)
             {
                 // New RenderTargetView from the backbuffer
@@ -236,12 +229,12 @@ namespace sample
             // 1.0f, 0);
         }
 
-        public void Draw()
+        public void Draw(ref Matrix4x4 viewProjection)
         {
             Device.ImmediateContext.OutputMerger.SetRenderTargets(m_rtv);
             Device.ImmediateContext.Rasterizer.SetViewport(0, 0, m_width, m_height, 0, 1.0f);
 
-            ImGui.DX11_DrawTeapot(Device.ImmediateContext.NativePointer, ref m_viewProjection.M11, ref m_model.M11);
+            ImGui.DX11_DrawTeapot(Device.ImmediateContext.NativePointer, ref viewProjection.M11, ref m_model.M11);
             ImGui.ImGui_ImplDX11_RenderDrawData(ImGui.GetDrawData());
 
             m_swapChain.Present(0, PresentFlags.None);
@@ -249,16 +242,14 @@ namespace sample
 
         int m_width;
         int m_height;
-        public void Resize(int width, int height)
+        void Resize(int width, int height)
         {
-            m_width = width;
-            m_height = height;
-            var aspect = (float)width / height;
-            m_projection = Matrix4x4.CreatePerspectiveFieldOfView(30.0f / 180.0f * MathF.PI, aspect, 0.01f, 10);
-            if (m_swapChain == null)
+            if (m_width == width && m_height == height)
             {
                 return;
             }
+            m_width = width;
+            m_height = height;
             ClearRTV();
             var desc = m_swapChain.Description;
             m_swapChain.ResizeBuffers(desc.BufferCount, width, height,
@@ -304,7 +295,7 @@ namespace sample
             else
             {
                 m_sleep++;
-                if(m_sleep > m_frameTime.TotalMilliseconds)
+                if (m_sleep > m_frameTime.TotalMilliseconds)
                 {
                     m_sleep = (int)m_frameTime.TotalMilliseconds;
                 }
@@ -315,9 +306,123 @@ namespace sample
         }
     }
 
+    class OrbitCamera
+    {
+        public CameraState state = new CameraState
+        {
+            fovYRadians = 30.0f / 180.0f * MathF.PI
+        };
+
+        float zNear = 0.1f;
+        float zFar = 100.0f;
+        float aspectRatio = 1.0f;
+
+        int prevMouseX = -1;
+        int prevMouseY = -1;
+
+        float shiftX = 0;
+        float shiftY = 0;
+        float shiftZ = 2.0f;
+        float yawRadians = 0;
+        float pitchRadians = 0;
+
+        public OrbitCamera()
+        {
+            CalcView();
+            CalcPerspective();
+            CalcViewProjection();
+        }
+
+        void CalcView()
+        {
+            var yaw = Matrix4x4.CreateRotationY(yawRadians);
+            var pitch = Matrix4x4.CreateRotationX(pitchRadians);
+            var yawPitch = yaw * pitch;
+            var t = Matrix4x4.CreateTranslation(-shiftX, -shiftY, -shiftZ);
+            state.view = yawPitch * t;
+
+            t.M12 *= -1;
+            t.M13 *= -1;
+            t.M14 *= -1;
+            state.viewInverse = t * Matrix4x4.Transpose(yawPitch);
+        }
+
+        void CalcPerspective()
+        {
+            state.projection = Matrix4x4.CreatePerspectiveFieldOfView(state.fovYRadians, aspectRatio, zNear, zFar);
+        }
+
+        void CalcViewProjection()
+        {
+            state.viewProjection = state.view * state.projection;
+        }
+
+        void SetViewport(int x, int y, int w, int h)
+        {
+            if (w == state.viewportWidth && h == state.viewportHeight)
+            {
+                return;
+            }
+            if (h == 0 || w == 0)
+            {
+                aspectRatio = 1.0f;
+            }
+            else
+            {
+                aspectRatio = w / (float)h;
+            }
+            // state.viewportX = x;
+            // state.viewportY = y;
+            state.viewportWidth = w;
+            state.viewportHeight = h;
+            CalcPerspective();
+        }
+
+        public void MouseInput(MouseState mouse, int width, int height)
+        {
+            SetViewport(0, 0, width, height);
+
+            if (prevMouseX != -1 && prevMouseY != -1)
+            {
+                var deltaX = mouse.X - prevMouseX;
+                var deltaY = mouse.Y - prevMouseY;
+
+                if (mouse.Buttons.HasFlag(ButtonFlags.Right))
+                {
+                    const float FACTOR = 1.0f / 180.0f * 1.7f;
+                    yawRadians -= deltaX * FACTOR;
+                    pitchRadians += deltaY * FACTOR;
+                }
+                if (mouse.Buttons.HasFlag(ButtonFlags.Middle))
+                {
+                    shiftX -= deltaX / (float)state.viewportHeight * shiftZ;
+                    shiftY += deltaY / (float)state.viewportHeight * shiftZ;
+                }
+                if (mouse.Wheel > 0)
+                {
+                    shiftZ *= 0.9f;
+                }
+                else if (mouse.Wheel < 0)
+                {
+                    shiftZ *= 1.1f;
+                }
+            }
+            prevMouseX = mouse.X;
+            prevMouseY = mouse.Y;
+            CalcView();
+            CalcViewProjection();
+        }
+    }
+
     class Program
     {
         const string WINDOW_CLASS = "SharpImGuiClass";
+
+        static int s_width;
+        static int s_height;
+
+        static MouseState s_mouse;
+        static bool s_clearWheel;
 
         static void Main(string[] args)
         {
@@ -338,7 +443,9 @@ namespace sample
                         return 0;
 
                     case WM.RESIZE:
-                        manager.Resize(lParam.LowWord, lParam.HiWord);
+                        // manager.Resize(lParam.LowWord, lParam.HiWord);
+                        s_width = lParam.LowWord;
+                        s_height = lParam.HiWord;
                         return 0;
 
                     case WM.PAINT:
@@ -346,6 +453,83 @@ namespace sample
                             PAINTSTRUCT ps = default;
                             var hdc = User32.BeginPaint(_hwnd, ref ps);
                             User32.EndPaint(_hwnd, ref ps);
+                            return 0;
+                        }
+
+                    case WM.MOUSEMOVE:
+                        {
+                            s_mouse.X = lParam.LowWord;
+                            s_mouse.Y = lParam.HiWord;
+                            return 0;
+                        }
+
+                    case WM.LBUTTONDOWN:
+                        {
+                            // User32.SetCapture(_hwnd);
+                            s_mouse.Buttons |= ButtonFlags.Left;
+                            return 0;
+                        }
+
+                    case WM.LBUTTONUP:
+                        {
+                            s_mouse.Buttons &= ~ButtonFlags.Left;
+                            if (s_mouse.Buttons == 0)
+                            {
+                                // User32.ReleaseCapture();
+                            }
+                            return 0;
+                        }
+
+                    case WM.MBUTTONDOWN:
+                        {
+                            // SetCapture(hWnd);
+                            s_mouse.Buttons |= ButtonFlags.Middle;
+                            return 0;
+                        }
+
+                    case WM.MBUTTONUP:
+                        {
+                            s_mouse.Buttons &= ~ButtonFlags.Middle;
+                            if (s_mouse.Buttons == 0)
+                            {
+                                // ReleaseCapture();
+                            }
+                            return 0;
+                        }
+
+                    case WM.RBUTTONDOWN:
+                        {
+                            // SetCapture(hWnd);
+                            s_mouse.Buttons |= ButtonFlags.Right;
+                            return 0;
+                        }
+
+                    case WM.RBUTTONUP:
+                        {
+                            s_mouse.Buttons &= ~ButtonFlags.Right;
+                            if (s_mouse.Buttons == 0)
+                            {
+                                // ReleaseCapture();
+                            }
+                            return 0;
+                        }
+
+                    case WM.MOUSEWHEEL:
+                        {
+                            s_clearWheel = false;
+                            var d = wParam.HiWord;
+                            if (d > 0)
+                            {
+                                s_mouse.Wheel = 1;
+                            }
+                            else if (d < 0)
+                            {
+                                s_mouse.Wheel = -1;
+                            }
+                            else
+                            {
+                                s_mouse.Wheel = 0;
+                            }
                             return 0;
                         }
                 }
@@ -387,13 +571,12 @@ namespace sample
             manager.SetHWnd(hwnd);
 
             User32.ShowWindow(hwnd, SW.SHOW);
+            OrbitCamera camera = new OrbitCamera();
 
             var fps = new FpsTimer(30);
             MSG msg = default;
             while (true)
             {
-                // fps.BeginFrame();
-
                 // Poll and handle messages (inputs, window resize, etc.)
                 // You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
                 // - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application.
@@ -409,11 +592,15 @@ namespace sample
                     User32.DispatchMessage(ref msg);
                 }
 
-                manager.Update();
+                camera.MouseInput(s_mouse, s_width, s_height);
+                s_clearWheel = true;
+                s_mouse.Wheel = 0;
+
+                manager.Update(ref camera.state.viewProjection, s_width, s_height);
 
                 fps.Wait();
 
-                manager.Draw();
+                manager.Draw(ref camera.state.viewProjection);
             }
         }
     }
