@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace SharpImGui
 {
-    // camera_state.h:68
+    // camera_state.h:27
     
     public struct CameraState
     {

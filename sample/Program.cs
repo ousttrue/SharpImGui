@@ -149,7 +149,7 @@ namespace sample
                 "SharpImGui",
                 WS.OVERLAPPEDWINDOW,
                 32, 32,
-                256, 256,
+                640, 480,
                 default,
                 default,
                 IntPtr.Zero,
@@ -183,16 +183,19 @@ namespace sample
                     User32.DispatchMessage(ref msg);
                 }
 
+                var delta = fps.BeginFrame();
+
                 camera.MouseInput(s_mouse, s_width, s_height);
                 s_clearWheel = true;
                 s_mouse.Wheel = 0;
 
-                manager.Update(ref camera.state.viewProjection, s_width, s_height);
+                manager.Update(delta, s_width, s_height, ref camera.state, ref s_mouse);
 
                 fps.Wait();
 
                 manager.Draw(ref camera.state.viewProjection);
             }
+
         }
     }
 }

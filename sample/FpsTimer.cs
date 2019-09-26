@@ -20,16 +20,19 @@ namespace sample
 
 
         TimeSpan m_begin;
-        // public void BeginFrame()
-        // {
-        //     m_begin = m_sw.Elapsed;
-        // }
+        public TimeSpan BeginFrame()
+        {
+            var now = m_sw.Elapsed;
+            var delta = now - m_begin;
+            m_begin = now;
+            return delta;
+        }
 
         public void Wait()
         {
             var now = m_sw.Elapsed;
             var delta = now - m_begin;
-            m_begin = now;
+            // m_begin = now;
 
             if (delta > m_frameTime)
             {

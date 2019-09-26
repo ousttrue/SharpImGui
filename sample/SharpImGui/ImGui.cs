@@ -1778,16 +1778,12 @@ namespace SharpImGui
         [DllImport(DLLNAME, EntryPoint="?SetNextWindowPosCenter@ImGui@@YAXH@Z")]
         public static extern void SetNextWindowPosCenter(ImGuiCond cond);
 
-        // camera_state.h:6
+        // camera_state.h:7
         [DllImport(DLLNAME, EntryPoint="?dot@camera@@YAMPEBM0@Z")]
         public static extern float dot(ref float row, ref float col);
 
-        // camera_state.h:16
-        [DllImport(DLLNAME, EntryPoint="?Mult@camera@@YA?AV?$array@M$0BA@@std@@AEBV23@0@Z")]
-        public static extern Matrix4x4 Mult(IntPtr l, IntPtr r);
-
-        // camera_state.h:58
-        [DllImport(DLLNAME, EntryPoint="?Transpose@camera@@YAXAEAV?$array@M$0BA@@std@@@Z")]
-        public static extern void Transpose(IntPtr m);
+        // camera_state.h:17
+        [DllImport(DLLNAME, EntryPoint="?Mult@camera@@YA?AUXMFLOAT4X4@DirectX@@AEBU23@0@Z")]
+        public static extern Matrix4x4 Mult(IntPtr _l, IntPtr _r);
     }
 }

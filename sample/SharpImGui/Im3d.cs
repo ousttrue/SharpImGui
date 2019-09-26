@@ -11,8 +11,8 @@ namespace SharpImGui
         const string DLLNAME = "imgui.dll";
 
         // im3d_newframe.h:6
-        [DllImport(DLLNAME, EntryPoint="?Im3dGui_NewFrame@@YAXPEBUCameraState@camera@@PEBUMouseState@@M@Z")]
-        public static extern void Im3dGui_NewFrame(ref CameraState camera, ref MouseState mouse, float deltaTime);
+        [DllImport(DLLNAME, EntryPoint="?Im3dGui_NewFrame@@YAXPEBUCameraState@camera@@PEBUMouseState@@MM@Z")]
+        public static extern void Im3dGui_NewFrame(ref CameraState camera, ref MouseState mouse, float deltaTime, float rayZValue);
 
         // im3d_impl_dx11.h:14
         [DllImport(DLLNAME, EntryPoint="?Im3d_DX11_Draw@@YAXPEAXPEBMHHPEBUDrawList@Im3d@@H@Z")]

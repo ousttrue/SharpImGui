@@ -39,10 +39,8 @@ namespace sample
             var t = Matrix4x4.CreateTranslation(-shiftX, -shiftY, -shiftZ);
             state.view = yawPitch * t;
 
-            t.M12 *= -1;
-            t.M13 *= -1;
-            t.M14 *= -1;
-            state.viewInverse = t * Matrix4x4.Transpose(yawPitch);
+            var inv_t = Matrix4x4.CreateTranslation(shiftX, shiftY, shiftZ);
+            state.viewInverse = inv_t * Matrix4x4.Transpose(yawPitch);
         }
 
         void CalcPerspective()
@@ -50,7 +48,7 @@ namespace sample
             state.projection = Matrix4x4.CreatePerspectiveFieldOfView(state.fovYRadians, aspectRatio, zNear, zFar);
         }
 
-        void CalcViewProjection()
+        public void CalcViewProjection()
         {
             state.viewProjection = state.view * state.projection;
         }

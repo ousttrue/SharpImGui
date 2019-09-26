@@ -27,6 +27,7 @@ namespace sample
 
         public void Dispose()
         {
+            Im3d.Im3d_DX11_Finalize();
             ImGui.ImGui_ImplDX11_Shutdown();
             ImGui.ImGui_ImplWin32_Shutdown();
             if (m_imgui != IntPtr.Zero)
@@ -123,6 +124,7 @@ namespace sample
                 Device.ImmediateContext.NativePointer);
 
             ImGui.DX11_Initialize();
+            Im3d.Im3d_DX11_Initialize();
         }
 
         static void AddJapaneseFontFromFileTTF(string filename, float size_pixels)
@@ -196,7 +198,7 @@ namespace sample
             ImGui.Render();
         }
 
-        public void Update(ref Matrix4x4 viewProjection, int w, int h)
+        public void Update(TimeSpan deltaTime, int w, int h, ref CameraState camera, ref MouseState mouse)
         {
             Resize(w, h);
             if (m_rtv == null)
@@ -238,6 +240,10 @@ namespace sample
             Device.ImmediateContext.ClearRenderTargetView(m_rtv,
             new SharpDX.Mathematics.Interop.RawColor4(m_clear_color.X, m_clear_color.Y, m_clear_color.Z, 1.0f));
             Device.ImmediateContext.ClearDepthStencilView(m_dsv, DepthStencilClearFlags.Depth | DepthStencilClearFlags.Stencil, 1.0f, 0);
+
+            Im3d.Im3dGui_NewFrame(ref camera, ref mouse, (float)deltaTime.TotalSeconds, -1);
+            Im3d.Gizmo("gizmo", ref m_model.M11);
+            Im3d.EndFrame();
         }
 
         public void Draw(ref Matrix4x4 viewProjection)
@@ -247,7 +253,9 @@ namespace sample
 
             // Device.ImmediateContext.OutputMerger.SetDepthStencilState(m_ds);
             ImGui.DX11_DrawTeapot(Device.ImmediateContext.NativePointer, ref viewProjection.M11, ref m_model.M11);
+            Im3d.Im3d_DX11_Draw(Device.ImmediateContext.NativePointer, ref viewProjection.M11, m_width, m_height, Im3d.GetDrawLists(), (int)Im3d.GetDrawListCount().Value);
             ImGui.ImGui_ImplDX11_RenderDrawData(ImGui.GetDrawData());
+
             m_swapChain.Present(0, PresentFlags.None);
         }
 
