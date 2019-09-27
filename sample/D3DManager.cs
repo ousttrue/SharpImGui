@@ -28,9 +28,16 @@ namespace sample
 
         public void Dispose()
         {
-            m_view1.Dispose();
-            m_view2.Dispose();
+            if (m_view1 != null)
+            {
+                m_view1.Dispose();
+            }
+            if (m_view2 != null)
+            {
+                m_view2.Dispose();
+            }
             Im3d.Im3d_DX11_Finalize();
+            ImGui.DX11_Finalize();
 
             ImGui.ImGui_ImplDX11_Shutdown();
             ImGui.ImGui_ImplWin32_Shutdown();

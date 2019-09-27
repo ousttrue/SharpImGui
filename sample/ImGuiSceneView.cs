@@ -20,6 +20,17 @@ namespace sample
                 m_rt.Dispose();
                 m_rt = null;
             }
+
+            if (m_srv != null)
+            {
+                m_srv.Dispose();
+                m_srv = null;
+            }
+            if (m_renderTexture != null)
+            {
+                m_renderTexture.Dispose();
+                m_renderTexture = null;
+            }
         }
 
         readonly string m_name;

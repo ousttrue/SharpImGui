@@ -60,9 +60,9 @@ namespace sample
             depthDesc.ArraySize = 1;
             depthDesc.Format = Format.D24_UNorm_S8_UInt;
             depthDesc.BindFlags = BindFlags.DepthStencil;
-            using (var depthTexture = new Texture2D(src.Device, depthDesc))
+            using (var depthTexture = new Texture2D(device, depthDesc))
             {
-                m_dsv = new DepthStencilView(src.Device, depthTexture);
+                m_dsv = new DepthStencilView(device, depthTexture);
             }
         }
 
