@@ -7,29 +7,6 @@ using Win32API;
 
 namespace sample
 {
-    class Im3dContext : IDisposable
-    {
-        IntPtr m_context;
-        public Im3dContext()
-        {
-            m_context = Im3d.NewContext();
-        }
-
-        public void Dispose()
-        {
-            if (m_context != IntPtr.Zero)
-            {
-                Im3d.DestoryContext(m_context);
-                m_context = IntPtr.Zero;
-            }
-        }
-
-        public void Set()
-        {
-            Im3d.SetContext(m_context);
-        }
-    }
-
     class D3DManager : IDisposable
     {
         SharpDX.Direct3D11.Device m_device;
@@ -37,13 +14,12 @@ namespace sample
 
         SwapChain m_swapChain;
 
-        SharpDX.Direct3D11.RenderTargetView m_rtv;
-        SharpDX.Direct3D11.DepthStencilView m_dsv;
-        // SharpDX.Direct3D11.DepthStencilState m_ds;
+        D3DRenderTarget m_rt = new D3DRenderTarget();
 
         IntPtr m_imgui;
 
-        Im3dContext m_im3d = new Im3dContext();
+        ImGuiSceneView m_view1;
+        ImGuiSceneView m_view2;
 
         public D3DManager()
         {
@@ -52,9 +28,9 @@ namespace sample
 
         public void Dispose()
         {
+            m_view1.Dispose();
+            m_view2.Dispose();
             Im3d.Im3d_DX11_Finalize();
-            m_im3d.Dispose();
-            m_im3d=null;
 
             ImGui.ImGui_ImplDX11_Shutdown();
             ImGui.ImGui_ImplWin32_Shutdown();
@@ -82,22 +58,8 @@ namespace sample
         {
             Device.ImmediateContext.OutputMerger.SetRenderTargets(
                 (DepthStencilView)null, (RenderTargetView)null);
-            if (m_rtv != null)
-            {
-                // clear swapchain user
-                m_rtv.Dispose();
-                m_rtv = null;
-            }
-            if (m_dsv != null)
-            {
-                m_dsv.Dispose();
-                m_dsv = null;
-            }
-            // if (m_ds != null)
-            // {
-            //     m_ds.Dispose();
-            //     m_ds = null;
-            // }
+
+            m_rt.Dispose();
         }
 
         public void SetHWnd(IntPtr hwnd)
@@ -153,6 +115,9 @@ namespace sample
 
             ImGui.DX11_Initialize();
             Im3d.Im3d_DX11_Initialize();
+
+            m_view1 = new ImGuiSceneView("view1");
+            m_view2 = new ImGuiSceneView("view2");
         }
 
         static void AddJapaneseFontFromFileTTF(string filename, float size_pixels)
@@ -170,15 +135,8 @@ namespace sample
 
         Vector3 m_clear_color = new Vector3(0.4f, 0.3f, 0.6f);
 
-        Matrix4x4 m_model = Matrix4x4.Identity;
-
         void UpdateGui()
         {
-            // Start the Dear ImGui frame
-            ImGui.ImGui_ImplDX11_NewFrame();
-            ImGui.ImGui_ImplWin32_NewFrame();
-            ImGui.NewFrame();
-
             // 1. Show the big demo window (Most of the sample code is in ImGui.ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
             if (m_show_demo_window)
             {
@@ -222,67 +180,40 @@ namespace sample
                     m_show_another_window = false;
                 ImGui.End();
             }
-
-            ImGui.Render();
         }
 
-        public void Update(TimeSpan deltaTime, int w, int h, ref CameraState camera, ref MouseState mouse)
+        public void Update(TimeSpan deltaTime, int w, int h, ref MouseState mouse)
         {
             Resize(w, h);
-            if (m_rtv == null)
+            if (m_rt.RTV == null)
             {
                 // New RenderTargetView from the backbuffer
                 using (var backBuffer = Texture2D.FromSwapChain<Texture2D>(m_swapChain, 0))
                 {
                     backBuffer.DebugName = "backBuffer";
-                    m_rtv = new RenderTargetView(Device, backBuffer);
-
-                    var depthDesc = backBuffer.Description;
-                    depthDesc.MipLevels = 1;
-                    depthDesc.ArraySize = 1;
-                    depthDesc.Format = SharpDX.DXGI.Format.D24_UNorm_S8_UInt;
-                    depthDesc.BindFlags = BindFlags.DepthStencil;
-                    using (var depthTexture = new SharpDX.Direct3D11.Texture2D(backBuffer.Device, depthDesc))
-                    {
-                        m_dsv = new SharpDX.Direct3D11.DepthStencilView(backBuffer.Device, depthTexture);
-                    }
+                    m_rt.FromTexture(Device, backBuffer);
                 }
             }
 
-            // if (m_ds == null)
-            // {
-            //     m_ds = new DepthStencilState(Device,
-            //     new DepthStencilStateDescription
-            //     {
-            //         IsDepthEnabled = true,
-            //         DepthWriteMask = DepthWriteMask.All,
-            //         DepthComparison = Comparison.Less,
-            //     });
-            // }
+            // Start the Dear ImGui frame
+            ImGui.ImGui_ImplDX11_NewFrame();
+            ImGui.ImGui_ImplWin32_NewFrame();
+            ImGui.NewFrame();
+
+            m_view1.UpdateFrame(Device, deltaTime, ref mouse);
+            m_view2.UpdateFrame(Device, deltaTime, ref mouse);
 
             UpdateGui();
 
-            //
-            // D3D
-            //
-            Device.ImmediateContext.ClearRenderTargetView(m_rtv,
-            new SharpDX.Mathematics.Interop.RawColor4(m_clear_color.X, m_clear_color.Y, m_clear_color.Z, 1.0f));
-            Device.ImmediateContext.ClearDepthStencilView(m_dsv, DepthStencilClearFlags.Depth | DepthStencilClearFlags.Stencil, 1.0f, 0);
-
-            m_im3d.Set();
-            Im3d.Im3dGui_NewFrame(ref camera, ref mouse, (float)deltaTime.TotalSeconds, -1);
-            Im3d.Gizmo("gizmo", ref m_model.M11);
-            Im3d.EndFrame();
+            ImGui.Render();
         }
 
-        public void Draw(ref Matrix4x4 viewProjection)
+        public void Draw()
         {
-            Device.ImmediateContext.OutputMerger.SetRenderTargets(m_dsv, m_rtv);
+            m_rt.Setup(Device, m_clear_color);
             Device.ImmediateContext.Rasterizer.SetViewport(0, 0, m_width, m_height, 0, 1.0f);
 
             // Device.ImmediateContext.OutputMerger.SetDepthStencilState(m_ds);
-            ImGui.DX11_DrawTeapot(Device.ImmediateContext.NativePointer, ref viewProjection.M11, ref m_model.M11);
-            Im3d.Im3d_DX11_Draw(Device.ImmediateContext.NativePointer, ref viewProjection.M11, m_width, m_height, Im3d.GetDrawLists(), (int)Im3d.GetDrawListCount().Value);
             ImGui.ImGui_ImplDX11_RenderDrawData(ImGui.GetDrawData());
 
             m_swapChain.Present(0, PresentFlags.None);

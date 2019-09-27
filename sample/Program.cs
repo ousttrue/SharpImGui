@@ -162,7 +162,6 @@ namespace sample
             manager.SetHWnd(hwnd);
 
             User32.ShowWindow(hwnd, SW.SHOW);
-            OrbitCamera camera = new OrbitCamera();
 
             var fps = new FpsTimer(30);
             MSG msg = default;
@@ -184,18 +183,14 @@ namespace sample
                 }
 
                 var delta = fps.BeginFrame();
-
-                camera.MouseInput(s_mouse, s_width, s_height);
+                manager.Update(delta, s_width, s_height, ref s_mouse);
                 s_clearWheel = true;
                 s_mouse.Wheel = 0;
 
-                manager.Update(delta, s_width, s_height, ref camera.state, ref s_mouse);
-
                 fps.Wait();
 
-                manager.Draw(ref camera.state.viewProjection);
+                manager.Draw();
             }
-
         }
     }
 }
