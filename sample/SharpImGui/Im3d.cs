@@ -443,7 +443,15 @@ namespace SharpImGui
         [DllImport(DLLNAME, EntryPoint="?SetContext@Im3d@@YAXAEAVContext@1@@Z")]
         public static extern void SetContext(IntPtr _ctx);
 
-        // im3d.h:184
+        // im3d.h:182
+        [DllImport(DLLNAME, EntryPoint="?NewContext@Im3d@@YAPEAVContext@1@XZ")]
+        public static extern IntPtr NewContext();
+
+        // im3d.h:183
+        [DllImport(DLLNAME, EntryPoint="?DestoryContext@Im3d@@YAXPEAVContext@1@@Z")]
+        public static extern void DestoryContext(IntPtr c);
+
+        // im3d.h:186
         [DllImport(DLLNAME, EntryPoint="?MergeContexts@Im3d@@YAXAEAVContext@1@AEBV21@@Z")]
         public static extern void MergeContexts(IntPtr _dst_, IntPtr _src);
     }

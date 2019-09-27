@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace SharpImGui
 {
-    // im3d.h:397
+    // im3d.h:399
     
     public enum DrawPrimitiveType
     {

@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace SharpImGui
 {
-    // im3d.h:186
+    // im3d.h:188
     
     public struct Vec2
     {

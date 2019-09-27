@@ -7,6 +7,29 @@ using Win32API;
 
 namespace sample
 {
+    class Im3dContext : IDisposable
+    {
+        IntPtr m_context;
+        public Im3dContext()
+        {
+            m_context = Im3d.NewContext();
+        }
+
+        public void Dispose()
+        {
+            if (m_context != IntPtr.Zero)
+            {
+                Im3d.DestoryContext(m_context);
+                m_context = IntPtr.Zero;
+            }
+        }
+
+        public void Set()
+        {
+            Im3d.SetContext(m_context);
+        }
+    }
+
     class D3DManager : IDisposable
     {
         SharpDX.Direct3D11.Device m_device;
@@ -20,6 +43,8 @@ namespace sample
 
         IntPtr m_imgui;
 
+        Im3dContext m_im3d = new Im3dContext();
+
         public D3DManager()
         {
             SharpDX.Configuration.EnableObjectTracking = true;
@@ -28,6 +53,9 @@ namespace sample
         public void Dispose()
         {
             Im3d.Im3d_DX11_Finalize();
+            m_im3d.Dispose();
+            m_im3d=null;
+
             ImGui.ImGui_ImplDX11_Shutdown();
             ImGui.ImGui_ImplWin32_Shutdown();
             if (m_imgui != IntPtr.Zero)
@@ -241,6 +269,7 @@ namespace sample
             new SharpDX.Mathematics.Interop.RawColor4(m_clear_color.X, m_clear_color.Y, m_clear_color.Z, 1.0f));
             Device.ImmediateContext.ClearDepthStencilView(m_dsv, DepthStencilClearFlags.Depth | DepthStencilClearFlags.Stencil, 1.0f, 0);
 
+            m_im3d.Set();
             Im3d.Im3dGui_NewFrame(ref camera, ref mouse, (float)deltaTime.TotalSeconds, -1);
             Im3d.Gizmo("gizmo", ref m_model.M11);
             Im3d.EndFrame();

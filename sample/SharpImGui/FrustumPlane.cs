@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace SharpImGui
 {
-    // im3d.h:436
+    // im3d.h:438
     
     public enum FrustumPlane
     {
