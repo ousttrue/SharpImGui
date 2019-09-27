@@ -75,6 +75,7 @@ namespace sample
                 Im3d.Gizmo("gizmo", ref m_model.M11);
                 Im3d.EndFrame();
 
+
                 if (m_renderTexture != null)
                 {
                     var desc = m_renderTexture.Description;
@@ -91,7 +92,7 @@ namespace sample
                 {
                     m_renderTexture = new Texture2D(device, new Texture2DDescription
                     {
-                        Format = SharpDX.DXGI.Format.B8G8R8A8_UNorm,
+                        Format = SharpDX.DXGI.Format.B8G8R8X8_UNorm,
                         ArraySize = 1,
                         MipLevels = 1,
                         Width = width,
@@ -103,6 +104,7 @@ namespace sample
                         },
                         BindFlags = BindFlags.RenderTarget | BindFlags.ShaderResource
                     });
+
                     m_srv = new ShaderResourceView(device, m_renderTexture);
 
                     m_rt.FromTexture(device, m_renderTexture);
