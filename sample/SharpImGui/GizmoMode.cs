@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace SharpImGui
 {
-    // im3d.h:563
+    // im3d.h:564
     
     public enum GizmoMode
     {

@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace SharpImGui
 {
-    // im3d.h:347
+    // im3d.h:348
     
     public struct Color
     {

@@ -205,7 +205,7 @@ namespace SharpImGui
 
         // im3d.h:105
         [DllImport(DLLNAME, EntryPoint="?PushMatrix@Im3d@@YAXAEBUMat4@1@@Z")]
-        public static extern void PushMatrix(IntPtr _mat4);
+        public static extern void PushMatrix(ref Matrix4x4 _mat4);
 
         // im3d.h:106
         [DllImport(DLLNAME, EntryPoint="?PopMatrix@Im3d@@YAXXZ")]
@@ -213,7 +213,7 @@ namespace SharpImGui
 
         // im3d.h:107
         [DllImport(DLLNAME, EntryPoint="?SetMatrix@Im3d@@YAXAEBUMat4@1@@Z")]
-        public static extern void SetMatrix(IntPtr _mat4);
+        public static extern void SetMatrix(ref Matrix4x4 _mat4);
 
         // im3d.h:108
         [DllImport(DLLNAME, EntryPoint="?SetIdentity@Im3d@@YAXXZ")]
@@ -221,7 +221,7 @@ namespace SharpImGui
 
         // im3d.h:109
         [DllImport(DLLNAME, EntryPoint="?MulMatrix@Im3d@@YAXAEBUMat4@1@@Z")]
-        public static extern void MulMatrix(IntPtr _mat4);
+        public static extern void MulMatrix(ref Matrix4x4 _mat4);
 
         // im3d.h:110
         [DllImport(DLLNAME, EntryPoint="?Translate@Im3d@@YAXMMM@Z")]
@@ -386,72 +386,77 @@ namespace SharpImGui
         public static extern bool GizmoRotation([MarshalAs(UnmanagedType.LPUTF8Str)]string _id, ref float _rotation_, [MarshalAs(UnmanagedType.U1)]bool _local = default);
 
         // im3d.h:163
+        [DllImport(DLLNAME, EntryPoint="?GizmoRotation4x4@Im3d@@YA_NPEBDQEAM_N@Z")]
+        [return: MarshalAs(UnmanagedType.U1)]
+        public static extern bool GizmoRotation4x4([MarshalAs(UnmanagedType.LPUTF8Str)]string _id, ref float _rotation_, [MarshalAs(UnmanagedType.U1)]bool _local = default);
+
+        // im3d.h:164
         [DllImport(DLLNAME, EntryPoint="?GizmoScale@Im3d@@YA_NPEBDQEAM@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool GizmoScale([MarshalAs(UnmanagedType.LPUTF8Str)]string _id, ref float _scale_);
 
-        // im3d.h:165
+        // im3d.h:166
         [DllImport(DLLNAME, EntryPoint="?Gizmo@Im3d@@YA_NPEBDQEAM11@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool Gizmo([MarshalAs(UnmanagedType.LPUTF8Str)]string _id, ref float _translation_, ref float _rotation_, ref float _scale_);
 
-        // im3d.h:166
+        // im3d.h:167
         [DllImport(DLLNAME, EntryPoint="?Gizmo@Im3d@@YA_NPEBDQEAM@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool Gizmo([MarshalAs(UnmanagedType.LPUTF8Str)]string _id, ref float _transform_);
 
-        // im3d.h:169
+        // im3d.h:170
         [DllImport(DLLNAME, EntryPoint="?GizmoTranslation@Im3d@@YA_NIQEAM_N@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool GizmoTranslation(Id _id, ref float _translation_, [MarshalAs(UnmanagedType.U1)]bool _local = default);
 
-        // im3d.h:170
+        // im3d.h:171
         [DllImport(DLLNAME, EntryPoint="?GizmoRotation@Im3d@@YA_NIQEAM_N@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool GizmoRotation(Id _id, ref float _rotation_, [MarshalAs(UnmanagedType.U1)]bool _local = default);
 
-        // im3d.h:171
+        // im3d.h:172
         [DllImport(DLLNAME, EntryPoint="?GizmoScale@Im3d@@YA_NIQEAM@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool GizmoScale(Id _id, ref float _scale_);
 
-        // im3d.h:172
+        // im3d.h:173
         [DllImport(DLLNAME, EntryPoint="?Gizmo@Im3d@@YA_NIQEAM@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool Gizmo(Id _id, ref float _transform_);
 
-        // im3d.h:173
+        // im3d.h:174
         [DllImport(DLLNAME, EntryPoint="?Gizmo@Im3d@@YA_NIQEAM00@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool Gizmo(Id _id, ref float _translation_, ref float _rotation_, ref float _scale_);
 
-        // im3d.h:176
+        // im3d.h:177
         [DllImport(DLLNAME, EntryPoint="?IsVisible@Im3d@@YA_NAEBUVec3@1@M@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool IsVisible(IntPtr _origin, float _radius);
 
-        // im3d.h:177
+        // im3d.h:178
         [DllImport(DLLNAME, EntryPoint="?IsVisible@Im3d@@YA_NAEBUVec3@1@0@Z")]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool IsVisible(IntPtr _min, IntPtr _max);
 
-        // im3d.h:180
+        // im3d.h:181
         [DllImport(DLLNAME, EntryPoint="?GetContext@Im3d@@YAAEAVContext@1@XZ")]
         public static extern IntPtr GetContext();
 
-        // im3d.h:181
+        // im3d.h:182
         [DllImport(DLLNAME, EntryPoint="?SetContext@Im3d@@YAXAEAVContext@1@@Z")]
         public static extern void SetContext(IntPtr _ctx);
 
-        // im3d.h:182
+        // im3d.h:183
         [DllImport(DLLNAME, EntryPoint="?NewContext@Im3d@@YAPEAVContext@1@XZ")]
         public static extern IntPtr NewContext();
 
-        // im3d.h:183
+        // im3d.h:184
         [DllImport(DLLNAME, EntryPoint="?DestoryContext@Im3d@@YAXPEAVContext@1@@Z")]
         public static extern void DestoryContext(IntPtr c);
 
-        // im3d.h:186
+        // im3d.h:187
         [DllImport(DLLNAME, EntryPoint="?MergeContexts@Im3d@@YAXAEAVContext@1@AEBV21@@Z")]
         public static extern void MergeContexts(IntPtr _dst_, IntPtr _src);
     }
